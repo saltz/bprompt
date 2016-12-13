@@ -16,3 +16,6 @@ C:\Users\Gebruiker\Dropbox\Proftaak Groep B P2\OIS PT12\Mobile App\SparkyTheSmar
 C:\Users\Gebruiker\Dropbox\Proftaak Groep B P2\OIS PT12\Mobile App\SparkyTheSmartClock\SparkyTheSmartClock\obj\Debug\SparkyTheSmartClock.csproj.GenerateResource.Cache
 C:\Users\Gebruiker\Dropbox\Proftaak Groep B P2\OIS PT12\Mobile App\SparkyTheSmartClock\SparkyTheSmartClock\obj\Debug\SparkyTheSmartClock.exe
 C:\Users\Gebruiker\Dropbox\Proftaak Groep B P2\OIS PT12\Mobile App\SparkyTheSmartClock\SparkyTheSmartClock\obj\Debug\SparkyTheSmartClock.pdb
+C:\Users\dane\Documents\GitHub\Sparky\SparkyTheSmartClock\bin\Debug\SparkyTheSmartClock.exe.config
+C:\Users\dane\Documents\GitHub\Sparky\SparkyTheSmartClock\obj\Debug\SparkyTheSmartClock.exe
+C:\Users\dane\Documents\GitHub\Sparky\SparkyTheSmartClock\obj\Debug\SparkyTheSmartClock.pdb
