@@ -30,95 +30,95 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuNav = new System.Windows.Forms.TabControl();
-            this.tabHome = new System.Windows.Forms.TabPage();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tabSchedule = new System.Windows.Forms.TabPage();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.tabNav = new System.Windows.Forms.TabPage();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.tab0 = new System.Windows.Forms.TabPage();
+            this.navBox1 = new System.Windows.Forms.PictureBox();
+            this.tab1 = new System.Windows.Forms.TabPage();
+            this.navBox2 = new System.Windows.Forms.PictureBox();
+            this.tab2 = new System.Windows.Forms.TabPage();
+            this.navBox3 = new System.Windows.Forms.PictureBox();
             this.menuNav.SuspendLayout();
-            this.tabHome.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tabSchedule.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.tabNav.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.tab0.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.navBox1)).BeginInit();
+            this.tab1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.navBox2)).BeginInit();
+            this.tab2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.navBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // menuNav
             // 
-            this.menuNav.Controls.Add(this.tabHome);
-            this.menuNav.Controls.Add(this.tabSchedule);
-            this.menuNav.Controls.Add(this.tabNav);
+            this.menuNav.Controls.Add(this.tab0);
+            this.menuNav.Controls.Add(this.tab1);
+            this.menuNav.Controls.Add(this.tab2);
             this.menuNav.Location = new System.Drawing.Point(-6, -22);
             this.menuNav.Name = "menuNav";
             this.menuNav.SelectedIndex = 0;
             this.menuNav.Size = new System.Drawing.Size(376, 628);
             this.menuNav.TabIndex = 0;
             // 
-            // tabHome
+            // tab0
             // 
-            this.tabHome.Controls.Add(this.pictureBox1);
-            this.tabHome.Location = new System.Drawing.Point(4, 22);
-            this.tabHome.Name = "tabHome";
-            this.tabHome.Size = new System.Drawing.Size(368, 568);
-            this.tabHome.TabIndex = 0;
-            this.tabHome.UseVisualStyleBackColor = true;
+            this.tab0.Controls.Add(this.navBox1);
+            this.tab0.Location = new System.Drawing.Point(4, 22);
+            this.tab0.Name = "tab0";
+            this.tab0.Size = new System.Drawing.Size(368, 602);
+            this.tab0.TabIndex = 0;
+            this.tab0.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
+            // navBox1
             // 
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(2, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(365, 85);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.NavClick);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
+            this.navBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("navBox1.BackgroundImage")));
+            this.navBox1.Location = new System.Drawing.Point(2, 0);
+            this.navBox1.Name = "navBox1";
+            this.navBox1.Size = new System.Drawing.Size(365, 85);
+            this.navBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.navBox1.TabIndex = 0;
+            this.navBox1.TabStop = false;
+            this.navBox1.Click += new System.EventHandler(this.NavClick);
+            this.navBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
             // 
-            // tabSchedule
+            // tab1
             // 
-            this.tabSchedule.Controls.Add(this.pictureBox2);
-            this.tabSchedule.Location = new System.Drawing.Point(4, 22);
-            this.tabSchedule.Name = "tabSchedule";
-            this.tabSchedule.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSchedule.Size = new System.Drawing.Size(368, 568);
-            this.tabSchedule.TabIndex = 1;
-            this.tabSchedule.UseVisualStyleBackColor = true;
+            this.tab1.Controls.Add(this.navBox2);
+            this.tab1.Location = new System.Drawing.Point(4, 22);
+            this.tab1.Name = "tab1";
+            this.tab1.Padding = new System.Windows.Forms.Padding(3);
+            this.tab1.Size = new System.Drawing.Size(368, 602);
+            this.tab1.TabIndex = 1;
+            this.tab1.UseVisualStyleBackColor = true;
             // 
-            // pictureBox2
+            // navBox2
             // 
-            this.pictureBox2.BackgroundImage = global::SparkyTheSmartClock.Properties.Resources.navbar_calander;
-            this.pictureBox2.Location = new System.Drawing.Point(2, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(365, 85);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.NavClick);
-            this.pictureBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
+            this.navBox2.BackgroundImage = global::SparkyTheSmartClock.Properties.Resources.navbar_calander;
+            this.navBox2.Location = new System.Drawing.Point(2, 0);
+            this.navBox2.Name = "navBox2";
+            this.navBox2.Size = new System.Drawing.Size(365, 85);
+            this.navBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.navBox2.TabIndex = 1;
+            this.navBox2.TabStop = false;
+            this.navBox2.Click += new System.EventHandler(this.NavClick);
+            this.navBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
             // 
-            // tabNav
+            // tab2
             // 
-            this.tabNav.Controls.Add(this.pictureBox3);
-            this.tabNav.Location = new System.Drawing.Point(4, 22);
-            this.tabNav.Name = "tabNav";
-            this.tabNav.Size = new System.Drawing.Size(368, 602);
-            this.tabNav.TabIndex = 2;
-            this.tabNav.UseVisualStyleBackColor = true;
+            this.tab2.Controls.Add(this.navBox3);
+            this.tab2.Location = new System.Drawing.Point(4, 22);
+            this.tab2.Name = "tab2";
+            this.tab2.Size = new System.Drawing.Size(368, 602);
+            this.tab2.TabIndex = 2;
+            this.tab2.UseVisualStyleBackColor = true;
             // 
-            // pictureBox3
+            // navBox3
             // 
-            this.pictureBox3.BackgroundImage = global::SparkyTheSmartClock.Properties.Resources.Navbar_nav;
-            this.pictureBox3.Location = new System.Drawing.Point(2, 0);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(365, 85);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 1;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.NavClick);
-            this.pictureBox3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
+            this.navBox3.BackgroundImage = global::SparkyTheSmartClock.Properties.Resources.Navbar_nav;
+            this.navBox3.Location = new System.Drawing.Point(2, 0);
+            this.navBox3.Name = "navBox3";
+            this.navBox3.Size = new System.Drawing.Size(365, 85);
+            this.navBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.navBox3.TabIndex = 1;
+            this.navBox3.TabStop = false;
+            this.navBox3.Click += new System.EventHandler(this.NavClick);
+            this.navBox3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
             // 
             // Form1
             // 
@@ -130,12 +130,12 @@
             this.Text = "Sparky App";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuNav.ResumeLayout(false);
-            this.tabHome.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tabSchedule.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.tabNav.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.tab0.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.navBox1)).EndInit();
+            this.tab1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.navBox2)).EndInit();
+            this.tab2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.navBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -143,12 +143,12 @@
         #endregion
 
         private System.Windows.Forms.TabControl menuNav;
-        private System.Windows.Forms.TabPage tabHome;
-        private System.Windows.Forms.TabPage tabSchedule;
-        private System.Windows.Forms.TabPage tabNav;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.TabPage tab0;
+        private System.Windows.Forms.TabPage tab1;
+        private System.Windows.Forms.TabPage tab2;
+        private System.Windows.Forms.PictureBox navBox1;
+        private System.Windows.Forms.PictureBox navBox2;
+        private System.Windows.Forms.PictureBox navBox3;
     }
 }
 
