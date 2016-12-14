@@ -59,7 +59,7 @@ namespace SparkyTheSmartClock
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //master update test
+            //master update test2
         }
     }
 }
