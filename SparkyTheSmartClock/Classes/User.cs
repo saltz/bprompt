@@ -33,7 +33,10 @@ namespace SparkyTheSmartClock
                 {
                     firstname = value;
                 }
-                else { }
+                else
+                {
+                    throw new ArgumentException("Maak alleen gebruik van letters aub", "Field FirstName"); //return error when (if) requirment is incorrect
+                }
             }
         }
 
@@ -46,13 +49,17 @@ namespace SparkyTheSmartClock
                 {
                     surname = value;
                 }
-                else { }
+                else
+                {
+                    throw new ArgumentException("Maak alleen gebruik van letters aub", "Field SurName"); //temp
+                }
             }
         }
 
         public string School { set; get; }
         public string StreetName { get; set; }
         public int HouseNumber { get; set; }
+
         public int PostcodeNumber
         {
             get { return postcodeNumber; }
@@ -62,7 +69,10 @@ namespace SparkyTheSmartClock
                 {
                     postcodeNumber = value;
                 }
-                else { }
+                else
+                {
+                    throw new ArgumentException("Voer aub alleen de 4 cijfers in", "Field PostcodeNumbers"); //temp
+                }
             }
         }
 
@@ -75,7 +85,10 @@ namespace SparkyTheSmartClock
                 {
                     postcodeLetters = value;
                 }
-                else { }
+                else
+                {
+                    throw new ArgumentException("voer aub alleen de 2 letters in", "Field PostcodeLetters"); //temp
+                }
             }
         }
 
@@ -93,12 +106,24 @@ namespace SparkyTheSmartClock
 
 
         //constructors
+        public User() { } //empty contrsuctor
 
-        public User(string firstname, string surname, string school)
+        public User(string firstname, string surname, string school) //user info only
         {
-            this.firstname = firstname;
-            this.surname = surname;
-            this.school = school;
+            Firstname = firstname;
+            Surname = surname;
+            School = school;
+        }
+
+        public User(string firstname, string surname, string school, string strname, int hsnmbr, int ptcode, string ptltrs) //all in-one 
+        {
+            Firstname = firstname;
+            Surname = surname;
+            School = school;
+            StreetName = strname;
+            HouseNumber = hsnmbr;
+            PostcodeNumber = ptcode;
+            PostcodeLetters = ptltrs;
         }
     }
 }

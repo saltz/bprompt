@@ -50,10 +50,10 @@
             this.menuNav.Controls.Add(this.tab0);
             this.menuNav.Controls.Add(this.tab1);
             this.menuNav.Controls.Add(this.tab2);
-            this.menuNav.Location = new System.Drawing.Point(-6, -22);
+            this.menuNav.Location = new System.Drawing.Point(-6, 4);
             this.menuNav.Name = "menuNav";
             this.menuNav.SelectedIndex = 0;
-            this.menuNav.Size = new System.Drawing.Size(376, 628);
+            this.menuNav.Size = new System.Drawing.Size(376, 602);
             this.menuNav.TabIndex = 0;
             // 
             // tab0
@@ -61,7 +61,7 @@
             this.tab0.Controls.Add(this.navBox1);
             this.tab0.Location = new System.Drawing.Point(4, 22);
             this.tab0.Name = "tab0";
-            this.tab0.Size = new System.Drawing.Size(368, 602);
+            this.tab0.Size = new System.Drawing.Size(368, 576);
             this.tab0.TabIndex = 0;
             this.tab0.UseVisualStyleBackColor = true;
             // 
@@ -120,13 +120,13 @@
             this.navBox3.Click += new System.EventHandler(this.NavClick);
             this.navBox3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
             // 
-            // Form1
+            // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(360, 604);
             this.Controls.Add(this.menuNav);
-            this.Name = "Form1";
+            this.Name = "main";
             this.Text = "Sparky App";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuNav.ResumeLayout(false);

@@ -59,6 +59,17 @@ namespace SparkyTheSmartClock
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
         }
     }
 }
+
+
+
+
+/*comments for later purposes
+
+catch (System.ArgumentException ex) { MessageBox.Show(ex.Message, ex.Source); } sample of how to display the errors
+
+
+*/
