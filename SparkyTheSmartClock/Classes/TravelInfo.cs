@@ -16,7 +16,7 @@ namespace SparkyTheSmartClock
         private string xmlTransfer;
         private string xmlDelay;
 
-        public TravelInfo(string xml)
+        public TravelInfo(string xml) // Constructor
         {
             this.xml = xml;
             this.xmlDepartureTime = xml;
@@ -35,10 +35,10 @@ namespace SparkyTheSmartClock
                 int end = xmlDepartureTime.IndexOf("</ActueleVertrekTijd>") - 5;
                 int difference = end - start;
 
-                string answer = xmlDepartureTime.Substring(start, difference);
+                string answer = xmlDepartureTime.Substring(start, difference); // Get the needed info
 
                 int endOfTrip = xmlDepartureTime.IndexOf("</ReisMogelijkheid>") + 19;
-                xmlDepartureTime = xmlDepartureTime.Substring(endOfTrip);
+                xmlDepartureTime = xmlDepartureTime.Substring(endOfTrip); // Delete the current trip out of the string
 
                 return answer;
             }
@@ -71,10 +71,10 @@ namespace SparkyTheSmartClock
                 int end = xmlDepartureTrack.IndexOf("</Spoor>");
                 int difference = end - start;
 
-                string answer = xmlDepartureTrack.Substring(start, difference);
+                string answer = xmlDepartureTrack.Substring(start, difference); // Get the needed info
 
                 int endOfTrip = xmlDepartureTrack.IndexOf("</ReisMogelijkheid>") + 19;
-                xmlDepartureTrack = xmlDepartureTrack.Substring(endOfTrip);
+                xmlDepartureTrack = xmlDepartureTrack.Substring(endOfTrip); // Delete the current trip out of the string
 
                 return answer;
             }
@@ -93,10 +93,10 @@ namespace SparkyTheSmartClock
                 int end = xmlEstimatedArrivalTime.IndexOf("</GeplandeAankomstTijd>") - 5;
                 int difference = end - start;
 
-                string answer = xmlEstimatedArrivalTime.Substring(start, difference);
+                string answer = xmlEstimatedArrivalTime.Substring(start, difference); // Get the needed info
 
                 int endOfTrip = xmlEstimatedArrivalTime.IndexOf("</ReisMogelijkheid>") + 19;
-                xmlEstimatedArrivalTime = xmlEstimatedArrivalTime.Substring(endOfTrip);
+                xmlEstimatedArrivalTime = xmlEstimatedArrivalTime.Substring(endOfTrip); // Delete the current trip out of the string
 
                 return answer;
             }
@@ -115,10 +115,10 @@ namespace SparkyTheSmartClock
                 int end = xmlDelay.IndexOf("</AankomstVertraging>");
                 int difference = end - start;
 
-                string answer = xmlDelay.Substring(start, difference);
+                string answer = xmlDelay.Substring(start, difference); // Get the needed info
 
                 int endOfTrip = xmlDelay.IndexOf("</ReisMogelijkheid>") + 19;
-                xmlDelay = xmlDelay.Substring(endOfTrip);
+                xmlDelay = xmlDelay.Substring(endOfTrip); // Delete the current trip out of the string
 
                 return answer;
             }
@@ -143,10 +143,10 @@ namespace SparkyTheSmartClock
                 int end = xmlActualArrivalTime.IndexOf("</ActueleAankomstTijd>") - 5;
                 int difference = end - start;
 
-                string answer = xmlActualArrivalTime.Substring(start, difference);
+                string answer = xmlActualArrivalTime.Substring(start, difference); // Get the needed info
 
                 int endOfTrip = xmlActualArrivalTime.IndexOf("</ReisMogelijkheid>") + 19;
-                xmlActualArrivalTime = xmlActualArrivalTime.Substring(endOfTrip);
+                xmlActualArrivalTime = xmlActualArrivalTime.Substring(endOfTrip); // Delete the current trip out of the string
 
                 return answer;
             }
@@ -165,10 +165,10 @@ namespace SparkyTheSmartClock
                 int end = xmlTransfer.IndexOf("</AantalOverstappen");
                 int difference = end - start;
 
-                string answer = xmlTransfer.Substring(start, difference);
+                string answer = xmlTransfer.Substring(start, difference); // Get the needed info
 
-                int endOfTrip = xmlTransfer.IndexOf("</ReisMogelijkheid>") + 19;
-                xmlTransfer = xmlTransfer.Substring(endOfTrip);
+                int endOfTrip = xmlTransfer.IndexOf("</ReisMogelijkheid>") + 19; 
+                xmlTransfer = xmlTransfer.Substring(endOfTrip); // Delete the current trip out of the string
 
                 return answer;
             }

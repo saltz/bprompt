@@ -69,7 +69,7 @@ namespace SparkyTheSmartClock
 
             NsApiUrl = "http://webservices.ns.nl/ns-api-treinplanner?fromStation=" + livingPlace + "&toStation=Eindhoven"; //+ "&dateTime=" + travelinfo.GetBeginTimeSchool() (2016-12-20T12:00);
 
-            using (WebClient wc = new WebClient())
+            using (WebClient wc = new WebClient()) // Get acces to the API and put the info in a string
             {
                 wc.Credentials = new NetworkCredential("s_devries@live.nl", "dV9RLW82YRn-RJWezf-zr-Mtay-Z0Z2Ram2zPkqbs9qBd2GQzJcVNQ");
                 xml = wc.DownloadString(NsApiUrl);
@@ -77,7 +77,7 @@ namespace SparkyTheSmartClock
 
             TravelInfo travelInfo = new TravelInfo(xml);
 
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < 5; i++) // Put all info into the listbox
             {
                 lbInfo.Items.Add("Departure time: " + travelInfo.GetDepartureTime());
                 lbInfo.Items.Add("Departure track: " + travelInfo.GetDepartureTrack());
