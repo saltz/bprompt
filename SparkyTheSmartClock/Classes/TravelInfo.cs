@@ -37,7 +37,8 @@ namespace SparkyTheSmartClock
 
                 string answer = urlDepartureTime.Substring(start, difference);
 
-                urlDepartureTime = urlDepartureTime.Substring(end + 25);
+                int endOfTrip = urlDepartureTime.IndexOf("</ReisMogelijkheid>") + 19;
+                urlDepartureTime = urlDepartureTime.Substring(endOfTrip);
 
                 return answer;
             }
@@ -50,15 +51,30 @@ namespace SparkyTheSmartClock
 
         public string GetDepartureTrack()
         {
-            if (urlDepartureTrack.IndexOf("<Spoor wijziging=\"false\">") != -1)
+            if (urlDepartureTrack.IndexOf("<Spoor wijziging=\"false\">") != -1 || urlDepartureTrack.IndexOf("<Spoor wijziging=\"true\">") != -1)
             {
-                int start = urlDepartureTrack.IndexOf("<Spoor wijziging=\"false\">") + 25;
+                int start;
+
+                if (urlDepartureTrack.IndexOf("<Spoor wijziging=\"true\">") != -1 && urlDepartureTrack.IndexOf("<Spoor wijziging=\"false\">") < urlDepartureTrack.IndexOf("<Spoor wijziging=\"true\">"))
+                {
+                    start = urlDepartureTrack.IndexOf("<Spoor wijziging=\"false\">") + 25;
+                }
+                else if (urlDepartureTrack.IndexOf("<Spoor wijziging=\"true\">") == -1)
+                {
+                    start = urlDepartureTrack.IndexOf("<Spoor wijziging=\"false\">") + 25;
+                }
+                else
+                {
+                    start = urlDepartureTrack.IndexOf("<Spoor wijziging=\"true\">") + 24;
+                }
+
                 int end = urlDepartureTrack.IndexOf("</Spoor>");
                 int difference = end - start;
 
                 string answer = urlDepartureTrack.Substring(start, difference);
 
-                urlDepartureTrack = urlDepartureTrack.Substring(end + 500);
+                int endOfTrip = urlDepartureTrack.IndexOf("</ReisMogelijkheid>") + 19;
+                urlDepartureTrack = urlDepartureTrack.Substring(endOfTrip);
 
                 return answer;
             }
@@ -79,7 +95,8 @@ namespace SparkyTheSmartClock
 
                 string answer = urlEstimatedArrivalTime.Substring(start, difference);
 
-                urlEstimatedArrivalTime = urlEstimatedArrivalTime.Substring(end + 25);
+                int endOfTrip = urlEstimatedArrivalTime.IndexOf("</ReisMogelijkheid>") + 19;
+                urlEstimatedArrivalTime = urlEstimatedArrivalTime.Substring(endOfTrip);
 
                 return answer;
             }
@@ -92,7 +109,7 @@ namespace SparkyTheSmartClock
 
         public string GetDelayInformation()
         {
-            if (urlDelay.IndexOf("<AankomstVertraging>") != -1)
+            if (urlDelay.IndexOf("<AankomstVertraging>") != -1 && urlDelay.IndexOf("<AankomstVertraging>") < urlDelay.IndexOf("</ReisMogelijkheid>"))
             {
                 int start = urlDelay.IndexOf("<AankomstVertraging>") + 20;
                 int end = urlDelay.IndexOf("</AankomstVertraging>");
@@ -100,12 +117,15 @@ namespace SparkyTheSmartClock
 
                 string answer = urlDelay.Substring(start, difference);
 
-                urlDelay = urlDelay.Substring(end + 25);
+                int endOfTrip = urlDelay.IndexOf("</ReisMogelijkheid>") + 19;
+                urlDelay = urlDelay.Substring(endOfTrip);
 
                 return answer;
             }
             else
             {
+                int endOfTrip = urlDelay.IndexOf("</ReisMogelijkheid>") + 19;
+                urlDelay = urlDelay.Substring(endOfTrip);
                 string invalid = "0";
                 return invalid;
             }
@@ -121,7 +141,8 @@ namespace SparkyTheSmartClock
 
                 string answer = urlActualArrivalTime.Substring(start, difference);
 
-                urlActualArrivalTime = urlActualArrivalTime.Substring(end + 25);
+                int endOfTrip = urlActualArrivalTime.IndexOf("</ReisMogelijkheid>") + 19;
+                urlActualArrivalTime = urlActualArrivalTime.Substring(endOfTrip);
 
                 return answer;
             }
@@ -142,7 +163,8 @@ namespace SparkyTheSmartClock
 
                 string answer = urlTransfer.Substring(start, difference);
 
-                urlTransfer = urlTransfer.Substring(end + 25);
+                int endOfTrip = urlTransfer.IndexOf("</ReisMogelijkheid>") + 19;
+                urlTransfer = urlTransfer.Substring(endOfTrip);
 
                 return answer;
             }

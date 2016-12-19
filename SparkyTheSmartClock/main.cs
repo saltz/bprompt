@@ -78,12 +78,16 @@ namespace SparkyTheSmartClock
 
             TravelInfo travelInfo = new TravelInfo(xml);
 
-            lbInfo.Items.Add("Departure time: " + travelInfo.GetDepartureTime());
-            lbInfo.Items.Add("Departure track: " + travelInfo.GetDepartureTrack());
-            lbInfo.Items.Add("Estimated arrival time: " + travelInfo.GetEstimatedArrivalTime());
-            lbInfo.Items.Add("Delay time: " + travelInfo.GetDelayInformation());
-            lbInfo.Items.Add("Actual arrival time: " + travelInfo.GetActualArrivalTime());
-            lbInfo.Items.Add("Amount of transfers: " + travelInfo.GetTransferInformation());
+            for (int i = 0; i < 5; i++)
+            {
+                lbInfo.Items.Add("Departure time: " + travelInfo.GetDepartureTime());
+                lbInfo.Items.Add("Departure track: " + travelInfo.GetDepartureTrack());
+                lbInfo.Items.Add("Estimated arrival time: " + travelInfo.GetEstimatedArrivalTime());
+                lbInfo.Items.Add("Delay time: " + travelInfo.GetDelayInformation());
+                lbInfo.Items.Add("Actual arrival time: " + travelInfo.GetActualArrivalTime());
+                lbInfo.Items.Add("Amount of transfers: " + travelInfo.GetTransferInformation());
+                lbInfo.Items.Add("");
+            }
         }
     }
 }
