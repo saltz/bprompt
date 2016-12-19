@@ -128,7 +128,6 @@
             this.Controls.Add(this.menuNav);
             this.Name = "Form1";
             this.Text = "Sparky App";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuNav.ResumeLayout(false);
             this.tab0.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.navBox1)).EndInit();
