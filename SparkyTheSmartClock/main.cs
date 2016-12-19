@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
-using System.Xml;
 
 namespace SparkyTheSmartClock
 {
@@ -78,7 +77,7 @@ namespace SparkyTheSmartClock
 
             TravelInfo travelInfo = new TravelInfo(xml);
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 15; i++)
             {
                 lbInfo.Items.Add("Departure time: " + travelInfo.GetDepartureTime());
                 lbInfo.Items.Add("Departure track: " + travelInfo.GetDepartureTrack());

@@ -8,37 +8,37 @@ namespace SparkyTheSmartClock
 {
     class TravelInfo
     {
-        private string url;
-        private string urlDepartureTime;
-        private string urlDepartureTrack;
-        private string urlEstimatedArrivalTime;
-        private string urlActualArrivalTime;
-        private string urlTransfer;
-        private string urlDelay;
+        private string xml;
+        private string xmlDepartureTime;
+        private string xmlDepartureTrack;
+        private string xmlEstimatedArrivalTime;
+        private string xmlActualArrivalTime;
+        private string xmlTransfer;
+        private string xmlDelay;
 
-        public TravelInfo(string url)
+        public TravelInfo(string xml)
         {
-            this.url = url;
-            this.urlDepartureTime = url;
-            this.urlDepartureTrack = url;
-            this.urlEstimatedArrivalTime = url;
-            this.urlActualArrivalTime = url;
-            this.urlTransfer = url;
-            this.urlDelay = url;
+            this.xml = xml;
+            this.xmlDepartureTime = xml;
+            this.xmlDepartureTrack = xml;
+            this.xmlEstimatedArrivalTime = xml;
+            this.xmlActualArrivalTime = xml;
+            this.xmlTransfer = xml;
+            this.xmlDelay = xml;
         }
 
         public string GetDepartureTime()
         {
-            if (urlDepartureTime.IndexOf("<ActueleVertrekTijd>") != -1)
+            if (xmlDepartureTime.IndexOf("<ActueleVertrekTijd>") != -1)
             {
-                int start = urlDepartureTime.IndexOf("<ActueleVertrekTijd>") + 20;
-                int end = urlDepartureTime.IndexOf("</ActueleVertrekTijd>") - 5;
+                int start = xmlDepartureTime.IndexOf("<ActueleVertrekTijd>") + 20;
+                int end = xmlDepartureTime.IndexOf("</ActueleVertrekTijd>") - 5;
                 int difference = end - start;
 
-                string answer = urlDepartureTime.Substring(start, difference);
+                string answer = xmlDepartureTime.Substring(start, difference);
 
-                int endOfTrip = urlDepartureTime.IndexOf("</ReisMogelijkheid>") + 19;
-                urlDepartureTime = urlDepartureTime.Substring(endOfTrip);
+                int endOfTrip = xmlDepartureTime.IndexOf("</ReisMogelijkheid>") + 19;
+                xmlDepartureTime = xmlDepartureTime.Substring(endOfTrip);
 
                 return answer;
             }
@@ -51,30 +51,30 @@ namespace SparkyTheSmartClock
 
         public string GetDepartureTrack()
         {
-            if (urlDepartureTrack.IndexOf("<Spoor wijziging=\"false\">") != -1 || urlDepartureTrack.IndexOf("<Spoor wijziging=\"true\">") != -1)
+            if (xmlDepartureTrack.IndexOf("<Spoor wijziging=\"false\">") != -1 || xmlDepartureTrack.IndexOf("<Spoor wijziging=\"true\">") != -1)
             {
                 int start;
 
-                if (urlDepartureTrack.IndexOf("<Spoor wijziging=\"true\">") != -1 && urlDepartureTrack.IndexOf("<Spoor wijziging=\"false\">") < urlDepartureTrack.IndexOf("<Spoor wijziging=\"true\">"))
+                if (xmlDepartureTrack.IndexOf("<Spoor wijziging=\"true\">") != -1 && xmlDepartureTrack.IndexOf("<Spoor wijziging=\"false\">") < xmlDepartureTrack.IndexOf("<Spoor wijziging=\"true\">"))
                 {
-                    start = urlDepartureTrack.IndexOf("<Spoor wijziging=\"false\">") + 25;
+                    start = xmlDepartureTrack.IndexOf("<Spoor wijziging=\"false\">") + 25;
                 }
-                else if (urlDepartureTrack.IndexOf("<Spoor wijziging=\"true\">") == -1)
+                else if (xmlDepartureTrack.IndexOf("<Spoor wijziging=\"true\">") == -1)
                 {
-                    start = urlDepartureTrack.IndexOf("<Spoor wijziging=\"false\">") + 25;
+                    start = xmlDepartureTrack.IndexOf("<Spoor wijziging=\"false\">") + 25;
                 }
                 else
                 {
-                    start = urlDepartureTrack.IndexOf("<Spoor wijziging=\"true\">") + 24;
+                    start = xmlDepartureTrack.IndexOf("<Spoor wijziging=\"true\">") + 24;
                 }
 
-                int end = urlDepartureTrack.IndexOf("</Spoor>");
+                int end = xmlDepartureTrack.IndexOf("</Spoor>");
                 int difference = end - start;
 
-                string answer = urlDepartureTrack.Substring(start, difference);
+                string answer = xmlDepartureTrack.Substring(start, difference);
 
-                int endOfTrip = urlDepartureTrack.IndexOf("</ReisMogelijkheid>") + 19;
-                urlDepartureTrack = urlDepartureTrack.Substring(endOfTrip);
+                int endOfTrip = xmlDepartureTrack.IndexOf("</ReisMogelijkheid>") + 19;
+                xmlDepartureTrack = xmlDepartureTrack.Substring(endOfTrip);
 
                 return answer;
             }
@@ -87,16 +87,16 @@ namespace SparkyTheSmartClock
 
         public string GetEstimatedArrivalTime()
         {
-            if (urlEstimatedArrivalTime.IndexOf("<GeplandeAankomstTijd>") != -1)
+            if (xmlEstimatedArrivalTime.IndexOf("<GeplandeAankomstTijd>") != -1)
             {
-                int start = urlEstimatedArrivalTime.IndexOf("<GeplandeAankomstTijd>") + 22;
-                int end = urlEstimatedArrivalTime.IndexOf("</GeplandeAankomstTijd>") - 5;
+                int start = xmlEstimatedArrivalTime.IndexOf("<GeplandeAankomstTijd>") + 22;
+                int end = xmlEstimatedArrivalTime.IndexOf("</GeplandeAankomstTijd>") - 5;
                 int difference = end - start;
 
-                string answer = urlEstimatedArrivalTime.Substring(start, difference);
+                string answer = xmlEstimatedArrivalTime.Substring(start, difference);
 
-                int endOfTrip = urlEstimatedArrivalTime.IndexOf("</ReisMogelijkheid>") + 19;
-                urlEstimatedArrivalTime = urlEstimatedArrivalTime.Substring(endOfTrip);
+                int endOfTrip = xmlEstimatedArrivalTime.IndexOf("</ReisMogelijkheid>") + 19;
+                xmlEstimatedArrivalTime = xmlEstimatedArrivalTime.Substring(endOfTrip);
 
                 return answer;
             }
@@ -109,23 +109,27 @@ namespace SparkyTheSmartClock
 
         public string GetDelayInformation()
         {
-            if (urlDelay.IndexOf("<AankomstVertraging>") != -1 && urlDelay.IndexOf("<AankomstVertraging>") < urlDelay.IndexOf("</ReisMogelijkheid>"))
+            if (xmlDelay.IndexOf("<AankomstVertraging>") != -1 && xmlDelay.IndexOf("<AankomstVertraging>") < xmlDelay.IndexOf("</ReisMogelijkheid>"))
             {
-                int start = urlDelay.IndexOf("<AankomstVertraging>") + 20;
-                int end = urlDelay.IndexOf("</AankomstVertraging>");
+                int start = xmlDelay.IndexOf("<AankomstVertraging>") + 20;
+                int end = xmlDelay.IndexOf("</AankomstVertraging>");
                 int difference = end - start;
 
-                string answer = urlDelay.Substring(start, difference);
+                string answer = xmlDelay.Substring(start, difference);
 
-                int endOfTrip = urlDelay.IndexOf("</ReisMogelijkheid>") + 19;
-                urlDelay = urlDelay.Substring(endOfTrip);
+                int endOfTrip = xmlDelay.IndexOf("</ReisMogelijkheid>") + 19;
+                xmlDelay = xmlDelay.Substring(endOfTrip);
 
                 return answer;
             }
             else
             {
-                int endOfTrip = urlDelay.IndexOf("</ReisMogelijkheid>") + 19;
-                urlDelay = urlDelay.Substring(endOfTrip);
+                if (xmlDelay.IndexOf("</ReisMogelijkheid>") != -1)
+                {
+                    int endOfTrip = xmlDelay.IndexOf("</ReisMogelijkheid>") + 19;
+                    xmlDelay = xmlDelay.Substring(endOfTrip);
+                }
+
                 string invalid = "0";
                 return invalid;
             }
@@ -133,16 +137,16 @@ namespace SparkyTheSmartClock
 
         public string GetActualArrivalTime()
         {
-            if (urlActualArrivalTime.IndexOf("<ActueleAankomstTijd>") != -1)
+            if (xmlActualArrivalTime.IndexOf("<ActueleAankomstTijd>") != -1)
             {
-                int start = urlActualArrivalTime.IndexOf("<ActueleAankomstTijd>") + 21;
-                int end = urlActualArrivalTime.IndexOf("</ActueleAankomstTijd>") - 5;
+                int start = xmlActualArrivalTime.IndexOf("<ActueleAankomstTijd>") + 21;
+                int end = xmlActualArrivalTime.IndexOf("</ActueleAankomstTijd>") - 5;
                 int difference = end - start;
 
-                string answer = urlActualArrivalTime.Substring(start, difference);
+                string answer = xmlActualArrivalTime.Substring(start, difference);
 
-                int endOfTrip = urlActualArrivalTime.IndexOf("</ReisMogelijkheid>") + 19;
-                urlActualArrivalTime = urlActualArrivalTime.Substring(endOfTrip);
+                int endOfTrip = xmlActualArrivalTime.IndexOf("</ReisMogelijkheid>") + 19;
+                xmlActualArrivalTime = xmlActualArrivalTime.Substring(endOfTrip);
 
                 return answer;
             }
@@ -155,16 +159,16 @@ namespace SparkyTheSmartClock
 
         public string GetTransferInformation()
         {
-            if (urlTransfer.IndexOf("<AantalOverstappen>") != -1)
+            if (xmlTransfer.IndexOf("<AantalOverstappen>") != -1)
             {
-                int start = urlTransfer.IndexOf("<AantalOverstappen>") + 19;
-                int end = urlTransfer.IndexOf("</AantalOverstappen");
+                int start = xmlTransfer.IndexOf("<AantalOverstappen>") + 19;
+                int end = xmlTransfer.IndexOf("</AantalOverstappen");
                 int difference = end - start;
 
-                string answer = urlTransfer.Substring(start, difference);
+                string answer = xmlTransfer.Substring(start, difference);
 
-                int endOfTrip = urlTransfer.IndexOf("</ReisMogelijkheid>") + 19;
-                urlTransfer = urlTransfer.Substring(endOfTrip);
+                int endOfTrip = xmlTransfer.IndexOf("</ReisMogelijkheid>") + 19;
+                xmlTransfer = xmlTransfer.Substring(endOfTrip);
 
                 return answer;
             }
