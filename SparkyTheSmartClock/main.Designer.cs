@@ -153,7 +153,7 @@
             this.btCalculateTravelTime.Name = "btCalculateTravelTime";
             this.btCalculateTravelTime.Size = new System.Drawing.Size(264, 23);
             this.btCalculateTravelTime.TabIndex = 7;
-            this.btCalculateTravelTime.Text = "Bereken";
+            this.btCalculateTravelTime.Text = "Show travels";
             this.btCalculateTravelTime.UseVisualStyleBackColor = true;
             this.btCalculateTravelTime.Click += new System.EventHandler(this.btCalculateTravelTime_Click);
             // 
@@ -191,11 +191,11 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(177, 116);
+            this.label2.Location = new System.Drawing.Point(171, 116);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(163, 30);
+            this.label2.Size = new System.Drawing.Size(179, 30);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Tijd (in minuten) van het opstaan tot aankomst bij je station:";
+            this.label2.Text = "Time (in minutes) from getting out of your bed to arrive at the train station:";
             // 
             // label1
             // 
@@ -204,7 +204,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Woonplaats:";
+            this.label1.Text = "Living place:";
             // 
             // navBox3
             // 

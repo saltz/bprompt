@@ -23,7 +23,7 @@ namespace SparkyTheSmartClock
         //global variables
         double mousepositionX;
         double mousepositionY;
-        string ApiUrl;
+        string NsApiUrl;
 
         private void NavClick(object sender, EventArgs e)
         {
@@ -62,16 +62,28 @@ namespace SparkyTheSmartClock
 
         private void btCalculateTravelTime_Click(object sender, EventArgs e)
         {
+            lbInfo.Items.Clear();
+
+            string xml;
             string livingPlace = tbPlace.Text;
             int prepTime = Convert.ToInt32(nudPrepTime.Value); // nodig???
 
-            ApiUrl = "http://webservices.ns.nl/ns-api-treinplanner?fromStation=" + livingPlace + "&toStation=Eindhoven"; //+ "&dateTime=" + travelinfo.GetBeginTimeSchool() (2016-12-20T12:00);
+            NsApiUrl = "http://webservices.ns.nl/ns-api-treinplanner?fromStation=" + livingPlace + "&toStation=Eindhoven"; //+ "&dateTime=" + travelinfo.GetBeginTimeSchool() (2016-12-20T12:00);
 
             using (WebClient wc = new WebClient())
             {
                 wc.Credentials = new NetworkCredential("s_devries@live.nl", "dV9RLW82YRn-RJWezf-zr-Mtay-Z0Z2Ram2zPkqbs9qBd2GQzJcVNQ");
-                string xml = wc.DownloadString(ApiUrl);
+                xml = wc.DownloadString(NsApiUrl);
             }
+
+            TravelInfo travelInfo = new TravelInfo(xml);
+
+            lbInfo.Items.Add("Departure time: " + travelInfo.GetDepartureTime());
+            lbInfo.Items.Add("Departure track: " + travelInfo.GetDepartureTrack());
+            lbInfo.Items.Add("Estimated arrival time: " + travelInfo.GetEstimatedArrivalTime());
+            lbInfo.Items.Add("Delay time: " + travelInfo.GetDelayInformation());
+            lbInfo.Items.Add("Actual arrival time: " + travelInfo.GetActualArrivalTime());
+            lbInfo.Items.Add("Amount of transfers: " + travelInfo.GetTransferInformation());
         }
     }
 }
