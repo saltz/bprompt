@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
+using System.Xml;
 
 namespace SparkyTheSmartClock
 {
@@ -21,6 +23,7 @@ namespace SparkyTheSmartClock
         //global variables
         double mousepositionX;
         double mousepositionY;
+        string ApiUrl;
 
         private void NavClick(object sender, EventArgs e)
         {
@@ -57,8 +60,18 @@ namespace SparkyTheSmartClock
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void btCalculateTravelTime_Click(object sender, EventArgs e)
         {
+            string livingPlace = tbPlace.Text;
+            int prepTime = Convert.ToInt32(nudPrepTime.Value); // nodig???
+
+            ApiUrl = "http://webservices.ns.nl/ns-api-treinplanner?fromStation=" + livingPlace + "&toStation=Eindhoven"; //+ "&dateTime=" + travelinfo.GetBeginTimeSchool() (2016-12-20T12:00);
+
+            using (WebClient wc = new WebClient())
+            {
+                wc.Credentials = new NetworkCredential("s_devries@live.nl", "dV9RLW82YRn-RJWezf-zr-Mtay-Z0Z2Ram2zPkqbs9qBd2GQzJcVNQ");
+                string xml = wc.DownloadString(ApiUrl);
+            }
         }
     }
 }
