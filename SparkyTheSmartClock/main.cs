@@ -58,7 +58,6 @@ namespace SparkyTheSmartClock
                 }
             }
         }
-<<<<<<< HEAD
 
         private void btCalculateTravelTime_Click(object sender, EventArgs e)
         {
@@ -89,7 +88,5 @@ namespace SparkyTheSmartClock
                 lbInfo.Items.Add("");
             }
         }
-=======
->>>>>>> master
     }
 }
