@@ -25,3 +25,12 @@ C:\Users\Dane\Documents\GitHub\Sparky\SparkyTheSmartClock\obj\Debug\SparkyTheSma
 C:\Users\Dane\Documents\GitHub\Sparky\SparkyTheSmartClock\obj\Debug\SparkyTheSmartClock.Properties.Resources.resources
 C:\Users\Dane\Documents\GitHub\Sparky\SparkyTheSmartClock\obj\Debug\SparkyTheSmartClock.csproj.GenerateResource.Cache
 C:\Users\Dane\Documents\GitHub\Sparky\SparkyTheSmartClock\obj\Debug\SparkyTheSmartClock.main.resources
+C:\Users\Gebruiker\Documents\GitHub\Sparky\SparkyTheSmartClock\bin\Debug\SparkyTheSmartClock.exe.config
+C:\Users\Gebruiker\Documents\GitHub\Sparky\SparkyTheSmartClock\obj\Debug\SparkyTheSmartClock.exe
+C:\Users\Gebruiker\Documents\GitHub\Sparky\SparkyTheSmartClock\obj\Debug\SparkyTheSmartClock.pdb
+C:\Users\Gebruiker\Documents\GitHub\Sparky\SparkyTheSmartClock\bin\Debug\SparkyTheSmartClock.exe
+C:\Users\Gebruiker\Documents\GitHub\Sparky\SparkyTheSmartClock\bin\Debug\SparkyTheSmartClock.pdb
+C:\Users\Gebruiker\Documents\GitHub\Sparky\SparkyTheSmartClock\obj\Debug\SparkyTheSmartClock.csprojResolveAssemblyReference.cache
+C:\Users\Gebruiker\Documents\GitHub\Sparky\SparkyTheSmartClock\obj\Debug\SparkyTheSmartClock.main.resources
+C:\Users\Gebruiker\Documents\GitHub\Sparky\SparkyTheSmartClock\obj\Debug\SparkyTheSmartClock.Properties.Resources.resources
+C:\Users\Gebruiker\Documents\GitHub\Sparky\SparkyTheSmartClock\obj\Debug\SparkyTheSmartClock.csproj.GenerateResource.Cache

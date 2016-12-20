@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
 
 namespace SparkyTheSmartClock
 {
@@ -21,6 +22,7 @@ namespace SparkyTheSmartClock
         //global variables
         double mousepositionX;
         double mousepositionY;
+        string NsApiUrl;
 
         private void NavClick(object sender, EventArgs e)
         {
@@ -56,5 +58,38 @@ namespace SparkyTheSmartClock
                 }
             }
         }
+<<<<<<< HEAD
+
+        private void btCalculateTravelTime_Click(object sender, EventArgs e)
+        {
+            lbInfo.Items.Clear();
+
+            string xml;
+            string livingPlace = tbPlace.Text;
+            int prepTime = Convert.ToInt32(nudPrepTime.Value); // nodig???
+
+            NsApiUrl = "http://webservices.ns.nl/ns-api-treinplanner?fromStation=" + livingPlace + "&toStation=Eindhoven"; //+ "&dateTime=" + travelinfo.GetBeginTimeSchool() (2016-12-20T12:00);
+
+            using (WebClient wc = new WebClient()) // Get acces to the API and put the info in a string
+            {
+                wc.Credentials = new NetworkCredential("s_devries@live.nl", "dV9RLW82YRn-RJWezf-zr-Mtay-Z0Z2Ram2zPkqbs9qBd2GQzJcVNQ");
+                xml = wc.DownloadString(NsApiUrl);
+            }
+
+            TravelInfo travelInfo = new TravelInfo(xml);
+
+            for (int i = 0; i < 5; i++) // Put all info into the listbox
+            {
+                lbInfo.Items.Add("Departure time: " + travelInfo.GetDepartureTime());
+                lbInfo.Items.Add("Departure track: " + travelInfo.GetDepartureTrack());
+                lbInfo.Items.Add("Estimated arrival time: " + travelInfo.GetEstimatedArrivalTime());
+                lbInfo.Items.Add("Delay time: " + travelInfo.GetDelayInformation());
+                lbInfo.Items.Add("Actual arrival time: " + travelInfo.GetActualArrivalTime());
+                lbInfo.Items.Add("Amount of transfers: " + travelInfo.GetTransferInformation());
+                lbInfo.Items.Add("");
+            }
+        }
+=======
+>>>>>>> master
     }
 }

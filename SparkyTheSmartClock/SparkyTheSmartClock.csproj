@@ -87,6 +87,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\app_logo.png" />
+    <None Include="Resources\home.png" />
+    <None Include="Resources\clock.png" />
     <None Include="Resources\Navbar_nav.png" />
     <None Include="Resources\Navbar_main.png" />
     <None Include="Resources\navbar_calander.png" />

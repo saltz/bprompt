@@ -35,6 +35,14 @@
             this.tab1 = new System.Windows.Forms.TabPage();
             this.navBox2 = new System.Windows.Forms.PictureBox();
             this.tab2 = new System.Windows.Forms.TabPage();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btCalculateTravelTime = new System.Windows.Forms.Button();
+            this.lbInfo = new System.Windows.Forms.ListBox();
+            this.tbPlace = new System.Windows.Forms.TextBox();
+            this.nudPrepTime = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.navBox3 = new System.Windows.Forms.PictureBox();
             this.menuNav.SuspendLayout();
             this.tab0.SuspendLayout();
@@ -42,6 +50,9 @@
             this.tab1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBox2)).BeginInit();
             this.tab2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPrepTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBox3)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,12 +112,99 @@
             // 
             // tab2
             // 
+            this.tab2.Controls.Add(this.pictureBox2);
+            this.tab2.Controls.Add(this.pictureBox1);
+            this.tab2.Controls.Add(this.btCalculateTravelTime);
+            this.tab2.Controls.Add(this.lbInfo);
+            this.tab2.Controls.Add(this.tbPlace);
+            this.tab2.Controls.Add(this.nudPrepTime);
+            this.tab2.Controls.Add(this.label2);
+            this.tab2.Controls.Add(this.label1);
             this.tab2.Controls.Add(this.navBox3);
             this.tab2.Location = new System.Drawing.Point(4, 22);
             this.tab2.Name = "tab2";
             this.tab2.Size = new System.Drawing.Size(368, 602);
             this.tab2.TabIndex = 2;
             this.tab2.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::SparkyTheSmartClock.Properties.Resources.clock;
+            this.pictureBox2.Location = new System.Drawing.Point(223, 156);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(64, 60);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SparkyTheSmartClock.Properties.Resources.home;
+            this.pictureBox1.Location = new System.Drawing.Point(70, 156);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(61, 60);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btCalculateTravelTime
+            // 
+            this.btCalculateTravelTime.Location = new System.Drawing.Point(48, 266);
+            this.btCalculateTravelTime.Name = "btCalculateTravelTime";
+            this.btCalculateTravelTime.Size = new System.Drawing.Size(264, 23);
+            this.btCalculateTravelTime.TabIndex = 7;
+            this.btCalculateTravelTime.Text = "Show travels";
+            this.btCalculateTravelTime.UseVisualStyleBackColor = true;
+            this.btCalculateTravelTime.Click += new System.EventHandler(this.btCalculateTravelTime_Click);
+            // 
+            // lbInfo
+            // 
+            this.lbInfo.FormattingEnabled = true;
+            this.lbInfo.Location = new System.Drawing.Point(48, 304);
+            this.lbInfo.Name = "lbInfo";
+            this.lbInfo.Size = new System.Drawing.Size(264, 251);
+            this.lbInfo.TabIndex = 6;
+            // 
+            // tbPlace
+            // 
+            this.tbPlace.Location = new System.Drawing.Point(48, 228);
+            this.tbPlace.Name = "tbPlace";
+            this.tbPlace.Size = new System.Drawing.Size(100, 20);
+            this.tbPlace.TabIndex = 5;
+            // 
+            // nudPrepTime
+            // 
+            this.nudPrepTime.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudPrepTime.Location = new System.Drawing.Point(223, 228);
+            this.nudPrepTime.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudPrepTime.Name = "nudPrepTime";
+            this.nudPrepTime.Size = new System.Drawing.Size(64, 20);
+            this.nudPrepTime.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(171, 116);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(179, 30);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Time (in minutes) from getting out of your bed to arrive at the train station:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(67, 116);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Living place:";
             // 
             // navBox3
             // 
@@ -120,13 +218,13 @@
             this.navBox3.Click += new System.EventHandler(this.NavClick);
             this.navBox3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
             // 
-            // Form1
+            // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(360, 604);
             this.Controls.Add(this.menuNav);
-            this.Name = "Form1";
+            this.Name = "main";
             this.Text = "Sparky App";
             this.menuNav.ResumeLayout(false);
             this.tab0.ResumeLayout(false);
@@ -134,6 +232,10 @@
             this.tab1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.navBox2)).EndInit();
             this.tab2.ResumeLayout(false);
+            this.tab2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPrepTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBox3)).EndInit();
             this.ResumeLayout(false);
 
@@ -148,6 +250,14 @@
         private System.Windows.Forms.PictureBox navBox1;
         private System.Windows.Forms.PictureBox navBox2;
         private System.Windows.Forms.PictureBox navBox3;
+        private System.Windows.Forms.NumericUpDown nudPrepTime;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbPlace;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btCalculateTravelTime;
+        private System.Windows.Forms.ListBox lbInfo;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
