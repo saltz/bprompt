@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
 
 namespace SparkyTheSmartClock
 {
@@ -21,6 +22,7 @@ namespace SparkyTheSmartClock
         //global variables
         double mousepositionX;
         double mousepositionY;
+        string NsApiUrl;
 
         private void NavClick(object sender, EventArgs e)
         {
@@ -57,9 +59,56 @@ namespace SparkyTheSmartClock
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void btCalculateTravelTime_Click(object sender, EventArgs e)
         {
+            lbDelayDeparture.Visible = false;
+            lbDelayArrival.Visible = false;
 
+            string xml;
+            string livingPlace = tbPlace.Text;
+
+            NsApiUrl = "http://webservices.ns.nl/ns-api-treinplanner?fromStation=" + livingPlace + "&toStation=Eindhoven"; //+ "&dateTime=" + travelinfo.GetBeginTimeSchool() (2016-12-20T12:00);
+
+            using (WebClient wc = new WebClient()) // Get acces to the API and put the info in a string
+            {
+                wc.Credentials = new NetworkCredential("s_devries@live.nl", "dV9RLW82YRn-RJWezf-zr-Mtay-Z0Z2Ram2zPkqbs9qBd2GQzJcVNQ");
+                xml = wc.DownloadString(NsApiUrl);
+            }
+
+            TravelInfo travelInfo = new TravelInfo(xml);
+
+            // Put travel info in the labels
+            lbIntercitySprinter.Text = travelInfo.GetTravelMode();
+            lbTravelTime.Text = "Travel time: " + travelInfo.GetTravelTime();
+            lbTransporter.Text = "Transporter: " + travelInfo.GetTransporter();
+            lbDate.Text = "Date: " + travelInfo.GetDate();
+            lbDepartureTime.Text = travelInfo.GetEstimatedDepartureTime() + " Station " + travelInfo.GetDepartureName();
+            lbDepartureTrack.Text = "Track " + travelInfo.GetDepartureTrack();
+            lbDelayDeparture.Text = travelInfo.GetDelayDeparture();
+
+            if (lbDelayDeparture.Text != "0")
+            {
+                lbDelayDeparture.Visible = true;
+            }
+
+            if (travelInfo.GetDepartureName() != "INVALID!")
+            {
+                lbArrivalTime.Text = travelInfo.GetEstimatedArrivalTime() + " Station Eindhoven";
+            }
+            else
+            {
+                lbArrivalTime.Text = "00:00 Station";
+            }
+
+            lbArrivalTrack.Text = "Track " + travelInfo.GetArrivalTrack();
+            lbDelayArrival.Text = travelInfo.GetDelayArrival();
+
+            if (lbDelayArrival.Text != "0")
+            {
+                lbDelayArrival.Visible = true;
+            }
+
+            lbTransfer.Text = "Transfer: " + travelInfo.GetTransferInformation();
         }
     }
 }
