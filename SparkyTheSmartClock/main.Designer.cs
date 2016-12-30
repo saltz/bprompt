@@ -48,7 +48,10 @@
             this.btCalculateTravelTime = new System.Windows.Forms.Button();
             this.navBox1 = new System.Windows.Forms.PictureBox();
             this.tab1 = new System.Windows.Forms.TabPage();
+            this.lblError = new System.Windows.Forms.Label();
+            this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.navBox2 = new System.Windows.Forms.PictureBox();
+            this.tbResponseData = new System.Windows.Forms.TextBox();
             this.tab2 = new System.Windows.Forms.TabPage();
             this.pbClock = new System.Windows.Forms.PictureBox();
             this.pbHome = new System.Windows.Forms.PictureBox();
@@ -75,10 +78,6 @@
             this.menuNav.Controls.Add(this.tab0);
             this.menuNav.Controls.Add(this.tab1);
             this.menuNav.Controls.Add(this.tab2);
-            this.menuNav.Location = new System.Drawing.Point(-6, 4);
-            this.menuNav.Name = "menuNav";
-            this.menuNav.SelectedIndex = 0;
-            this.menuNav.Size = new System.Drawing.Size(376, 602);
             this.menuNav.Location = new System.Drawing.Point(-6, 1);
             this.menuNav.Name = "menuNav";
             this.menuNav.SelectedIndex = 0;
@@ -106,7 +105,6 @@
             this.tab0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.tab0.Location = new System.Drawing.Point(4, 22);
             this.tab0.Name = "tab0";
-            this.tab0.Size = new System.Drawing.Size(368, 576);
             this.tab0.Size = new System.Drawing.Size(368, 579);
             this.tab0.TabIndex = 0;
             this.tab0.UseVisualStyleBackColor = true;
@@ -283,13 +281,40 @@
             // 
             // tab1
             // 
+            this.tab1.Controls.Add(this.lblError);
+            this.tab1.Controls.Add(this.webBrowser);
             this.tab1.Controls.Add(this.navBox2);
+            this.tab1.Controls.Add(this.tbResponseData);
             this.tab1.Location = new System.Drawing.Point(4, 22);
             this.tab1.Name = "tab1";
             this.tab1.Padding = new System.Windows.Forms.Padding(3);
             this.tab1.Size = new System.Drawing.Size(368, 579);
             this.tab1.TabIndex = 1;
             this.tab1.UseVisualStyleBackColor = true;
+            // 
+            // lblError
+            // 
+            this.lblError.AutoSize = true;
+            this.lblError.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError.Location = new System.Drawing.Point(14, 222);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(330, 150);
+            this.lblError.TabIndex = 4;
+            this.lblError.Text = "Kon het rooster niet ophalen\r\ndoor gebrek aan rechten. :(\r\n\r\nherlaad deze tab om " +
+    "het opnieuw\r\nte proberen.\r\n\r\n";
+            this.lblError.Visible = false;
+            // 
+            // webBrowser
+            // 
+            this.webBrowser.Location = new System.Drawing.Point(2, 85);
+            this.webBrowser.MaximumSize = new System.Drawing.Size(362, 494);
+            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser.Name = "webBrowser";
+            this.webBrowser.Size = new System.Drawing.Size(362, 494);
+            this.webBrowser.TabIndex = 2;
+            this.webBrowser.Url = new System.Uri("", System.UriKind.Relative);
+            this.webBrowser.Visible = false;
+            this.webBrowser.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.WebBrowserNavigated);
             // 
             // navBox2
             // 
@@ -302,6 +327,15 @@
             this.navBox2.TabStop = false;
             this.navBox2.Click += new System.EventHandler(this.NavClick);
             this.navBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
+            // 
+            // tbResponseData
+            // 
+            this.tbResponseData.Location = new System.Drawing.Point(14, 91);
+            this.tbResponseData.Multiline = true;
+            this.tbResponseData.Name = "tbResponseData";
+            this.tbResponseData.Size = new System.Drawing.Size(336, 445);
+            this.tbResponseData.TabIndex = 3;
+            this.tbResponseData.Visible = false;
             // 
             // tab2
             // 
@@ -401,6 +435,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(360, 604);
             this.Controls.Add(this.menuNav);
+            this.MaximumSize = new System.Drawing.Size(376, 643);
             this.Name = "main";
             this.Text = "Sparky App";
             this.menuNav.ResumeLayout(false);
@@ -409,6 +444,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbTrain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBox1)).EndInit();
             this.tab1.ResumeLayout(false);
+            this.tab1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBox2)).EndInit();
             this.tab2.ResumeLayout(false);
             this.tab2.PerformLayout();
@@ -450,6 +486,9 @@
         private System.Windows.Forms.Label lbDelayDeparture;
         private System.Windows.Forms.Label lbDate;
         private System.Windows.Forms.Label lbTransporter;
+        private System.Windows.Forms.WebBrowser webBrowser;
+        private System.Windows.Forms.TextBox tbResponseData;
+        private System.Windows.Forms.Label lblError;
     }
 }
 

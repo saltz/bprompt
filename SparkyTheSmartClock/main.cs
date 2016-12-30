@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
+using CefSharp;
+using CefSharp.WinForms;
 
 namespace SparkyTheSmartClock
 {
@@ -17,16 +19,23 @@ namespace SparkyTheSmartClock
         public main()
         {
             InitializeComponent();
+          //  IninializeChromium();
         }
 
         //global variables
         double mousepositionX;
         double mousepositionY;
         string NsApiUrl;
+        FontysAPI connection;
+        ChromiumWebBrowser chromeBrowser;
 
         private void NavClick(object sender, EventArgs e)
         {
             NavigationCalculation();
+            if (menuNav.SelectedIndex == 1)
+            {
+                GetAccess();
+            }
         }
 
         private void MoveCapture(object sender, MouseEventArgs e)
@@ -58,6 +67,8 @@ namespace SparkyTheSmartClock
                 }
             }
         }
+
+        //tab0 main tab for travel info
 
         private void btCalculateTravelTime_Click(object sender, EventArgs e)
         {
@@ -109,6 +120,99 @@ namespace SparkyTheSmartClock
             }
 
             lbTransfer.Text = "Transfer: " + travelInfo.GetTransferInformation();
+        }
+
+
+        //tab1 roster tab 
+
+        private void GetAccess()
+        {
+            // if (User.School.ToLower().Contains("fontys"){ }    //if statement to initialize fhict api (if there are more api's)
+            connection = new FontysAPI();
+            lblError.Visible = false;
+            //if (chromeBrowser.Address != connection.RequestString)
+            //{
+            //    chromeBrowser.Load(connection.RequestString);
+            //    chromeBrowser.Show();
+            //}
+            //else { chromeBrowser.Show(); }
+
+
+            //old
+            webBrowser.Visible = true;
+            webBrowser.Navigate(connection.RequestString);
+        }
+        private void ChromiumBrowserNavigated(object sender, LoadingStateChangedEventArgs e)
+        {
+            string redirectURL = "https://i363215.iris.fhict.nl";
+            if (chromeBrowser.Address.ToString().Contains(redirectURL) && !chromeBrowser.Address.ToString().Contains("https://identity.fhict.nl"))
+            {
+                string response = chromeBrowser.Address.ToString();
+                bool permissionGranted = connection.GetToken(response);
+                if (permissionGranted == true)
+                {
+                    HttpWebRequest request = WebRequest.Create("https://api.fhict.nl/schedule/me") as HttpWebRequest;
+                    request.Method = "GET";
+                    request.ContentType = "application/json";
+                    request.Headers.Add("Authorization: Bearer " + connection.AccessToken);
+                    var responseData = request.GetResponse() as HttpWebResponse;
+                    StreamReader reader = new StreamReader(responseData.GetResponseStream());
+                    string json = reader.ReadToEnd();;
+                }
+                else
+                {
+                    // werkt nie door thread errors ??????????????????
+                    //chromeBrowser.Load("");
+                    //this.chromeBrowser.Hide();
+                    //this.lblError.Visible = true;
+                }
+            }
+            else { }
+        }
+
+        //old code for default built-in webbrowser
+        private void WebBrowserNavigated(object sender, WebBrowserNavigatedEventArgs e)
+        {
+            string redirectURL = "https://i363215.iris.fhict.nl";
+            if (webBrowser.Url.ToString().Contains(redirectURL) && !webBrowser.Url.ToString().Contains("https://identity.fhict.nl"))
+            {
+                webBrowser.Visible = false;
+                string response = webBrowser.Url.ToString();
+                bool permissionGranted = connection.GetToken(response);
+                if (permissionGranted == true)
+                {
+                    tbResponseData.Visible = true;
+                    HttpWebRequest request = WebRequest.Create("https://api.fhict.nl/schedule/me") as HttpWebRequest;
+                    request.Method = "GET";
+                    request.ContentType = "application/json";
+                    request.Headers.Add("Authorization: Bearer " + connection.AccessToken);
+                    var responseData = request.GetResponse() as HttpWebResponse;
+                    StreamReader reader = new StreamReader(responseData.GetResponseStream());
+                    string json = reader.ReadToEnd();
+                }
+                else
+                {
+                    webBrowser.Navigate("");
+                    webBrowser.Visible = false;
+                    lblError.Visible = true;
+                }
+            }
+            else
+            {
+            }
+        }
+
+        private void IninializeChromium() //creates the new chromium browser
+        {
+            CefSettings settings = new CefSettings();
+            Cef.Initialize(settings);
+            chromeBrowser = new ChromiumWebBrowser("");
+            chromeBrowser.LoadingStateChanged += ChromiumBrowserNavigated;
+            tab1.Controls.Add(chromeBrowser);
+            chromeBrowser.Dock = DockStyle.None;
+            chromeBrowser.Location = new Point(2, 85);
+            chromeBrowser.Size = new Size(362, 494);
+            chromeBrowser.Hide();
         }
     }
 }
