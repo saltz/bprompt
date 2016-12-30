@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
             this.menuNav = new System.Windows.Forms.TabControl();
             this.tab0 = new System.Windows.Forms.TabPage();
+            this.lbTransporter = new System.Windows.Forms.Label();
             this.lbDate = new System.Windows.Forms.Label();
             this.lbDelayArrival = new System.Windows.Forms.Label();
             this.lbDelayDeparture = new System.Windows.Forms.Label();
@@ -56,7 +57,6 @@
             this.lbTimeToGetOutOfBed = new System.Windows.Forms.Label();
             this.lbLivingPlace = new System.Windows.Forms.Label();
             this.navBox3 = new System.Windows.Forms.PictureBox();
-            this.lbTransporter = new System.Windows.Forms.Label();
             this.menuNav.SuspendLayout();
             this.tab0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTrain)).BeginInit();
@@ -79,6 +79,10 @@
             this.menuNav.Name = "menuNav";
             this.menuNav.SelectedIndex = 0;
             this.menuNav.Size = new System.Drawing.Size(376, 602);
+            this.menuNav.Location = new System.Drawing.Point(-6, 1);
+            this.menuNav.Name = "menuNav";
+            this.menuNav.SelectedIndex = 0;
+            this.menuNav.Size = new System.Drawing.Size(376, 605);
             this.menuNav.TabIndex = 0;
             // 
             // tab0
@@ -99,31 +103,42 @@
             this.tab0.Controls.Add(this.lbTimeLeaves);
             this.tab0.Controls.Add(this.btCalculateTravelTime);
             this.tab0.Controls.Add(this.navBox1);
-            this.tab0.Font = new System.Drawing.Font("SansSerif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.tab0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.tab0.Location = new System.Drawing.Point(4, 22);
             this.tab0.Name = "tab0";
             this.tab0.Size = new System.Drawing.Size(368, 576);
+            this.tab0.Size = new System.Drawing.Size(368, 579);
             this.tab0.TabIndex = 0;
             this.tab0.UseVisualStyleBackColor = true;
+            // 
+            // lbTransporter
+            // 
+            this.lbTransporter.AutoSize = true;
+            this.lbTransporter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTransporter.Location = new System.Drawing.Point(170, 332);
+            this.lbTransporter.Name = "lbTransporter";
+            this.lbTransporter.Size = new System.Drawing.Size(81, 16);
+            this.lbTransporter.TabIndex = 25;
+            this.lbTransporter.Text = "Transporter:";
             // 
             // lbDate
             // 
             this.lbDate.AutoSize = true;
-            this.lbDate.Font = new System.Drawing.Font("SansSerif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.lbDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDate.Location = new System.Drawing.Point(50, 386);
             this.lbDate.Name = "lbDate";
-            this.lbDate.Size = new System.Drawing.Size(38, 15);
+            this.lbDate.Size = new System.Drawing.Size(40, 16);
             this.lbDate.TabIndex = 24;
             this.lbDate.Text = "Date:";
             // 
             // lbDelayArrival
             // 
             this.lbDelayArrival.AutoSize = true;
-            this.lbDelayArrival.Font = new System.Drawing.Font("SansSerif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.lbDelayArrival.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDelayArrival.ForeColor = System.Drawing.Color.Red;
             this.lbDelayArrival.Location = new System.Drawing.Point(50, 472);
             this.lbDelayArrival.Name = "lbDelayArrival";
-            this.lbDelayArrival.Size = new System.Drawing.Size(52, 15);
+            this.lbDelayArrival.Size = new System.Drawing.Size(48, 16);
             this.lbDelayArrival.TabIndex = 23;
             this.lbDelayArrival.Text = "+ .. min";
             this.lbDelayArrival.Visible = false;
@@ -131,11 +146,11 @@
             // lbDelayDeparture
             // 
             this.lbDelayDeparture.AutoSize = true;
-            this.lbDelayDeparture.Font = new System.Drawing.Font("SansSerif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.lbDelayDeparture.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDelayDeparture.ForeColor = System.Drawing.Color.Red;
             this.lbDelayDeparture.Location = new System.Drawing.Point(50, 433);
             this.lbDelayDeparture.Name = "lbDelayDeparture";
-            this.lbDelayDeparture.Size = new System.Drawing.Size(52, 15);
+            this.lbDelayDeparture.Size = new System.Drawing.Size(48, 16);
             this.lbDelayDeparture.TabIndex = 22;
             this.lbDelayDeparture.Text = "+ .. min";
             this.lbDelayDeparture.Visible = false;
@@ -143,52 +158,52 @@
             // lbArrivalTrack
             // 
             this.lbArrivalTrack.AutoSize = true;
-            this.lbArrivalTrack.Font = new System.Drawing.Font("SansSerif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.lbArrivalTrack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbArrivalTrack.Location = new System.Drawing.Point(266, 457);
             this.lbArrivalTrack.Name = "lbArrivalTrack";
             this.lbArrivalTrack.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lbArrivalTrack.Size = new System.Drawing.Size(40, 15);
+            this.lbArrivalTrack.Size = new System.Drawing.Size(43, 16);
             this.lbArrivalTrack.TabIndex = 21;
             this.lbArrivalTrack.Text = "Track";
             // 
             // lbDepartureTrack
             // 
             this.lbDepartureTrack.AutoSize = true;
-            this.lbDepartureTrack.Font = new System.Drawing.Font("SansSerif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.lbDepartureTrack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDepartureTrack.Location = new System.Drawing.Point(266, 418);
             this.lbDepartureTrack.Name = "lbDepartureTrack";
             this.lbDepartureTrack.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lbDepartureTrack.Size = new System.Drawing.Size(40, 15);
+            this.lbDepartureTrack.Size = new System.Drawing.Size(43, 16);
             this.lbDepartureTrack.TabIndex = 20;
             this.lbDepartureTrack.Text = "Track";
             // 
             // lbArrivalTime
             // 
             this.lbArrivalTime.AutoSize = true;
-            this.lbArrivalTime.Font = new System.Drawing.Font("SansSerif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.lbArrivalTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbArrivalTime.Location = new System.Drawing.Point(50, 457);
             this.lbArrivalTime.Name = "lbArrivalTime";
-            this.lbArrivalTime.Size = new System.Drawing.Size(84, 15);
+            this.lbArrivalTime.Size = new System.Drawing.Size(83, 16);
             this.lbArrivalTime.TabIndex = 19;
             this.lbArrivalTime.Text = "00:00 Station";
             // 
             // lbDepartureTime
             // 
             this.lbDepartureTime.AutoSize = true;
-            this.lbDepartureTime.Font = new System.Drawing.Font("SansSerif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.lbDepartureTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDepartureTime.Location = new System.Drawing.Point(50, 418);
             this.lbDepartureTime.Name = "lbDepartureTime";
-            this.lbDepartureTime.Size = new System.Drawing.Size(84, 15);
+            this.lbDepartureTime.Size = new System.Drawing.Size(83, 16);
             this.lbDepartureTime.TabIndex = 18;
             this.lbDepartureTime.Text = "00:00 Station";
             // 
             // lbIntercitySprinter
             // 
             this.lbIntercitySprinter.AutoSize = true;
-            this.lbIntercitySprinter.Font = new System.Drawing.Font("SansSerif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.lbIntercitySprinter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbIntercitySprinter.Location = new System.Drawing.Point(92, 332);
             this.lbIntercitySprinter.Name = "lbIntercitySprinter";
-            this.lbIntercitySprinter.Size = new System.Drawing.Size(0, 15);
+            this.lbIntercitySprinter.Size = new System.Drawing.Size(0, 16);
             this.lbIntercitySprinter.TabIndex = 17;
             // 
             // pbTrain
@@ -204,27 +219,27 @@
             // lbTravelTime
             // 
             this.lbTravelTime.AutoSize = true;
-            this.lbTravelTime.Font = new System.Drawing.Font("SansSerif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.lbTravelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTravelTime.Location = new System.Drawing.Point(92, 352);
             this.lbTravelTime.Name = "lbTravelTime";
-            this.lbTravelTime.Size = new System.Drawing.Size(76, 15);
+            this.lbTravelTime.Size = new System.Drawing.Size(78, 16);
             this.lbTravelTime.TabIndex = 13;
             this.lbTravelTime.Text = "Travel time:";
             // 
             // lbTransfer
             // 
             this.lbTransfer.AutoSize = true;
-            this.lbTransfer.Font = new System.Drawing.Font("SansSerif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.lbTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTransfer.Location = new System.Drawing.Point(188, 386);
             this.lbTransfer.Name = "lbTransfer";
-            this.lbTransfer.Size = new System.Drawing.Size(59, 15);
+            this.lbTransfer.Size = new System.Drawing.Size(61, 16);
             this.lbTransfer.TabIndex = 12;
             this.lbTransfer.Text = "Transfer:";
             // 
             // lbCountdown
             // 
             this.lbCountdown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(6)))), ((int)(((byte)(19)))));
-            this.lbCountdown.Font = new System.Drawing.Font("SansSerif", 50.24999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.lbCountdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 50.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCountdown.ForeColor = System.Drawing.Color.White;
             this.lbCountdown.Location = new System.Drawing.Point(52, 130);
             this.lbCountdown.Name = "lbCountdown";
@@ -236,16 +251,16 @@
             // lbTimeLeaves
             // 
             this.lbTimeLeaves.AutoSize = true;
-            this.lbTimeLeaves.Font = new System.Drawing.Font("SansSerif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.lbTimeLeaves.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTimeLeaves.Location = new System.Drawing.Point(87, 102);
             this.lbTimeLeaves.Name = "lbTimeLeaves";
-            this.lbTimeLeaves.Size = new System.Drawing.Size(195, 19);
+            this.lbTimeLeaves.Size = new System.Drawing.Size(191, 20);
             this.lbTimeLeaves.TabIndex = 10;
             this.lbTimeLeaves.Text = "Time until the train leaves:";
             // 
             // btCalculateTravelTime
             // 
-            this.btCalculateTravelTime.Font = new System.Drawing.Font("SansSerif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.btCalculateTravelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btCalculateTravelTime.Location = new System.Drawing.Point(116, 279);
             this.btCalculateTravelTime.Name = "btCalculateTravelTime";
             this.btCalculateTravelTime.Size = new System.Drawing.Size(131, 23);
@@ -272,7 +287,7 @@
             this.tab1.Location = new System.Drawing.Point(4, 22);
             this.tab1.Name = "tab1";
             this.tab1.Padding = new System.Windows.Forms.Padding(3);
-            this.tab1.Size = new System.Drawing.Size(368, 602);
+            this.tab1.Size = new System.Drawing.Size(368, 579);
             this.tab1.TabIndex = 1;
             this.tab1.UseVisualStyleBackColor = true;
             // 
@@ -299,7 +314,7 @@
             this.tab2.Controls.Add(this.navBox3);
             this.tab2.Location = new System.Drawing.Point(4, 22);
             this.tab2.Name = "tab2";
-            this.tab2.Size = new System.Drawing.Size(368, 602);
+            this.tab2.Size = new System.Drawing.Size(368, 579);
             this.tab2.TabIndex = 2;
             this.tab2.UseVisualStyleBackColor = true;
             // 
@@ -325,15 +340,15 @@
             // 
             // tbPlace
             // 
-            this.tbPlace.Font = new System.Drawing.Font("SansSerif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.tbPlace.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPlace.Location = new System.Drawing.Point(48, 243);
             this.tbPlace.Name = "tbPlace";
-            this.tbPlace.Size = new System.Drawing.Size(100, 23);
+            this.tbPlace.Size = new System.Drawing.Size(100, 22);
             this.tbPlace.TabIndex = 5;
             // 
             // nudPrepTime
             // 
-            this.nudPrepTime.Font = new System.Drawing.Font("SansSerif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.nudPrepTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudPrepTime.Increment = new decimal(new int[] {
             10,
             0,
@@ -346,12 +361,12 @@
             0,
             0});
             this.nudPrepTime.Name = "nudPrepTime";
-            this.nudPrepTime.Size = new System.Drawing.Size(64, 23);
+            this.nudPrepTime.Size = new System.Drawing.Size(64, 22);
             this.nudPrepTime.TabIndex = 4;
             // 
             // lbTimeToGetOutOfBed
             // 
-            this.lbTimeToGetOutOfBed.Font = new System.Drawing.Font("SansSerif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.lbTimeToGetOutOfBed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTimeToGetOutOfBed.Location = new System.Drawing.Point(174, 116);
             this.lbTimeToGetOutOfBed.Name = "lbTimeToGetOutOfBed";
             this.lbTimeToGetOutOfBed.Size = new System.Drawing.Size(157, 52);
@@ -361,10 +376,10 @@
             // lbLivingPlace
             // 
             this.lbLivingPlace.AutoSize = true;
-            this.lbLivingPlace.Font = new System.Drawing.Font("SansSerif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.lbLivingPlace.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbLivingPlace.Location = new System.Drawing.Point(51, 132);
             this.lbLivingPlace.Name = "lbLivingPlace";
-            this.lbLivingPlace.Size = new System.Drawing.Size(92, 15);
+            this.lbLivingPlace.Size = new System.Drawing.Size(92, 16);
             this.lbLivingPlace.TabIndex = 2;
             this.lbLivingPlace.Text = "   Living place:";
             // 
@@ -379,16 +394,6 @@
             this.navBox3.TabStop = false;
             this.navBox3.Click += new System.EventHandler(this.NavClick);
             this.navBox3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
-            // 
-            // lbTransporter
-            // 
-            this.lbTransporter.AutoSize = true;
-            this.lbTransporter.Font = new System.Drawing.Font("SansSerif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.lbTransporter.Location = new System.Drawing.Point(170, 332);
-            this.lbTransporter.Name = "lbTransporter";
-            this.lbTransporter.Size = new System.Drawing.Size(77, 15);
-            this.lbTransporter.TabIndex = 25;
-            this.lbTransporter.Text = "Transporter:";
             // 
             // main
             // 
