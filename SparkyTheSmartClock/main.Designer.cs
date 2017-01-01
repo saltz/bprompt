@@ -51,7 +51,6 @@
             this.lblError = new System.Windows.Forms.Label();
             this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.navBox2 = new System.Windows.Forms.PictureBox();
-            this.tbResponseData = new System.Windows.Forms.TextBox();
             this.tab2 = new System.Windows.Forms.TabPage();
             this.pbClock = new System.Windows.Forms.PictureBox();
             this.pbHome = new System.Windows.Forms.PictureBox();
@@ -284,7 +283,6 @@
             this.tab1.Controls.Add(this.lblError);
             this.tab1.Controls.Add(this.webBrowser);
             this.tab1.Controls.Add(this.navBox2);
-            this.tab1.Controls.Add(this.tbResponseData);
             this.tab1.Location = new System.Drawing.Point(4, 22);
             this.tab1.Name = "tab1";
             this.tab1.Padding = new System.Windows.Forms.Padding(3);
@@ -306,7 +304,7 @@
             // 
             // webBrowser
             // 
-            this.webBrowser.Location = new System.Drawing.Point(2, 85);
+            this.webBrowser.Location = new System.Drawing.Point(0, 85);
             this.webBrowser.MaximumSize = new System.Drawing.Size(362, 494);
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
@@ -327,15 +325,6 @@
             this.navBox2.TabStop = false;
             this.navBox2.Click += new System.EventHandler(this.NavClick);
             this.navBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
-            // 
-            // tbResponseData
-            // 
-            this.tbResponseData.Location = new System.Drawing.Point(14, 91);
-            this.tbResponseData.Multiline = true;
-            this.tbResponseData.Name = "tbResponseData";
-            this.tbResponseData.Size = new System.Drawing.Size(336, 445);
-            this.tbResponseData.TabIndex = 3;
-            this.tbResponseData.Visible = false;
             // 
             // tab2
             // 
@@ -487,7 +476,6 @@
         private System.Windows.Forms.Label lbDate;
         private System.Windows.Forms.Label lbTransporter;
         private System.Windows.Forms.WebBrowser webBrowser;
-        private System.Windows.Forms.TextBox tbResponseData;
         private System.Windows.Forms.Label lblError;
     }
 }

@@ -9,8 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
-using CefSharp;
-using CefSharp.WinForms;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace SparkyTheSmartClock
 {
@@ -19,7 +19,6 @@ namespace SparkyTheSmartClock
         public main()
         {
             InitializeComponent();
-          //  IninializeChromium();
         }
 
         //global variables
@@ -27,7 +26,7 @@ namespace SparkyTheSmartClock
         double mousepositionY;
         string NsApiUrl;
         FontysAPI connection;
-        ChromiumWebBrowser chromeBrowser;
+        List<Lesson> Lessons = new List<Lesson>();
 
         private void NavClick(object sender, EventArgs e)
         {
@@ -130,47 +129,10 @@ namespace SparkyTheSmartClock
             // if (User.School.ToLower().Contains("fontys"){ }    //if statement to initialize fhict api (if there are more api's)
             connection = new FontysAPI();
             lblError.Visible = false;
-            //if (chromeBrowser.Address != connection.RequestString)
-            //{
-            //    chromeBrowser.Load(connection.RequestString);
-            //    chromeBrowser.Show();
-            //}
-            //else { chromeBrowser.Show(); }
-
-
-            //old
             webBrowser.Visible = true;
             webBrowser.Navigate(connection.RequestString);
         }
-        private void ChromiumBrowserNavigated(object sender, LoadingStateChangedEventArgs e)
-        {
-            string redirectURL = "https://i363215.iris.fhict.nl";
-            if (chromeBrowser.Address.ToString().Contains(redirectURL) && !chromeBrowser.Address.ToString().Contains("https://identity.fhict.nl"))
-            {
-                string response = chromeBrowser.Address.ToString();
-                bool permissionGranted = connection.GetToken(response);
-                if (permissionGranted == true)
-                {
-                    HttpWebRequest request = WebRequest.Create("https://api.fhict.nl/schedule/me") as HttpWebRequest;
-                    request.Method = "GET";
-                    request.ContentType = "application/json";
-                    request.Headers.Add("Authorization: Bearer " + connection.AccessToken);
-                    var responseData = request.GetResponse() as HttpWebResponse;
-                    StreamReader reader = new StreamReader(responseData.GetResponseStream());
-                    string json = reader.ReadToEnd();;
-                }
-                else
-                {
-                    // werkt nie door thread errors ??????????????????
-                    //chromeBrowser.Load("");
-                    //this.chromeBrowser.Hide();
-                    //this.lblError.Visible = true;
-                }
-            }
-            else { }
-        }
-
-        //old code for default built-in webbrowser
+        //code for default built-in webbrowser
         private void WebBrowserNavigated(object sender, WebBrowserNavigatedEventArgs e)
         {
             string redirectURL = "https://i363215.iris.fhict.nl";
@@ -181,14 +143,14 @@ namespace SparkyTheSmartClock
                 bool permissionGranted = connection.GetToken(response);
                 if (permissionGranted == true)
                 {
-                    tbResponseData.Visible = true;
                     HttpWebRequest request = WebRequest.Create("https://api.fhict.nl/schedule/me") as HttpWebRequest;
                     request.Method = "GET";
-                    request.ContentType = "application/json";
+                    request.ContentType = "text/json";
                     request.Headers.Add("Authorization: Bearer " + connection.AccessToken);
                     var responseData = request.GetResponse() as HttpWebResponse;
                     StreamReader reader = new StreamReader(responseData.GetResponseStream());
                     string json = reader.ReadToEnd();
+                    ReadingTheJson(json);
                 }
                 else
                 {
@@ -202,17 +164,27 @@ namespace SparkyTheSmartClock
             }
         }
 
-        private void IninializeChromium() //creates the new chromium browser
+        private void ReadingTheJson(string json)
         {
-            CefSettings settings = new CefSettings();
-            Cef.Initialize(settings);
-            chromeBrowser = new ChromiumWebBrowser("");
-            chromeBrowser.LoadingStateChanged += ChromiumBrowserNavigated;
-            tab1.Controls.Add(chromeBrowser);
-            chromeBrowser.Dock = DockStyle.None;
-            chromeBrowser.Location = new Point(2, 85);
-            chromeBrowser.Size = new Size(362, 494);
-            chromeBrowser.Hide();
+            string test;
+            int a = 0;
+            int b = 0;
+            for (int i = 0; i < json.Length; i++)
+            {
+                char x = json[i];
+                if (x == '{')
+                {
+                    a = i;
+                }
+                else if (x == '}')
+                {
+                    b = i;
+                    test = json.Substring(a, b);
+                    test = test.Substring(0, test.IndexOf("description"));
+                    Lesson les = JsonConvert.DeserializeObject<Lesson>(test);
+                    MessageBox.Show(les.ToString());
+                }
+            }
         }
     }
 }
