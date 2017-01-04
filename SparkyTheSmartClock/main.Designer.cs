@@ -59,6 +59,7 @@
             this.lbTimeToGetOutOfBed = new System.Windows.Forms.Label();
             this.lbLivingPlace = new System.Windows.Forms.Label();
             this.navBox3 = new System.Windows.Forms.PictureBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.menuNav.SuspendLayout();
             this.tab0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTrain)).BeginInit();
@@ -280,6 +281,7 @@
             // 
             // tab1
             // 
+            this.tab1.Controls.Add(this.listBox1);
             this.tab1.Controls.Add(this.lblError);
             this.tab1.Controls.Add(this.webBrowser);
             this.tab1.Controls.Add(this.navBox2);
@@ -418,6 +420,15 @@
             this.navBox3.Click += new System.EventHandler(this.NavClick);
             this.navBox3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(14, 100);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(330, 446);
+            this.listBox1.TabIndex = 5;
+            this.listBox1.Visible = false;
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -477,6 +488,7 @@
         private System.Windows.Forms.Label lbTransporter;
         private System.Windows.Forms.WebBrowser webBrowser;
         private System.Windows.Forms.Label lblError;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 

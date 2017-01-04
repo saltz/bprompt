@@ -9,8 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
+using Newtonsoft;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+
 
 namespace SparkyTheSmartClock
 {
@@ -26,7 +27,7 @@ namespace SparkyTheSmartClock
         double mousepositionY;
         string NsApiUrl;
         FontysAPI connection;
-        List<Lesson> Lessons = new List<Lesson>();
+        Schedule schedule = new Schedule();
 
         private void NavClick(object sender, EventArgs e)
         {
@@ -150,6 +151,7 @@ namespace SparkyTheSmartClock
                     var responseData = request.GetResponse() as HttpWebResponse;
                     StreamReader reader = new StreamReader(responseData.GetResponseStream());
                     string json = reader.ReadToEnd();
+                    
                     ReadingTheJson(json);
                 }
                 else
@@ -164,14 +166,14 @@ namespace SparkyTheSmartClock
             }
         }
 
-        private void ReadingTheJson(string json)
+        public void ReadingTheJson(string input)
         {
             string test;
             int a = 0;
             int b = 0;
-            for (int i = 0; i < json.Length; i++)
+            for (int i = 0; i < input.Length; i++)
             {
-                char x = json[i];
+                char x = input[i];
                 if (x == '{')
                 {
                     a = i;
@@ -179,12 +181,16 @@ namespace SparkyTheSmartClock
                 else if (x == '}')
                 {
                     b = i;
-                    test = json.Substring(a, b);
-                    test = test.Substring(0, test.IndexOf("description"));
-                    Lesson les = JsonConvert.DeserializeObject<Lesson>(test);
-                    MessageBox.Show(les.ToString());
+                    test = input.Substring(a, b);
+                    test = test.Substring(0, test.IndexOf("description") - 2);
+                    test = test + "}";
+                    Lesson lesson = JsonConvert.DeserializeObject<Lesson>(test);
+                    schedule.AddLesson(lesson);
                 }
             }
+            listBox1.Visible = true;
+            listBox1.Items.Add(schedule.Lessons);
+            listBox1.Refresh();
         }
     }
 }

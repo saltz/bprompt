@@ -56,7 +56,7 @@ namespace SparkyTheSmartClock
             }
         }
 
-        public string School { get; set; }
+        public string School { get { return school; } set { school = value; } }
         public string StreetName { get { return streetName; } set { streetName = value; } }
         public int HouseNumber { get { return houseNumber; } set { houseNumber = value; } }
 
