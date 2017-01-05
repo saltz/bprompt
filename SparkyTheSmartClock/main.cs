@@ -27,7 +27,7 @@ namespace SparkyTheSmartClock
         double mousepositionY;
         string NsApiUrl;
         FontysAPI connection;
-        Schedule schedule = new Schedule();
+        Schedule schedule;
 
         private void NavClick(object sender, EventArgs e)
         {
@@ -128,22 +128,36 @@ namespace SparkyTheSmartClock
         private void GetAccess()
         {
             // if (User.School.ToLower().Contains("fontys"){ }    //if statement to initialize fhict api (if there are more api's)
-            connection = new FontysAPI();
-            lblError.Visible = false;
-            webBrowser.Visible = true;
-            webBrowser.Navigate(connection.RequestString);
+            if (connection == null) //app startup creation of the connection
+            {
+                connection = new FontysAPI();
+                lblError.Visible = false;
+                webBrowser.Visible = true;
+                webBrowser.Navigate(connection.RequestString);
+            }
+            else if (connection.TimeAllive == 0) //accestoken has expired
+            {
+                lblError.Visible = false;
+                webBrowser.Visible = true;
+                webBrowser.Navigate(connection.RequestString);
+            }
+            else //accestoken is granted and alive no need to request another
+            {
+                BuildingTheSchedule();
+            }
         }
-        //code for default built-in webbrowser
-        private void WebBrowserNavigated(object sender, WebBrowserNavigatedEventArgs e)
+
+        private void WebBrowserNavigated(object sender, WebBrowserNavigatedEventArgs e) //everytime the webbrowser loads a page
         {
             string redirectURL = "https://i363215.iris.fhict.nl";
-            if (webBrowser.Url.ToString().Contains(redirectURL) && !webBrowser.Url.ToString().Contains("https://identity.fhict.nl"))
+            if (webBrowser.Url.ToString().Contains(redirectURL) && !webBrowser.Url.ToString().Contains("https://identity.fhict.nl")) //browser redirected correctly
             {
                 webBrowser.Visible = false;
                 string response = webBrowser.Url.ToString();
                 bool permissionGranted = connection.GetToken(response);
-                if (permissionGranted == true)
+                if (permissionGranted == true) //user granted sparky permission to schedule data
                 {
+                    TimeAlliveTimer.Start();
                     HttpWebRequest request = WebRequest.Create("https://api.fhict.nl/schedule/me") as HttpWebRequest;
                     request.Method = "GET";
                     request.ContentType = "text/json";
@@ -151,10 +165,11 @@ namespace SparkyTheSmartClock
                     var responseData = request.GetResponse() as HttpWebResponse;
                     StreamReader reader = new StreamReader(responseData.GetResponseStream());
                     string json = reader.ReadToEnd();
-                    
-                    ReadingTheJson(json);
+                    schedule = new Schedule();
+                    schedule.ReadingTheJson(json);
+                    BuildingTheSchedule();
                 }
-                else
+                else //user denied access no school schedule for him
                 {
                     webBrowser.Navigate("");
                     webBrowser.Visible = false;
@@ -163,63 +178,41 @@ namespace SparkyTheSmartClock
             }
             else
             {
+                //code cannot get here. or the user is a hacker
             }
         }
 
 
-        //global variables for this method
-        string test;
-        int startPoint = 0;
-        int endPoint = 0;
-
-        public void ReadingTheJson(string input)
+        //needs editing
+        private void BuildingTheSchedule()
         {
-            for (int i = 0; i < input.Length; i++)
-            {
-                char x = input[i];
-                if (x == '{')
-                {
-                    startPoint = i;
-                }
-                else if (x == '}')
-                {
-                    endPoint = (i - startPoint);
-                    test = input.Substring(startPoint, endPoint);
-                    if(test.Contains("description"))
-                    {
-                        test = test.Substring(0, test.IndexOf("description") - 2);
-                        test = test + "}";
-                        Lesson lesson = JsonConvert.DeserializeObject<Lesson>(test);
-                        schedule.AddLesson(lesson);
-                    }
-                    else if(test.Contains("updatedAt"))
-                    {
-                        test = test.Substring(0, test.IndexOf("updatedAt") - 2);
-                        test = test + "}";
-                        Lesson lesson = JsonConvert.DeserializeObject<Lesson>(test);
-                        schedule.AddLesson(lesson);
-                    }
-                    else
-                    {
-                        MessageBox.Show(test);
-                    }
-                }
-            }
             listBox1.Visible = true;
-            foreach(Lesson lesson in schedule.Lessons)
+            foreach (Lesson lesson in schedule.Lessons)
             {
                 listBox1.Items.Add(lesson.subject);
                 listBox1.Items.Add(lesson.room);
+                listBox1.Items.Add(lesson.teacherAbbreviation);
                 listBox1.Items.Add(lesson.start);
                 listBox1.Items.Add("-------------------");
             }
             listBox1.Refresh();
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (connection.TimeAllive > 0)
+            {
+                connection.TimeAllive = connection.TimeAllive - 1;
+                label1.Text = connection.TimeAllive.ToString();
+            }
+            else
+            {
+                TimeAlliveTimer.Stop();
+                label1.Text = "token is expired";
+            }
+        }
     }
 }
-
-
-
 
 /*comments for later purposes
 

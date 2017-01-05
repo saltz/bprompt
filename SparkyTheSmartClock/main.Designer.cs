@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
             this.menuNav = new System.Windows.Forms.TabControl();
             this.tab0 = new System.Windows.Forms.TabPage();
@@ -48,6 +49,7 @@
             this.btCalculateTravelTime = new System.Windows.Forms.Button();
             this.navBox1 = new System.Windows.Forms.PictureBox();
             this.tab1 = new System.Windows.Forms.TabPage();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.lblError = new System.Windows.Forms.Label();
             this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.navBox2 = new System.Windows.Forms.PictureBox();
@@ -59,7 +61,8 @@
             this.lbTimeToGetOutOfBed = new System.Windows.Forms.Label();
             this.lbLivingPlace = new System.Windows.Forms.Label();
             this.navBox3 = new System.Windows.Forms.PictureBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.TimeAlliveTimer = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             this.menuNav.SuspendLayout();
             this.tab0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTrain)).BeginInit();
@@ -281,6 +284,7 @@
             // 
             // tab1
             // 
+            this.tab1.Controls.Add(this.label1);
             this.tab1.Controls.Add(this.listBox1);
             this.tab1.Controls.Add(this.lblError);
             this.tab1.Controls.Add(this.webBrowser);
@@ -291,6 +295,15 @@
             this.tab1.Size = new System.Drawing.Size(368, 579);
             this.tab1.TabIndex = 1;
             this.tab1.UseVisualStyleBackColor = true;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(14, 100);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(330, 446);
+            this.listBox1.TabIndex = 5;
+            this.listBox1.Visible = false;
             // 
             // lblError
             // 
@@ -420,14 +433,19 @@
             this.navBox3.Click += new System.EventHandler(this.NavClick);
             this.navBox3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
             // 
-            // listBox1
+            // TimeAlliveTimer
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(14, 100);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(330, 446);
-            this.listBox1.TabIndex = 5;
-            this.listBox1.Visible = false;
+            this.TimeAlliveTimer.Interval = 1000;
+            this.TimeAlliveTimer.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(226, 69);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "label1";
             // 
             // main
             // 
@@ -489,6 +507,8 @@
         private System.Windows.Forms.WebBrowser webBrowser;
         private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Timer TimeAlliveTimer;
+        private System.Windows.Forms.Label label1;
     }
 }
 

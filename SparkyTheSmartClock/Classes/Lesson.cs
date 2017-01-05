@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace SparkyTheSmartClock
 {
-    class Lesson
+    class Lesson //class for parsing json to objects
     {
         public IList<string> classes { get; set; }
         public string room { get; set; }
