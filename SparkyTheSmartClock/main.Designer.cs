@@ -62,7 +62,6 @@
             this.lbLivingPlace = new System.Windows.Forms.Label();
             this.navBox3 = new System.Windows.Forms.PictureBox();
             this.TimeAlliveTimer = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             this.menuNav.SuspendLayout();
             this.tab0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTrain)).BeginInit();
@@ -284,7 +283,6 @@
             // 
             // tab1
             // 
-            this.tab1.Controls.Add(this.label1);
             this.tab1.Controls.Add(this.listBox1);
             this.tab1.Controls.Add(this.lblError);
             this.tab1.Controls.Add(this.webBrowser);
@@ -436,16 +434,7 @@
             // TimeAlliveTimer
             // 
             this.TimeAlliveTimer.Interval = 1000;
-            this.TimeAlliveTimer.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(226, 69);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "label1";
+            this.TimeAlliveTimer.Tick += new System.EventHandler(this.TickTock);
             // 
             // main
             // 
@@ -508,7 +497,6 @@
         private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Timer TimeAlliveTimer;
-        private System.Windows.Forms.Label label1;
     }
 }
 

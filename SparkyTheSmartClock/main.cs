@@ -128,20 +128,20 @@ namespace SparkyTheSmartClock
         private void GetAccess()
         {
             // if (User.School.ToLower().Contains("fontys"){ }    //if statement to initialize fhict api (if there are more api's)
-            if (connection == null) //app startup creation of the connection
+            if (connection == null) //app firststartup (creation of the connection object)
             {
                 connection = new FontysAPI();
                 lblError.Visible = false;
                 webBrowser.Visible = true;
                 webBrowser.Navigate(connection.RequestString);
             }
-            else if (connection.TimeAllive == 0) //accestoken has expired
+            else if (connection.TimeAllive == 0) //accesstoken has expired
             {
                 lblError.Visible = false;
                 webBrowser.Visible = true;
                 webBrowser.Navigate(connection.RequestString);
             }
-            else //accestoken is granted and alive no need to request another
+            else //accesstoken is granted and alive no need to request another
             {
                 BuildingTheSchedule();
             }
@@ -154,8 +154,7 @@ namespace SparkyTheSmartClock
             {
                 webBrowser.Visible = false;
                 string response = webBrowser.Url.ToString();
-                bool permissionGranted = connection.GetToken(response);
-                if (permissionGranted == true) //user granted sparky permission to schedule data
+                if (connection.GetToken(response) == true) //user granted sparky permission to schedule data
                 {
                     TimeAlliveTimer.Start();
                     HttpWebRequest request = WebRequest.Create("https://api.fhict.nl/schedule/me") as HttpWebRequest;
@@ -198,17 +197,15 @@ namespace SparkyTheSmartClock
             listBox1.Refresh();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void TickTock(object sender, EventArgs e) //countdown for timealive of the accesstoken
         {
             if (connection.TimeAllive > 0)
             {
                 connection.TimeAllive = connection.TimeAllive - 1;
-                label1.Text = connection.TimeAllive.ToString();
             }
             else
             {
                 TimeAlliveTimer.Stop();
-                label1.Text = "token is expired";
             }
         }
     }
