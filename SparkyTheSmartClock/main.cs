@@ -166,30 +166,53 @@ namespace SparkyTheSmartClock
             }
         }
 
+
+        //global variables for this method
+        string test;
+        int startPoint = 0;
+        int endPoint = 0;
+
         public void ReadingTheJson(string input)
         {
-            string test;
-            int a = 0;
-            int b = 0;
             for (int i = 0; i < input.Length; i++)
             {
                 char x = input[i];
                 if (x == '{')
                 {
-                    a = i;
+                    startPoint = i;
                 }
                 else if (x == '}')
                 {
-                    b = i;
-                    test = input.Substring(a, b);
-                    test = test.Substring(0, test.IndexOf("description") - 2);
-                    test = test + "}";
-                    Lesson lesson = JsonConvert.DeserializeObject<Lesson>(test);
-                    schedule.AddLesson(lesson);
+                    endPoint = (i - startPoint);
+                    test = input.Substring(startPoint, endPoint);
+                    if(test.Contains("description"))
+                    {
+                        test = test.Substring(0, test.IndexOf("description") - 2);
+                        test = test + "}";
+                        Lesson lesson = JsonConvert.DeserializeObject<Lesson>(test);
+                        schedule.AddLesson(lesson);
+                    }
+                    else if(test.Contains("updatedAt"))
+                    {
+                        test = test.Substring(0, test.IndexOf("updatedAt") - 2);
+                        test = test + "}";
+                        Lesson lesson = JsonConvert.DeserializeObject<Lesson>(test);
+                        schedule.AddLesson(lesson);
+                    }
+                    else
+                    {
+                        MessageBox.Show(test);
+                    }
                 }
             }
             listBox1.Visible = true;
-            listBox1.Items.Add(schedule.Lessons);
+            foreach(Lesson lesson in schedule.Lessons)
+            {
+                listBox1.Items.Add(lesson.subject);
+                listBox1.Items.Add(lesson.room);
+                listBox1.Items.Add(lesson.start);
+                listBox1.Items.Add("-------------------");
+            }
             listBox1.Refresh();
         }
     }
