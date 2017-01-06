@@ -9,6 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
+using Newtonsoft;
+using Newtonsoft.Json;
+
 
 namespace SparkyTheSmartClock
 {
@@ -23,10 +26,16 @@ namespace SparkyTheSmartClock
         double mousepositionX;
         double mousepositionY;
         string NsApiUrl;
+        FontysAPI connection;
+        Schedule schedule;
 
         private void NavClick(object sender, EventArgs e)
         {
             NavigationCalculation();
+            if (menuNav.SelectedIndex == 1)
+            {
+                GetAccess();
+            }
         }
 
         private void MoveCapture(object sender, MouseEventArgs e)
@@ -58,6 +67,8 @@ namespace SparkyTheSmartClock
                 }
             }
         }
+
+        //tab0 main tab for travel info
 
         private void btCalculateTravelTime_Click(object sender, EventArgs e)
         {
@@ -110,5 +121,99 @@ namespace SparkyTheSmartClock
 
             lbTransfer.Text = "Transfer: " + travelInfo.GetTransferInformation();
         }
+
+
+        //tab1 roster tab 
+
+        private void GetAccess()
+        {
+            // if (User.School.ToLower().Contains("fontys"){ }    //if statement to initialize fhict api (if there are more api's)
+            if (connection == null) //app firststartup (creation of the connection object)
+            {
+                connection = new FontysAPI();
+                lblError.Visible = false;
+                webBrowser.Visible = true;
+                webBrowser.Navigate(connection.RequestString);
+            }
+            else if (connection.TimeAllive == 0) //accesstoken has expired
+            {
+                lblError.Visible = false;
+                webBrowser.Visible = true;
+                webBrowser.Navigate(connection.RequestString);
+            }
+            else //accesstoken is granted and alive no need to request another
+            {
+                BuildingTheSchedule();
+            }
+        }
+
+        private void WebBrowserNavigated(object sender, WebBrowserNavigatedEventArgs e) //everytime the webbrowser loads a page
+        {
+            string redirectURL = "https://i363215.iris.fhict.nl";
+            if (webBrowser.Url.ToString().Contains(redirectURL) && !webBrowser.Url.ToString().Contains("https://identity.fhict.nl")) //browser redirected correctly
+            {
+                webBrowser.Visible = false;
+                string response = webBrowser.Url.ToString();
+                if (connection.GetToken(response) == true) //user granted sparky permission to schedule data
+                {
+                    TimeAlliveTimer.Start();
+                    HttpWebRequest request = WebRequest.Create("https://api.fhict.nl/schedule/me") as HttpWebRequest;
+                    request.Method = "GET";
+                    request.ContentType = "text/json";
+                    request.Headers.Add("Authorization: Bearer " + connection.AccessToken);
+                    var responseData = request.GetResponse() as HttpWebResponse;
+                    StreamReader reader = new StreamReader(responseData.GetResponseStream());
+                    string json = reader.ReadToEnd();
+                    schedule = new Schedule();
+                    schedule.ReadingTheJson(json);
+                    BuildingTheSchedule();
+                }
+                else //user denied access no school schedule for him
+                {
+                    webBrowser.Navigate("");
+                    webBrowser.Visible = false;
+                    lblError.Visible = true;
+                }
+            }
+            else
+            {
+                //code cannot get here. or the user is a hacker
+            }
+        }
+
+
+        //needs editing
+        private void BuildingTheSchedule()
+        {
+            listBox1.Visible = true;
+            foreach (Lesson lesson in schedule.Lessons)
+            {
+                listBox1.Items.Add(lesson.subject);
+                listBox1.Items.Add(lesson.room);
+                listBox1.Items.Add(lesson.teacherAbbreviation);
+                listBox1.Items.Add(lesson.start);
+                listBox1.Items.Add("-------------------");
+            }
+            listBox1.Refresh();
+        }
+
+        private void TickTock(object sender, EventArgs e) //countdown for timealive of the accesstoken
+        {
+            if (connection.TimeAllive > 0)
+            {
+                connection.TimeAllive = connection.TimeAllive - 1;
+            }
+            else
+            {
+                TimeAlliveTimer.Stop();
+            }
+        }
     }
 }
+
+/*comments for later purposes
+
+catch (System.ArgumentException ex) { MessageBox.Show(ex.Message, ex.Source); } sample of how to display the errors
+
+
+*/

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
             this.menuNav = new System.Windows.Forms.TabControl();
             this.tab0 = new System.Windows.Forms.TabPage();
@@ -48,6 +49,9 @@
             this.btCalculateTravelTime = new System.Windows.Forms.Button();
             this.navBox1 = new System.Windows.Forms.PictureBox();
             this.tab1 = new System.Windows.Forms.TabPage();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lblError = new System.Windows.Forms.Label();
+            this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.navBox2 = new System.Windows.Forms.PictureBox();
             this.tab2 = new System.Windows.Forms.TabPage();
             this.pbClock = new System.Windows.Forms.PictureBox();
@@ -57,6 +61,7 @@
             this.lbTimeToGetOutOfBed = new System.Windows.Forms.Label();
             this.lbLivingPlace = new System.Windows.Forms.Label();
             this.navBox3 = new System.Windows.Forms.PictureBox();
+            this.TimeAlliveTimer = new System.Windows.Forms.Timer(this.components);
             this.menuNav.SuspendLayout();
             this.tab0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTrain)).BeginInit();
@@ -278,6 +283,9 @@
             // 
             // tab1
             // 
+            this.tab1.Controls.Add(this.listBox1);
+            this.tab1.Controls.Add(this.lblError);
+            this.tab1.Controls.Add(this.webBrowser);
             this.tab1.Controls.Add(this.navBox2);
             this.tab1.Location = new System.Drawing.Point(4, 22);
             this.tab1.Name = "tab1";
@@ -285,6 +293,39 @@
             this.tab1.Size = new System.Drawing.Size(368, 579);
             this.tab1.TabIndex = 1;
             this.tab1.UseVisualStyleBackColor = true;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(14, 100);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(330, 446);
+            this.listBox1.TabIndex = 5;
+            this.listBox1.Visible = false;
+            // 
+            // lblError
+            // 
+            this.lblError.AutoSize = true;
+            this.lblError.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError.Location = new System.Drawing.Point(14, 222);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(330, 150);
+            this.lblError.TabIndex = 4;
+            this.lblError.Text = "Kon het rooster niet ophalen\r\ndoor gebrek aan rechten. :(\r\n\r\nherlaad deze tab om " +
+    "het opnieuw\r\nte proberen.\r\n\r\n";
+            this.lblError.Visible = false;
+            // 
+            // webBrowser
+            // 
+            this.webBrowser.Location = new System.Drawing.Point(0, 85);
+            this.webBrowser.MaximumSize = new System.Drawing.Size(362, 494);
+            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser.Name = "webBrowser";
+            this.webBrowser.Size = new System.Drawing.Size(362, 494);
+            this.webBrowser.TabIndex = 2;
+            this.webBrowser.Url = new System.Uri("", System.UriKind.Relative);
+            this.webBrowser.Visible = false;
+            this.webBrowser.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.WebBrowserNavigated);
             // 
             // navBox2
             // 
@@ -390,12 +431,18 @@
             this.navBox3.Click += new System.EventHandler(this.NavClick);
             this.navBox3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
             // 
+            // TimeAlliveTimer
+            // 
+            this.TimeAlliveTimer.Interval = 1000;
+            this.TimeAlliveTimer.Tick += new System.EventHandler(this.TickTock);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(360, 604);
             this.Controls.Add(this.menuNav);
+            this.MaximumSize = new System.Drawing.Size(376, 643);
             this.Name = "main";
             this.Text = "Sparky App";
             this.menuNav.ResumeLayout(false);
@@ -404,6 +451,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbTrain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBox1)).EndInit();
             this.tab1.ResumeLayout(false);
+            this.tab1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBox2)).EndInit();
             this.tab2.ResumeLayout(false);
             this.tab2.PerformLayout();
@@ -445,6 +493,10 @@
         private System.Windows.Forms.Label lbDelayDeparture;
         private System.Windows.Forms.Label lbDate;
         private System.Windows.Forms.Label lbTransporter;
+        private System.Windows.Forms.WebBrowser webBrowser;
+        private System.Windows.Forms.Label lblError;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Timer TimeAlliveTimer;
     }
 }
 
