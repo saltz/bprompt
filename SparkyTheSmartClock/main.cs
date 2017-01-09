@@ -158,6 +158,7 @@ namespace SparkyTheSmartClock
             else //accesstoken is granted and alive no need to request another
             {
                 BuildingTheSchedule();
+                gettime();// <------------------------------------------------------------------------------------------------------------- sven here
             }
         }
 
@@ -181,6 +182,7 @@ namespace SparkyTheSmartClock
                     schedule = new Schedule();
                     schedule.ReadingTheJson(json);
                     BuildingTheSchedule();
+                    gettime(); //getting first lesson <------------------------------------------------------------------------------------------------ sven here
                 }
                 else //user denied access no school schedule for him
                 {
@@ -398,6 +400,20 @@ namespace SparkyTheSmartClock
             {
 
             }
+        }
+
+        private void gettime()
+        {
+            int counter = 0;
+            foreach (Lesson l in schedule.Lessons)
+            {
+                if(l.start.Contains("2017-01-10") && counter == 0)
+                {
+                    MessageBox.Show(l.start + l.subject + l.teacherAbbreviation);
+                    counter++;
+                }
+            }
+
         }
     }
 }
