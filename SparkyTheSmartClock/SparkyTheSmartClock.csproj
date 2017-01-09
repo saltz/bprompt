@@ -112,6 +112,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\alarmclock.png" />
     <Content Include="Resources\app_logo.png" />
     <None Include="Resources\Logo.png" />
     <None Include="Resources\train.png" />

@@ -31,16 +31,16 @@ namespace SparkyTheSmartClock
 
         //globals ruben nakijken bitte
         bool mousedrag = false;
+        bool buttonclockcount = true;
+        bool ampm = true;
         double xnewfirst = 75;
         double ynewfirst = 35;
         double xnewseccond = 75;
         double ynewseccond = 0;
-        bool buttonclockcount = true;
-        Pen penfirst = new Pen(Color.Red, 5);
-        Pen penseccond = new Pen(Color.Black, 5);
         int minutes = 0;
         int hour = 0;
-        bool ampm = true;
+        Pen penfirst = new Pen(Color.Red, 5);
+        Pen penseccond = new Pen(Color.Black, 5);
         List<DateTime> CurrentAlarms = new List<DateTime>();
 
         private void NavClick(object sender, EventArgs e)
@@ -258,7 +258,7 @@ namespace SparkyTheSmartClock
                 lbHour.Text = Convert.ToString(hour);
                 ynewfirst += 75;
                 xnewfirst += 75;
-                pbClock.Invalidate();
+                pbAlarm.Invalidate();
             }
 
             else if (mousedrag && buttonclockcount == false)
@@ -293,8 +293,18 @@ namespace SparkyTheSmartClock
                 lbMinute.Text = Convert.ToString(minutes);
                 ynewseccond += 75;
                 xnewseccond += 75;
-                pbClock.Invalidate();
+                pbAlarm.Invalidate();
             }
+        }
+
+        private void MouseDownAlarm(object sender, MouseEventArgs e)
+        {
+            mousedrag = true;
+        }
+
+        private void MouseUpAlarm(object sender, MouseEventArgs e)
+        {
+            mousedrag = false;
         }
 
         private void PaintClock(object sender, PaintEventArgs e)
@@ -311,22 +321,22 @@ namespace SparkyTheSmartClock
         {
             if (buttonclockcount)
             {
-                btnSetAlarm.Text = "Set Hours";
+                btnSetAlarm.Text = "Confirm minutes";
                 penfirst.Color = Color.Black;
                 penseccond.Color = Color.Red;
                 buttonclockcount = false;
             }
             else
             {
-                btnSetAlarm.Text = "Set Minutes";
+                btnSetAlarm.Text = "Confirm Hour";
                 penfirst.Color = Color.Red;
                 penseccond.Color = Color.Black;
                 buttonclockcount = true;
             }
-            pbClock.Invalidate();
+            pbAlarm.Invalidate();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void AmPmclick(object sender, EventArgs e)
         {
             if (ampm)
             {
@@ -345,6 +355,15 @@ namespace SparkyTheSmartClock
             string alarmset = lbHour.Text + ":" + lbMinute.Text + ":00 " + btnAmPm.Text;
             DateTime currentalarm = Convert.ToDateTime(alarmset);
             CurrentAlarms.Add(currentalarm);
+            TimeCheckAlarm.Start();
+            xnewfirst = 75;
+            ynewfirst = 35;
+            xnewseccond = 75;
+            ynewseccond = 0;
+            lbHour.Text = "0";
+            lbMinute.Text = "0";
+            MessageBox.Show("Alarm succefully added");
+            pbAlarm.Invalidate();
         }
 
         private void btnCurrentAlarms_Click(object sender, EventArgs e)
