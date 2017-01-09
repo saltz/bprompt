@@ -89,10 +89,10 @@
             this.menuNav.Controls.Add(this.tab0);
             this.menuNav.Controls.Add(this.tab1);
             this.menuNav.Controls.Add(this.tab2);
-            this.menuNav.Location = new System.Drawing.Point(-6, 1);
+            this.menuNav.Location = new System.Drawing.Point(-6, -22);
             this.menuNav.Name = "menuNav";
             this.menuNav.SelectedIndex = 0;
-            this.menuNav.Size = new System.Drawing.Size(376, 605);
+            this.menuNav.Size = new System.Drawing.Size(376, 628);
             this.menuNav.TabIndex = 0;
             // 
             // tab0
@@ -116,7 +116,7 @@
             this.tab0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.tab0.Location = new System.Drawing.Point(4, 22);
             this.tab0.Name = "tab0";
-            this.tab0.Size = new System.Drawing.Size(368, 579);
+            this.tab0.Size = new System.Drawing.Size(368, 602);
             this.tab0.TabIndex = 0;
             this.tab0.UseVisualStyleBackColor = true;
             // 
@@ -248,13 +248,13 @@
             // lbCountdown
             // 
             this.lbCountdown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(6)))), ((int)(((byte)(19)))));
-            this.lbCountdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 50.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCountdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 45F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCountdown.ForeColor = System.Drawing.Color.White;
             this.lbCountdown.Location = new System.Drawing.Point(52, 130);
             this.lbCountdown.Name = "lbCountdown";
             this.lbCountdown.Size = new System.Drawing.Size(264, 77);
             this.lbCountdown.TabIndex = 11;
-            this.lbCountdown.Text = "00:00";
+            this.lbCountdown.Text = "00:00:00";
             this.lbCountdown.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbTimeLeaves
@@ -283,7 +283,7 @@
             this.navBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("navBox1.BackgroundImage")));
             this.navBox1.Location = new System.Drawing.Point(2, 0);
             this.navBox1.Name = "navBox1";
-            this.navBox1.Size = new System.Drawing.Size(365, 85);
+            this.navBox1.Size = new System.Drawing.Size(365, 80);
             this.navBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.navBox1.TabIndex = 0;
             this.navBox1.TabStop = false;
@@ -299,7 +299,7 @@
             this.tab1.Location = new System.Drawing.Point(4, 22);
             this.tab1.Name = "tab1";
             this.tab1.Padding = new System.Windows.Forms.Padding(3);
-            this.tab1.Size = new System.Drawing.Size(368, 579);
+            this.tab1.Size = new System.Drawing.Size(368, 602);
             this.tab1.TabIndex = 1;
             this.tab1.UseVisualStyleBackColor = true;
             // 
@@ -341,7 +341,7 @@
             this.navBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("navBox2.BackgroundImage")));
             this.navBox2.Location = new System.Drawing.Point(2, 0);
             this.navBox2.Name = "navBox2";
-            this.navBox2.Size = new System.Drawing.Size(365, 85);
+            this.navBox2.Size = new System.Drawing.Size(365, 80);
             this.navBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.navBox2.TabIndex = 1;
             this.navBox2.TabStop = false;
@@ -366,7 +366,7 @@
             this.tab2.Controls.Add(this.navBox3);
             this.tab2.Location = new System.Drawing.Point(4, 22);
             this.tab2.Name = "tab2";
-            this.tab2.Size = new System.Drawing.Size(368, 579);
+            this.tab2.Size = new System.Drawing.Size(368, 602);
             this.tab2.TabIndex = 2;
             this.tab2.UseVisualStyleBackColor = true;
             // 
@@ -408,7 +408,7 @@
             this.btnAmPm.TabIndex = 13;
             this.btnAmPm.Text = "AM";
             this.btnAmPm.UseVisualStyleBackColor = true;
-            this.btnAmPm.Click += new System.EventHandler(this.AmPmclick);
+            this.btnAmPm.Click += new System.EventHandler(this.AmPmClick);
             // 
             // pbAlarm
             // 
@@ -514,7 +514,7 @@
             this.navBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("navBox3.BackgroundImage")));
             this.navBox3.Location = new System.Drawing.Point(2, 0);
             this.navBox3.Name = "navBox3";
-            this.navBox3.Size = new System.Drawing.Size(365, 85);
+            this.navBox3.Size = new System.Drawing.Size(365, 80);
             this.navBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.navBox3.TabIndex = 1;
             this.navBox3.TabStop = false;

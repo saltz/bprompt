@@ -28,19 +28,16 @@ namespace SparkyTheSmartClock
         string NsApiUrl;
         FontysAPI connection;
         Schedule schedule;
-
-        //globals ruben nakijken bitte
-        bool mousedrag = false;
-        bool buttonclockcount = true;
+        string beginNextDay;
+        bool mouseDrag = false;
+        bool buttonClockCount = true;
         bool ampm = true;
-        double xnewfirst = 75;
-        double ynewfirst = 35;
-        double xnewseccond = 75;
-        double ynewseccond = 0;
-        int minutes = 0;
-        int hour = 0;
-        Pen penfirst = new Pen(Color.Red, 5);
-        Pen penseccond = new Pen(Color.Black, 5);
+        double xNewFirst = 75;
+        double yNewFirst = 35;
+        double xNewSeccond = 75;
+        double yNewSeccond = 0;
+        Pen penFirst = new Pen(Color.Red, 5);
+        Pen penSeccond = new Pen(Color.Black, 5);
         List<DateTime> CurrentAlarms = new List<DateTime>();
 
         private void NavClick(object sender, EventArgs e)
@@ -82,17 +79,22 @@ namespace SparkyTheSmartClock
             }
         }
 
+
         //tab0 main tab for travel info
 
         private void btCalculateTravelTime_Click(object sender, EventArgs e)
         {
-            lbDelayDeparture.Visible = false;
-            lbDelayArrival.Visible = false;
-
             string xml;
             string livingPlace = tbPlace.Text;
+            string temp;
+            double startTime;
+            double arrivalTime;
+            TravelInfo travelInfo;
+            DateTime now = DateTime.Now; // For the count down timer
+            DateTime departure = DateTime.Now;
+            TimeSpan countDown;
 
-            NsApiUrl = "http://webservices.ns.nl/ns-api-treinplanner?fromStation=" + livingPlace + "&toStation=Eindhoven"; //+ "&dateTime=" + travelinfo.GetBeginTimeSchool() (2016-12-20T12:00);
+            NsApiUrl = "http://webservices.ns.nl/ns-api-treinplanner?fromStation=" + livingPlace + "&toStation=Eindhoven" + "&dateTime=" + beginNextDay;
 
             using (WebClient wc = new WebClient()) // Get acces to the API and put the info in a string
             {
@@ -100,40 +102,76 @@ namespace SparkyTheSmartClock
                 xml = wc.DownloadString(NsApiUrl);
             }
 
-            TravelInfo travelInfo = new TravelInfo(xml);
-
-            // Put travel info in the labels
-            lbIntercitySprinter.Text = travelInfo.GetTravelMode();
-            lbTravelTime.Text = "Travel time: " + travelInfo.GetTravelTime();
-            lbTransporter.Text = "Transporter: " + travelInfo.GetTransporter();
-            lbDate.Text = "Date: " + travelInfo.GetDate();
-            lbDepartureTime.Text = travelInfo.GetEstimatedDepartureTime() + " Station " + travelInfo.GetDepartureName();
-            lbDepartureTrack.Text = "Track " + travelInfo.GetDepartureTrack();
-            lbDelayDeparture.Text = travelInfo.GetDelayDeparture();
-
-            if (lbDelayDeparture.Text != "0")
+            do
             {
-                lbDelayDeparture.Visible = true;
-            }
+                travelInfo = new TravelInfo(xml);
+                
+                try
+                {
+                    temp = beginNextDay.Substring((beginNextDay.IndexOf("T") + 1));
+                    startTime = Convert.ToDouble(temp.Replace(':', ',')); // Putt start time of lessen in variable
+                }
+                catch (NullReferenceException)
+                {
+                    startTime = 1; // To get out of the Do-While loop if user is not logged in on Fontys
+                }
 
-            if (travelInfo.GetDepartureName() != "INVALID!")
-            {
-                lbArrivalTime.Text = travelInfo.GetEstimatedArrivalTime() + " Station Eindhoven";
-            }
-            else
-            {
-                lbArrivalTime.Text = "00:00 Station";
-            }
+                arrivalTime = Convert.ToDouble(travelInfo.GetEstimatedArrivalTime().Replace(':', ',')); // Putt arrival time of train in variable
 
-            lbArrivalTrack.Text = "Track " + travelInfo.GetArrivalTrack();
-            lbDelayArrival.Text = travelInfo.GetDelayArrival();
+                if (arrivalTime < startTime)
+                {
+                    lbDelayDeparture.Visible = false;
+                    lbDelayArrival.Visible = false;
 
-            if (lbDelayArrival.Text != "0")
-            {
-                lbDelayArrival.Visible = true;
-            }
+                    // Put travel info in the labels
+                    lbIntercitySprinter.Text = travelInfo.GetTravelMode();
+                    lbTravelTime.Text = "Travel time: " + travelInfo.GetTravelTime();
+                    lbTransporter.Text = "Transporter: " + travelInfo.GetTransporter();
+                    lbDate.Text = "Date: " + travelInfo.GetDate();
+                    lbDepartureTime.Text = travelInfo.GetEstimatedDepartureTime() + " Station " + travelInfo.GetDepartureName();
+                    lbDepartureTrack.Text = "Track " + travelInfo.GetDepartureTrack();
+                    lbDelayDeparture.Text = travelInfo.GetDelayDeparture();
+                    lbArrivalTrack.Text = "Track " + travelInfo.GetArrivalTrack();
+                    lbDelayArrival.Text = travelInfo.GetDelayArrival();
+                    lbTransfer.Text = "Transfer: " + travelInfo.GetTransferInformation();
 
-            lbTransfer.Text = "Transfer: " + travelInfo.GetTransferInformation();
+                    if (lbDelayDeparture.Text != "0")
+                    {
+                        lbDelayDeparture.Visible = true;
+                    }
+
+                    if (lbDelayArrival.Text != "0")
+                    {
+                        lbDelayArrival.Visible = true;
+                    }
+
+                    if (travelInfo.GetDepartureName() != "INVALID!")
+                    {
+                        lbArrivalTime.Text = travelInfo.GetEstimatedArrivalTime() + " Station Eindhoven";
+                    }
+                    else
+                    {
+                        lbArrivalTime.Text = "00:00 Station";
+                    }
+                                                  
+                    departure = travelInfo.GetActualDepartureTime(); // Departure time for the count down timer                    
+                }
+
+                try
+                {
+                    int endOfTrip = xml.IndexOf("</ReisMogelijkheid>") + 19;
+                    xml = xml.Substring(endOfTrip); // Delete one trip out of the xml
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    arrivalTime = 25; // To get out of the Do-While loop if user didn't fill in his living place correctly 
+                }
+
+            } while (arrivalTime < startTime);
+
+            // Count down timer for the train  
+            countDown = departure.Subtract(now);
+            lbCountdown.Text = countDown.ToString();
         }
 
 
@@ -158,7 +196,7 @@ namespace SparkyTheSmartClock
             else //accesstoken is granted and alive no need to request another
             {
                 BuildingTheSchedule();
-                gettime();// <------------------------------------------------------------------------------------------------------------- sven here
+                GetBeginTimeNextDay();
             }
         }
 
@@ -182,7 +220,7 @@ namespace SparkyTheSmartClock
                     schedule = new Schedule();
                     schedule.ReadingTheJson(json);
                     BuildingTheSchedule();
-                    gettime(); //getting first lesson <------------------------------------------------------------------------------------------------ sven here
+                    GetBeginTimeNextDay();
                 }
                 else //user denied access no school schedule for him
                 {
@@ -197,6 +235,27 @@ namespace SparkyTheSmartClock
             }
         }
 
+        private void GetBeginTimeNextDay()
+        {
+            int counter = 0;
+            DateTime now = DateTime.Now;
+
+            if (now.Hour > 9) // From 9AM you will see the train info for the next school day
+            {
+                now = DateTime.Today.AddDays(1);
+            }       
+
+            foreach (Lesson l in schedule.Lessons)
+            {
+                if (l.start.Contains(now.ToString("yyyy-MM-dd")) && counter == 0)
+                {
+                    beginNextDay = l.start;
+                    beginNextDay = beginNextDay.Substring(0, (beginNextDay.LastIndexOf(':')));
+                    counter++;
+                }
+            }
+
+        }
 
         //needs editing
         private void BuildingTheSchedule()
@@ -225,30 +284,32 @@ namespace SparkyTheSmartClock
             }
         }
 
-        //tab2 rubens tabje
+
+        //tab2 settings tab
 
         private void MouseMoveAlarm(object sender, MouseEventArgs e)
         {
-            if (mousedrag && buttonclockcount)
+            if (mouseDrag && buttonClockCount)
             {
                 double xclick = e.X;
                 double yclick = e.Y;
                 xclick -= 75;
                 yclick -= 75;
+                int hour = 0;
 
-                xnewfirst = xclick / ((Math.Sqrt((xclick * xclick) + (yclick * yclick)) / 40));
-                ynewfirst = yclick / ((Math.Sqrt((xclick * xclick) + (yclick * yclick)) / 40));
+                xNewFirst = xclick / ((Math.Sqrt((xclick * xclick) + (yclick * yclick)) / 40));
+                yNewFirst = yclick / ((Math.Sqrt((xclick * xclick) + (yclick * yclick)) / 40));
                 try
                 {
-                    if (xnewfirst >= 0)
+                    if (xNewFirst >= 0)
                     {
-                        double newpoint = Math.Sqrt((xnewfirst * xnewfirst) + ((-40 - ynewfirst) * (-40 - ynewfirst))) / 2;
+                        double newpoint = Math.Sqrt((xNewFirst * xNewFirst) + ((-40 - yNewFirst) * (-40 - yNewFirst))) / 2;
                         double rotation = Math.Asin(newpoint / 40);
                         hour = Convert.ToInt32(Math.Round((rotation * (180 / Math.PI) * 2) / (180 / 5.5), 0));
                     }
                     else
                     {
-                        double newpoint = Math.Sqrt((xnewfirst * xnewfirst) + ((-40 + ynewfirst) * (-40 + ynewfirst))) / 2;
+                        double newpoint = Math.Sqrt((xNewFirst * xNewFirst) + ((-40 + yNewFirst) * (-40 + yNewFirst))) / 2;
                         double rotation = Math.Asin(newpoint / 40);
                         hour = Convert.ToInt32(Math.Round(((rotation * (180 / Math.PI) * 2) / (180 / 5.5)) + (5.5), 0));
                     }
@@ -258,31 +319,32 @@ namespace SparkyTheSmartClock
 
                 }
                 lbHour.Text = Convert.ToString(hour);
-                ynewfirst += 75;
-                xnewfirst += 75;
+                yNewFirst += 75;
+                xNewFirst += 75;
                 pbAlarm.Invalidate();
             }
 
-            else if (mousedrag && buttonclockcount == false)
+            else if (mouseDrag && buttonClockCount == false)
             {
-
                 double xclick = e.X;
                 double yclick = e.Y;
                 xclick -= 75;
                 yclick -= 75;
-                xnewseccond = xclick / ((Math.Sqrt((xclick * xclick) + (yclick * yclick)) / 75));
-                ynewseccond = yclick / ((Math.Sqrt((xclick * xclick) + (yclick * yclick)) / 75));
+                int minutes = 0;
+
+                xNewSeccond = xclick / ((Math.Sqrt((xclick * xclick) + (yclick * yclick)) / 75));
+                yNewSeccond = yclick / ((Math.Sqrt((xclick * xclick) + (yclick * yclick)) / 75));
                 try
                 {
-                    if (xnewseccond >= 0)
+                    if (xNewSeccond >= 0)
                     {
-                        double newpoint = Math.Sqrt((xnewseccond * xnewseccond) + ((-75 - ynewseccond) * (-75 - ynewseccond))) / 2;
+                        double newpoint = Math.Sqrt((xNewSeccond * xNewSeccond) + ((-75 - yNewSeccond) * (-75 - yNewSeccond))) / 2;
                         double rotation = Math.Asin(newpoint / 75);
                         minutes = Convert.ToInt32((rotation * (180 / Math.PI) * 2) / (180 / 29.5));
                     }
                     else
                     {
-                        double newpoint = Math.Sqrt((xnewseccond * xnewseccond) + ((-75 + ynewseccond) * (-75 + ynewseccond))) / 2;
+                        double newpoint = Math.Sqrt((xNewSeccond * xNewSeccond) + ((-75 + yNewSeccond) * (-75 + yNewSeccond))) / 2;
                         double rotation = Math.Asin(newpoint / 75);
                         minutes = Convert.ToInt32(((rotation * (180 / Math.PI) * 2) / (180 / 29.5)) + (30));
                     }
@@ -293,52 +355,52 @@ namespace SparkyTheSmartClock
                 }
 
                 lbMinute.Text = Convert.ToString(minutes);
-                ynewseccond += 75;
-                xnewseccond += 75;
+                yNewSeccond += 75;
+                xNewSeccond += 75;
                 pbAlarm.Invalidate();
             }
         }
 
         private void MouseDownAlarm(object sender, MouseEventArgs e)
         {
-            mousedrag = true;
+            mouseDrag = true;
         }
 
         private void MouseUpAlarm(object sender, MouseEventArgs e)
         {
-            mousedrag = false;
+            mouseDrag = false;
         }
 
         private void PaintClock(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            Point outerpointfirst = new Point(Convert.ToInt32(xnewfirst), Convert.ToInt32(ynewfirst));
-            Point outerpointseccond = new Point(Convert.ToInt32(xnewseccond), Convert.ToInt32(ynewseccond));
+            Point outerpointfirst = new Point(Convert.ToInt32(xNewFirst), Convert.ToInt32(yNewFirst));
+            Point outerpointseccond = new Point(Convert.ToInt32(xNewSeccond), Convert.ToInt32(yNewSeccond));
             Point centerpoint = new Point(75, 75);
-            g.DrawLine(penseccond, centerpoint, outerpointseccond);
-            g.DrawLine(penfirst, centerpoint, outerpointfirst);
+            g.DrawLine(penSeccond, centerpoint, outerpointseccond);
+            g.DrawLine(penFirst, centerpoint, outerpointfirst);
         }
 
         private void btnSetAlarm_Click(object sender, EventArgs e)
         {
-            if (buttonclockcount)
+            if (buttonClockCount)
             {
                 btnSetAlarm.Text = "Confirm minutes";
-                penfirst.Color = Color.Black;
-                penseccond.Color = Color.Red;
-                buttonclockcount = false;
+                penFirst.Color = Color.Black;
+                penSeccond.Color = Color.Red;
+                buttonClockCount = false;
             }
             else
             {
                 btnSetAlarm.Text = "Confirm Hour";
-                penfirst.Color = Color.Red;
-                penseccond.Color = Color.Black;
-                buttonclockcount = true;
+                penFirst.Color = Color.Red;
+                penSeccond.Color = Color.Black;
+                buttonClockCount = true;
             }
             pbAlarm.Invalidate();
         }
 
-        private void AmPmclick(object sender, EventArgs e)
+        private void AmPmClick(object sender, EventArgs e)
         {
             if (ampm)
             {
@@ -354,14 +416,14 @@ namespace SparkyTheSmartClock
 
         private void btnConfirmAlarm_Click(object sender, EventArgs e)
         {
-            string alarmset = lbHour.Text + ":" + lbMinute.Text + ":00 " + btnAmPm.Text;
-            DateTime currentalarm = Convert.ToDateTime(alarmset);
-            CurrentAlarms.Add(currentalarm);
+            string alarmSet = lbHour.Text + ":" + lbMinute.Text + ":00 " + btnAmPm.Text;
+            DateTime currentAlarm = Convert.ToDateTime(alarmSet);
+            CurrentAlarms.Add(currentAlarm);
             TimeCheckAlarm.Start();
-            xnewfirst = 75;
-            ynewfirst = 35;
-            xnewseccond = 75;
-            ynewseccond = 0;
+            xNewFirst = 75;
+            yNewFirst = 35;
+            xNewSeccond = 75;
+            yNewSeccond = 0;
             lbHour.Text = "0";
             lbMinute.Text = "0";
             MessageBox.Show("Alarm succefully added");
@@ -400,20 +462,6 @@ namespace SparkyTheSmartClock
             {
 
             }
-        }
-
-        private void gettime()
-        {
-            int counter = 0;
-            foreach (Lesson l in schedule.Lessons)
-            {
-                if(l.start.Contains("2017-01-10") && counter == 0)
-                {
-                    MessageBox.Show(l.start + l.subject + l.teacherAbbreviation);
-                    counter++;
-                }
-            }
-
         }
     }
 }
