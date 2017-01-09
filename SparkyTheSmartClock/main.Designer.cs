@@ -54,6 +54,10 @@
             this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.navBox2 = new System.Windows.Forms.PictureBox();
             this.tab2 = new System.Windows.Forms.TabPage();
+            this.btnAmPm = new System.Windows.Forms.Button();
+            this.pbAlarm = new System.Windows.Forms.PictureBox();
+            this.lbMinute = new System.Windows.Forms.Label();
+            this.lbHour = new System.Windows.Forms.Label();
             this.pbClock = new System.Windows.Forms.PictureBox();
             this.pbHome = new System.Windows.Forms.PictureBox();
             this.tbPlace = new System.Windows.Forms.TextBox();
@@ -62,6 +66,10 @@
             this.lbLivingPlace = new System.Windows.Forms.Label();
             this.navBox3 = new System.Windows.Forms.PictureBox();
             this.TimeAlliveTimer = new System.Windows.Forms.Timer(this.components);
+            this.btnSetAlarm = new System.Windows.Forms.Button();
+            this.btnConfirmAlarm = new System.Windows.Forms.Button();
+            this.TimeCheckAlarm = new System.Windows.Forms.Timer(this.components);
+            this.btnCurrentAlarms = new System.Windows.Forms.Button();
             this.menuNav.SuspendLayout();
             this.tab0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTrain)).BeginInit();
@@ -69,6 +77,7 @@
             this.tab1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBox2)).BeginInit();
             this.tab2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAlarm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrepTime)).BeginInit();
@@ -341,6 +350,13 @@
             // 
             // tab2
             // 
+            this.tab2.Controls.Add(this.btnCurrentAlarms);
+            this.tab2.Controls.Add(this.btnConfirmAlarm);
+            this.tab2.Controls.Add(this.btnSetAlarm);
+            this.tab2.Controls.Add(this.btnAmPm);
+            this.tab2.Controls.Add(this.pbAlarm);
+            this.tab2.Controls.Add(this.lbMinute);
+            this.tab2.Controls.Add(this.lbHour);
             this.tab2.Controls.Add(this.pbClock);
             this.tab2.Controls.Add(this.pbHome);
             this.tab2.Controls.Add(this.tbPlace);
@@ -353,6 +369,50 @@
             this.tab2.Size = new System.Drawing.Size(368, 579);
             this.tab2.TabIndex = 2;
             this.tab2.UseVisualStyleBackColor = true;
+            // 
+            // btnAmPm
+            // 
+            this.btnAmPm.Location = new System.Drawing.Point(281, 334);
+            this.btnAmPm.Name = "btnAmPm";
+            this.btnAmPm.Size = new System.Drawing.Size(50, 43);
+            this.btnAmPm.TabIndex = 13;
+            this.btnAmPm.Text = "AM";
+            this.btnAmPm.UseVisualStyleBackColor = true;
+            this.btnAmPm.Click += new System.EventHandler(this.AmPmclick);
+            // 
+            // pbAlarm
+            // 
+            this.pbAlarm.Image = global::SparkyTheSmartClock.Properties.Resources.alarmclock;
+            this.pbAlarm.Location = new System.Drawing.Point(30, 334);
+            this.pbAlarm.Name = "pbAlarm";
+            this.pbAlarm.Size = new System.Drawing.Size(150, 150);
+            this.pbAlarm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbAlarm.TabIndex = 12;
+            this.pbAlarm.TabStop = false;
+            this.pbAlarm.Paint += new System.Windows.Forms.PaintEventHandler(this.PaintClock);
+            this.pbAlarm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDownAlarm);
+            this.pbAlarm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseMoveAlarm);
+            this.pbAlarm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MouseUpAlarm);
+            // 
+            // lbMinute
+            // 
+            this.lbMinute.AutoSize = true;
+            this.lbMinute.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.lbMinute.Location = new System.Drawing.Point(246, 347);
+            this.lbMinute.Name = "lbMinute";
+            this.lbMinute.Size = new System.Drawing.Size(15, 16);
+            this.lbMinute.TabIndex = 11;
+            this.lbMinute.Text = "0";
+            // 
+            // lbHour
+            // 
+            this.lbHour.AutoSize = true;
+            this.lbHour.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.lbHour.Location = new System.Drawing.Point(202, 347);
+            this.lbHour.Name = "lbHour";
+            this.lbHour.Size = new System.Drawing.Size(15, 16);
+            this.lbHour.TabIndex = 10;
+            this.lbHour.Text = "0";
             // 
             // pbClock
             // 
@@ -436,6 +496,41 @@
             this.TimeAlliveTimer.Interval = 1000;
             this.TimeAlliveTimer.Tick += new System.EventHandler(this.TickTock);
             // 
+            // btnSetAlarm
+            // 
+            this.btnSetAlarm.Location = new System.Drawing.Point(186, 392);
+            this.btnSetAlarm.Name = "btnSetAlarm";
+            this.btnSetAlarm.Size = new System.Drawing.Size(145, 39);
+            this.btnSetAlarm.TabIndex = 14;
+            this.btnSetAlarm.Text = "Confirm Hour";
+            this.btnSetAlarm.UseVisualStyleBackColor = true;
+            this.btnSetAlarm.Click += new System.EventHandler(this.btnSetAlarm_Click);
+            // 
+            // btnConfirmAlarm
+            // 
+            this.btnConfirmAlarm.Location = new System.Drawing.Point(186, 490);
+            this.btnConfirmAlarm.Name = "btnConfirmAlarm";
+            this.btnConfirmAlarm.Size = new System.Drawing.Size(145, 39);
+            this.btnConfirmAlarm.TabIndex = 15;
+            this.btnConfirmAlarm.Text = "Confirm Alarm";
+            this.btnConfirmAlarm.UseVisualStyleBackColor = true;
+            this.btnConfirmAlarm.Click += new System.EventHandler(this.btnConfirmAlarm_Click);
+            // 
+            // TimeCheckAlarm
+            // 
+            this.TimeCheckAlarm.Interval = 1000;
+            this.TimeCheckAlarm.Tick += new System.EventHandler(this.AlarmCheck);
+            // 
+            // btnCurrentAlarms
+            // 
+            this.btnCurrentAlarms.Location = new System.Drawing.Point(30, 490);
+            this.btnCurrentAlarms.Name = "btnCurrentAlarms";
+            this.btnCurrentAlarms.Size = new System.Drawing.Size(150, 39);
+            this.btnCurrentAlarms.TabIndex = 16;
+            this.btnCurrentAlarms.Text = "Current Alarms";
+            this.btnCurrentAlarms.UseVisualStyleBackColor = true;
+            this.btnCurrentAlarms.Click += new System.EventHandler(this.btnCurrentAlarms_Click);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -455,6 +550,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.navBox2)).EndInit();
             this.tab2.ResumeLayout(false);
             this.tab2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAlarm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHome)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrepTime)).EndInit();
@@ -497,6 +593,14 @@
         private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Timer TimeAlliveTimer;
+        private System.Windows.Forms.Label lbHour;
+        private System.Windows.Forms.Label lbMinute;
+        private System.Windows.Forms.PictureBox pbAlarm;
+        private System.Windows.Forms.Button btnAmPm;
+        private System.Windows.Forms.Button btnSetAlarm;
+        private System.Windows.Forms.Button btnConfirmAlarm;
+        private System.Windows.Forms.Timer TimeCheckAlarm;
+        private System.Windows.Forms.Button btnCurrentAlarms;
     }
 }
 
