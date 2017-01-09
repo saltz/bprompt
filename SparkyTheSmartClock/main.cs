@@ -29,6 +29,20 @@ namespace SparkyTheSmartClock
         FontysAPI connection;
         Schedule schedule;
 
+        //globals ruben nakijken bitte
+        bool mousedrag = false;
+        double xnewfirst = 75;
+        double ynewfirst = 35;
+        double xnewseccond = 75;
+        double ynewseccond = 0;
+        bool buttonclockcount = true;
+        Pen penfirst = new Pen(Color.Red, 5);
+        Pen penseccond = new Pen(Color.Black, 5);
+        int minutes = 0;
+        int hour = 0;
+        bool ampm = true;
+        List<DateTime> CurrentAlarms = new List<DateTime>();
+
         private void NavClick(object sender, EventArgs e)
         {
             NavigationCalculation();
@@ -206,6 +220,164 @@ namespace SparkyTheSmartClock
             else
             {
                 TimeAlliveTimer.Stop();
+            }
+        }
+
+        //tab2 rubens tabje
+
+        private void MouseMoveAlarm(object sender, MouseEventArgs e)
+        {
+            if (mousedrag && buttonclockcount)
+            {
+                double xclick = e.X;
+                double yclick = e.Y;
+                xclick -= 75;
+                yclick -= 75;
+
+                xnewfirst = xclick / ((Math.Sqrt((xclick * xclick) + (yclick * yclick)) / 40));
+                ynewfirst = yclick / ((Math.Sqrt((xclick * xclick) + (yclick * yclick)) / 40));
+                try
+                {
+                    if (xnewfirst >= 0)
+                    {
+                        double newpoint = Math.Sqrt((xnewfirst * xnewfirst) + ((-40 - ynewfirst) * (-40 - ynewfirst))) / 2;
+                        double rotation = Math.Asin(newpoint / 40);
+                        hour = Convert.ToInt32(Math.Round((rotation * (180 / Math.PI) * 2) / (180 / 5.5), 0));
+                    }
+                    else
+                    {
+                        double newpoint = Math.Sqrt((xnewfirst * xnewfirst) + ((-40 + ynewfirst) * (-40 + ynewfirst))) / 2;
+                        double rotation = Math.Asin(newpoint / 40);
+                        hour = Convert.ToInt32(Math.Round(((rotation * (180 / Math.PI) * 2) / (180 / 5.5)) + (5.5), 0));
+                    }
+                }
+                catch
+                {
+
+                }
+                lbHour.Text = Convert.ToString(hour);
+                ynewfirst += 75;
+                xnewfirst += 75;
+                pbClock.Invalidate();
+            }
+
+            else if (mousedrag && buttonclockcount == false)
+            {
+
+                double xclick = e.X;
+                double yclick = e.Y;
+                xclick -= 75;
+                yclick -= 75;
+                xnewseccond = xclick / ((Math.Sqrt((xclick * xclick) + (yclick * yclick)) / 75));
+                ynewseccond = yclick / ((Math.Sqrt((xclick * xclick) + (yclick * yclick)) / 75));
+                try
+                {
+                    if (xnewseccond >= 0)
+                    {
+                        double newpoint = Math.Sqrt((xnewseccond * xnewseccond) + ((-75 - ynewseccond) * (-75 - ynewseccond))) / 2;
+                        double rotation = Math.Asin(newpoint / 75);
+                        minutes = Convert.ToInt32((rotation * (180 / Math.PI) * 2) / (180 / 29.5));
+                    }
+                    else
+                    {
+                        double newpoint = Math.Sqrt((xnewseccond * xnewseccond) + ((-75 + ynewseccond) * (-75 + ynewseccond))) / 2;
+                        double rotation = Math.Asin(newpoint / 75);
+                        minutes = Convert.ToInt32(((rotation * (180 / Math.PI) * 2) / (180 / 29.5)) + (30));
+                    }
+                }
+                catch
+                {
+
+                }
+
+                lbMinute.Text = Convert.ToString(minutes);
+                ynewseccond += 75;
+                xnewseccond += 75;
+                pbClock.Invalidate();
+            }
+        }
+
+        private void PaintClock(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            Point outerpointfirst = new Point(Convert.ToInt32(xnewfirst), Convert.ToInt32(ynewfirst));
+            Point outerpointseccond = new Point(Convert.ToInt32(xnewseccond), Convert.ToInt32(ynewseccond));
+            Point centerpoint = new Point(75, 75);
+            g.DrawLine(penseccond, centerpoint, outerpointseccond);
+            g.DrawLine(penfirst, centerpoint, outerpointfirst);
+        }
+
+        private void btnSetAlarm_Click(object sender, EventArgs e)
+        {
+            if (buttonclockcount)
+            {
+                btnSetAlarm.Text = "Set Hours";
+                penfirst.Color = Color.Black;
+                penseccond.Color = Color.Red;
+                buttonclockcount = false;
+            }
+            else
+            {
+                btnSetAlarm.Text = "Set Minutes";
+                penfirst.Color = Color.Red;
+                penseccond.Color = Color.Black;
+                buttonclockcount = true;
+            }
+            pbClock.Invalidate();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (ampm)
+            {
+                btnAmPm.Text = "PM";
+                ampm = false;
+            }
+            else
+            {
+                btnAmPm.Text = "AM";
+                ampm = true;
+            }
+        }
+
+        private void btnConfirmAlarm_Click(object sender, EventArgs e)
+        {
+            string alarmset = lbHour.Text + ":" + lbMinute.Text + ":00 " + btnAmPm.Text;
+            DateTime currentalarm = Convert.ToDateTime(alarmset);
+            CurrentAlarms.Add(currentalarm);
+        }
+
+        private void btnCurrentAlarms_Click(object sender, EventArgs e)
+        {
+            foreach (DateTime alarm in CurrentAlarms)
+            {
+                int truefalse = DateTime.Now.CompareTo(alarm);
+                MessageBox.Show(Convert.ToString(truefalse) + " " + alarm.ToString());
+            }
+        }
+
+        private void AlarmCheck(object sender, EventArgs e)
+        {
+            int alarmindex = 0;
+            try
+            {
+                foreach (DateTime alarm in CurrentAlarms)
+                {
+                    int truefalse = DateTime.Now.CompareTo(alarm);
+                    if (truefalse > 0)
+                    {
+                        CurrentAlarms.RemoveAt(alarmindex);
+                        MessageBox.Show("ALARMMM FUUUUUUCK");
+                    }
+                    else
+                    {
+                        alarmindex++;
+                    }
+                }
+            }
+            catch
+            {
+
             }
         }
     }
