@@ -112,15 +112,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Navbar_nav2.png" />
+    <None Include="Resources\Navbar_main2.png" />
+    <None Include="Resources\navbar_calander2.png" />
     <None Include="Resources\alarmclock.png" />
     <Content Include="Resources\app_logo.png" />
     <None Include="Resources\Logo.png" />
     <None Include="Resources\train.png" />
     <None Include="Resources\home.png" />
     <None Include="Resources\clock.png" />
-    <None Include="Resources\Navbar_nav.png" />
-    <None Include="Resources\Navbar_main.png" />
-    <None Include="Resources\navbar_calander.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -54,6 +54,9 @@
             this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.navBox2 = new System.Windows.Forms.PictureBox();
             this.tab2 = new System.Windows.Forms.TabPage();
+            this.btnCurrentAlarms = new System.Windows.Forms.Button();
+            this.btnConfirmAlarm = new System.Windows.Forms.Button();
+            this.btnSetAlarm = new System.Windows.Forms.Button();
             this.btnAmPm = new System.Windows.Forms.Button();
             this.pbAlarm = new System.Windows.Forms.PictureBox();
             this.lbMinute = new System.Windows.Forms.Label();
@@ -66,10 +69,7 @@
             this.lbLivingPlace = new System.Windows.Forms.Label();
             this.navBox3 = new System.Windows.Forms.PictureBox();
             this.TimeAlliveTimer = new System.Windows.Forms.Timer(this.components);
-            this.btnSetAlarm = new System.Windows.Forms.Button();
-            this.btnConfirmAlarm = new System.Windows.Forms.Button();
             this.TimeCheckAlarm = new System.Windows.Forms.Timer(this.components);
-            this.btnCurrentAlarms = new System.Windows.Forms.Button();
             this.menuNav.SuspendLayout();
             this.tab0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTrain)).BeginInit();
@@ -338,7 +338,7 @@
             // 
             // navBox2
             // 
-            this.navBox2.BackgroundImage = global::SparkyTheSmartClock.Properties.Resources.navbar_calander;
+            this.navBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("navBox2.BackgroundImage")));
             this.navBox2.Location = new System.Drawing.Point(2, 0);
             this.navBox2.Name = "navBox2";
             this.navBox2.Size = new System.Drawing.Size(365, 85);
@@ -369,6 +369,36 @@
             this.tab2.Size = new System.Drawing.Size(368, 579);
             this.tab2.TabIndex = 2;
             this.tab2.UseVisualStyleBackColor = true;
+            // 
+            // btnCurrentAlarms
+            // 
+            this.btnCurrentAlarms.Location = new System.Drawing.Point(30, 490);
+            this.btnCurrentAlarms.Name = "btnCurrentAlarms";
+            this.btnCurrentAlarms.Size = new System.Drawing.Size(150, 39);
+            this.btnCurrentAlarms.TabIndex = 16;
+            this.btnCurrentAlarms.Text = "Current Alarms";
+            this.btnCurrentAlarms.UseVisualStyleBackColor = true;
+            this.btnCurrentAlarms.Click += new System.EventHandler(this.btnCurrentAlarms_Click);
+            // 
+            // btnConfirmAlarm
+            // 
+            this.btnConfirmAlarm.Location = new System.Drawing.Point(186, 490);
+            this.btnConfirmAlarm.Name = "btnConfirmAlarm";
+            this.btnConfirmAlarm.Size = new System.Drawing.Size(145, 39);
+            this.btnConfirmAlarm.TabIndex = 15;
+            this.btnConfirmAlarm.Text = "Confirm Alarm";
+            this.btnConfirmAlarm.UseVisualStyleBackColor = true;
+            this.btnConfirmAlarm.Click += new System.EventHandler(this.btnConfirmAlarm_Click);
+            // 
+            // btnSetAlarm
+            // 
+            this.btnSetAlarm.Location = new System.Drawing.Point(186, 392);
+            this.btnSetAlarm.Name = "btnSetAlarm";
+            this.btnSetAlarm.Size = new System.Drawing.Size(145, 39);
+            this.btnSetAlarm.TabIndex = 14;
+            this.btnSetAlarm.Text = "Confirm Hour";
+            this.btnSetAlarm.UseVisualStyleBackColor = true;
+            this.btnSetAlarm.Click += new System.EventHandler(this.btnSetAlarm_Click);
             // 
             // btnAmPm
             // 
@@ -481,7 +511,7 @@
             // 
             // navBox3
             // 
-            this.navBox3.BackgroundImage = global::SparkyTheSmartClock.Properties.Resources.Navbar_nav;
+            this.navBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("navBox3.BackgroundImage")));
             this.navBox3.Location = new System.Drawing.Point(2, 0);
             this.navBox3.Name = "navBox3";
             this.navBox3.Size = new System.Drawing.Size(365, 85);
@@ -496,40 +526,10 @@
             this.TimeAlliveTimer.Interval = 1000;
             this.TimeAlliveTimer.Tick += new System.EventHandler(this.TickTock);
             // 
-            // btnSetAlarm
-            // 
-            this.btnSetAlarm.Location = new System.Drawing.Point(186, 392);
-            this.btnSetAlarm.Name = "btnSetAlarm";
-            this.btnSetAlarm.Size = new System.Drawing.Size(145, 39);
-            this.btnSetAlarm.TabIndex = 14;
-            this.btnSetAlarm.Text = "Confirm Hour";
-            this.btnSetAlarm.UseVisualStyleBackColor = true;
-            this.btnSetAlarm.Click += new System.EventHandler(this.btnSetAlarm_Click);
-            // 
-            // btnConfirmAlarm
-            // 
-            this.btnConfirmAlarm.Location = new System.Drawing.Point(186, 490);
-            this.btnConfirmAlarm.Name = "btnConfirmAlarm";
-            this.btnConfirmAlarm.Size = new System.Drawing.Size(145, 39);
-            this.btnConfirmAlarm.TabIndex = 15;
-            this.btnConfirmAlarm.Text = "Confirm Alarm";
-            this.btnConfirmAlarm.UseVisualStyleBackColor = true;
-            this.btnConfirmAlarm.Click += new System.EventHandler(this.btnConfirmAlarm_Click);
-            // 
             // TimeCheckAlarm
             // 
             this.TimeCheckAlarm.Interval = 1000;
             this.TimeCheckAlarm.Tick += new System.EventHandler(this.AlarmCheck);
-            // 
-            // btnCurrentAlarms
-            // 
-            this.btnCurrentAlarms.Location = new System.Drawing.Point(30, 490);
-            this.btnCurrentAlarms.Name = "btnCurrentAlarms";
-            this.btnCurrentAlarms.Size = new System.Drawing.Size(150, 39);
-            this.btnCurrentAlarms.TabIndex = 16;
-            this.btnCurrentAlarms.Text = "Current Alarms";
-            this.btnCurrentAlarms.UseVisualStyleBackColor = true;
-            this.btnCurrentAlarms.Click += new System.EventHandler(this.btnCurrentAlarms_Click);
             // 
             // main
             // 
