@@ -70,6 +70,7 @@
             this.navBox3 = new System.Windows.Forms.PictureBox();
             this.TimeAlliveTimer = new System.Windows.Forms.Timer(this.components);
             this.TimeCheckAlarm = new System.Windows.Forms.Timer(this.components);
+            this.TimeCountDown = new System.Windows.Forms.Timer(this.components);
             this.menuNav.SuspendLayout();
             this.tab0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTrain)).BeginInit();
@@ -531,6 +532,10 @@
             this.TimeCheckAlarm.Interval = 1000;
             this.TimeCheckAlarm.Tick += new System.EventHandler(this.AlarmCheck);
             // 
+            // TimeCountDown
+            // 
+            this.TimeCountDown.Tick += new System.EventHandler(this.TimeCountDown_Tick);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -601,6 +606,7 @@
         private System.Windows.Forms.Button btnConfirmAlarm;
         private System.Windows.Forms.Timer TimeCheckAlarm;
         private System.Windows.Forms.Button btnCurrentAlarms;
+        private System.Windows.Forms.Timer TimeCountDown;
     }
 }
 

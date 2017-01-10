@@ -26,6 +26,8 @@ namespace SparkyTheSmartClock
         double mousepositionX;
         double mousepositionY;
         string NsApiUrl;
+        DateTime departure;
+        TimeSpan countDown;
         FontysAPI connection;
         Schedule schedule;
         string beginNextDay;
@@ -90,9 +92,6 @@ namespace SparkyTheSmartClock
             double startTime;
             double arrivalTime;
             TravelInfo travelInfo;
-            DateTime now = DateTime.Now; // For the count down timer
-            DateTime departure = DateTime.Now;
-            TimeSpan countDown;
 
             NsApiUrl = "http://webservices.ns.nl/ns-api-treinplanner?fromStation=" + livingPlace + "&toStation=Eindhoven" + "&dateTime=" + beginNextDay;
 
@@ -105,7 +104,7 @@ namespace SparkyTheSmartClock
             do
             {
                 travelInfo = new TravelInfo(xml);
-                
+
                 try
                 {
                     temp = beginNextDay.Substring((beginNextDay.IndexOf("T") + 1));
@@ -114,6 +113,7 @@ namespace SparkyTheSmartClock
                 catch (NullReferenceException)
                 {
                     startTime = 1; // To get out of the Do-While loop if user is not logged in on Fontys
+                    TimeCountDown.Stop();
                 }
 
                 arrivalTime = Convert.ToDouble(travelInfo.GetEstimatedArrivalTime().Replace(':', ',')); // Putt arrival time of train in variable
@@ -153,8 +153,15 @@ namespace SparkyTheSmartClock
                     {
                         lbArrivalTime.Text = "00:00 Station";
                     }
-                                                  
-                    departure = travelInfo.GetActualDepartureTime(); // Departure time for the count down timer                    
+
+                    departure = DateTime.Now;
+                    departure = travelInfo.GetActualDepartureTime(); // Departure time for the count down timer   
+
+                    // Count down timer for the train  
+                    TimeCountDown.Enabled = true;
+                    TimeCountDown.Start();
+
+                    UpdateCountDownTimer();
                 }
 
                 try
@@ -165,13 +172,22 @@ namespace SparkyTheSmartClock
                 catch (ArgumentOutOfRangeException)
                 {
                     arrivalTime = 25; // To get out of the Do-While loop if user didn't fill in his living place correctly 
+                    TimeCountDown.Stop();
                 }
 
             } while (arrivalTime < startTime);
+        }
 
-            // Count down timer for the train  
+        private void UpdateCountDownTimer()
+        {
+            DateTime now = DateTime.Now;
             countDown = departure.Subtract(now);
-            lbCountdown.Text = countDown.ToString();
+            lbCountdown.Text = (countDown.Hours + (countDown.Days * 24)).ToString("00") + ":" + countDown.Minutes.ToString("00") + ":" + countDown.Seconds.ToString("00");
+        }
+
+        private void TimeCountDown_Tick(object sender, EventArgs e)
+        {
+            UpdateCountDownTimer();
         }
 
 
@@ -243,7 +259,7 @@ namespace SparkyTheSmartClock
             if (now.Hour > 9) // From 9AM you will see the train info for the next school day
             {
                 now = DateTime.Today.AddDays(1);
-            }       
+            }
 
             foreach (Lesson l in schedule.Lessons)
             {
