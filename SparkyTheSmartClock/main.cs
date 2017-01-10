@@ -109,6 +109,16 @@ namespace SparkyTheSmartClock
                 {
                     temp = beginNextDay.Substring((beginNextDay.IndexOf("T") + 1));
                     startTime = Convert.ToDouble(temp.Replace(':', ',')); // Putt start time of lessen in variable
+
+                    // Minus 9min for traveltime from station ehv to fontys 
+                    if (Convert.ToString(startTime).IndexOf(",") == -1)
+                    {
+                        startTime = startTime - 00.49;
+                    }
+                    else 
+                    {
+                        startTime = startTime - 00.09;
+                    }
                 }
                 catch (NullReferenceException)
                 {
@@ -154,9 +164,8 @@ namespace SparkyTheSmartClock
                         lbArrivalTime.Text = "00:00 Station";
                     }
 
-                    departure = DateTime.Now;
-                    departure = travelInfo.GetActualDepartureTime(); // Departure time for the count down timer   
-
+                    departure = travelInfo.GetActualDepartureTime(); // Departure time for the count down timer 
+                    
                     // Count down timer for the train  
                     TimeCountDown.Enabled = true;
                     TimeCountDown.Start();
@@ -258,7 +267,7 @@ namespace SparkyTheSmartClock
 
             if (now.Hour > 9) // From 9AM you will see the train info for the next school day
             {
-                now = DateTime.Today.AddDays(1);
+                now = DateTime.Today.AddDays(2);
             }
 
             foreach (Lesson l in schedule.Lessons)
