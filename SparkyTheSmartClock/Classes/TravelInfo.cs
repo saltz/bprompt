@@ -16,11 +16,7 @@ namespace SparkyTheSmartClock
         public TravelInfo(string xml) // Constructor
         {
             this.xml = xml;
-            //int endOfTrip = this.xml.IndexOf("</ReisMogelijkheid>") + 19;
-            //this.xml = this.xml.Substring(endOfTrip); // Delete one trip out of the xml
             this.xmlArrivalTrack = xml;
-            //int endOfTrip2 = this.xmlArrivalTrack.IndexOf("</ReisMogelijkheid>") + 19;
-            //this.xmlArrivalTrack = this.xmlArrivalTrack.Substring(endOfTrip2); // Delete one trip out of the xmlArrivalTrack
         }
 
         public string GetDate()
@@ -59,6 +55,25 @@ namespace SparkyTheSmartClock
                 string invalid = "00:00";
                 return invalid;
             }
+        }
+
+        public DateTime GetActualDepartureTime()
+        {
+            int start = xml.IndexOf("<ActueleVertrekTijd>") + 20;
+            int end = xml.IndexOf("</ActueleVertrekTijd>") - 5;
+            int difference = end - start;
+            DateTime time = DateTime.Now;
+
+            try
+            {
+                time = Convert.ToDateTime(xml.Substring(start, difference)); // Get the needed info               
+            }
+            catch 
+            {
+
+            }
+
+            return time;
         }
 
         public string GetDepartureTrack()
