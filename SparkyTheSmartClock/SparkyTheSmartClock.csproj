@@ -112,6 +112,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Navbar_settings.png" />
+    <None Include="Resources\Navbar_roster.png" />
+    <None Include="Resources\Navbar_main.png" />
     <None Include="Resources\Navbar_nav2.png" />
     <None Include="Resources\Navbar_main2.png" />
     <None Include="Resources\navbar_calander2.png" />

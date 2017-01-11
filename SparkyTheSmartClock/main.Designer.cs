@@ -41,48 +41,48 @@
             this.lbArrivalTime = new System.Windows.Forms.Label();
             this.lbDepartureTime = new System.Windows.Forms.Label();
             this.lbIntercitySprinter = new System.Windows.Forms.Label();
-            this.pbTrain = new System.Windows.Forms.PictureBox();
             this.lbTravelTime = new System.Windows.Forms.Label();
             this.lbTransfer = new System.Windows.Forms.Label();
             this.lbCountdown = new System.Windows.Forms.Label();
             this.lbTimeLeaves = new System.Windows.Forms.Label();
             this.btCalculateTravelTime = new System.Windows.Forms.Button();
-            this.navBox1 = new System.Windows.Forms.PictureBox();
             this.tab1 = new System.Windows.Forms.TabPage();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.lblError = new System.Windows.Forms.Label();
             this.webBrowser = new System.Windows.Forms.WebBrowser();
-            this.navBox2 = new System.Windows.Forms.PictureBox();
             this.tab2 = new System.Windows.Forms.TabPage();
             this.btnSetSchoolAlarm = new System.Windows.Forms.Button();
             this.btnCurrentAlarms = new System.Windows.Forms.Button();
             this.btnConfirmAlarm = new System.Windows.Forms.Button();
             this.btnSetAlarm = new System.Windows.Forms.Button();
             this.btnAmPm = new System.Windows.Forms.Button();
-            this.pbAlarm = new System.Windows.Forms.PictureBox();
             this.lbMinute = new System.Windows.Forms.Label();
             this.lbHour = new System.Windows.Forms.Label();
-            this.pbClock = new System.Windows.Forms.PictureBox();
-            this.pbHome = new System.Windows.Forms.PictureBox();
             this.tbPlace = new System.Windows.Forms.TextBox();
             this.nudPrepTime = new System.Windows.Forms.NumericUpDown();
             this.lbTimeToGetOutOfBed = new System.Windows.Forms.Label();
             this.lbLivingPlace = new System.Windows.Forms.Label();
-            this.navBox3 = new System.Windows.Forms.PictureBox();
             this.TimeAlliveTimer = new System.Windows.Forms.Timer(this.components);
             this.TimeCheckAlarm = new System.Windows.Forms.Timer(this.components);
             this.TimeCountDown = new System.Windows.Forms.Timer(this.components);
+            this.pbTrain = new System.Windows.Forms.PictureBox();
+            this.navBox1 = new System.Windows.Forms.PictureBox();
+            this.navBox2 = new System.Windows.Forms.PictureBox();
+            this.pbAlarm = new System.Windows.Forms.PictureBox();
+            this.pbClock = new System.Windows.Forms.PictureBox();
+            this.pbHome = new System.Windows.Forms.PictureBox();
+            this.navBox3 = new System.Windows.Forms.PictureBox();
             this.menuNav.SuspendLayout();
             this.tab0.SuspendLayout();
+            this.tab1.SuspendLayout();
+            this.tab2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPrepTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTrain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBox1)).BeginInit();
-            this.tab1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBox2)).BeginInit();
-            this.tab2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAlarm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHome)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPrepTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBox3)).BeginInit();
             this.SuspendLayout();
             // 
@@ -217,16 +217,6 @@
             this.lbIntercitySprinter.Size = new System.Drawing.Size(0, 16);
             this.lbIntercitySprinter.TabIndex = 17;
             // 
-            // pbTrain
-            // 
-            this.pbTrain.Image = global::SparkyTheSmartClock.Properties.Resources.train;
-            this.pbTrain.Location = new System.Drawing.Point(53, 332);
-            this.pbTrain.Name = "pbTrain";
-            this.pbTrain.Size = new System.Drawing.Size(33, 35);
-            this.pbTrain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbTrain.TabIndex = 16;
-            this.pbTrain.TabStop = false;
-            // 
             // lbTravelTime
             // 
             this.lbTravelTime.AutoSize = true;
@@ -280,18 +270,6 @@
             this.btCalculateTravelTime.UseVisualStyleBackColor = true;
             this.btCalculateTravelTime.Click += new System.EventHandler(this.btCalculateTravelTime_Click);
             // 
-            // navBox1
-            // 
-            this.navBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("navBox1.BackgroundImage")));
-            this.navBox1.Location = new System.Drawing.Point(2, 0);
-            this.navBox1.Name = "navBox1";
-            this.navBox1.Size = new System.Drawing.Size(365, 80);
-            this.navBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.navBox1.TabIndex = 0;
-            this.navBox1.TabStop = false;
-            this.navBox1.Click += new System.EventHandler(this.NavClick);
-            this.navBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
-            // 
             // tab1
             // 
             this.tab1.Controls.Add(this.listBox1);
@@ -338,18 +316,6 @@
             this.webBrowser.Visible = false;
             this.webBrowser.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.WebBrowserNavigated);
             // 
-            // navBox2
-            // 
-            this.navBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("navBox2.BackgroundImage")));
-            this.navBox2.Location = new System.Drawing.Point(2, 0);
-            this.navBox2.Name = "navBox2";
-            this.navBox2.Size = new System.Drawing.Size(365, 80);
-            this.navBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.navBox2.TabIndex = 1;
-            this.navBox2.TabStop = false;
-            this.navBox2.Click += new System.EventHandler(this.NavClick);
-            this.navBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
-            // 
             // tab2
             // 
             this.tab2.Controls.Add(this.btnSetSchoolAlarm);
@@ -357,15 +323,15 @@
             this.tab2.Controls.Add(this.btnConfirmAlarm);
             this.tab2.Controls.Add(this.btnSetAlarm);
             this.tab2.Controls.Add(this.btnAmPm);
-            this.tab2.Controls.Add(this.pbAlarm);
             this.tab2.Controls.Add(this.lbMinute);
             this.tab2.Controls.Add(this.lbHour);
-            this.tab2.Controls.Add(this.pbClock);
-            this.tab2.Controls.Add(this.pbHome);
             this.tab2.Controls.Add(this.tbPlace);
             this.tab2.Controls.Add(this.nudPrepTime);
             this.tab2.Controls.Add(this.lbTimeToGetOutOfBed);
             this.tab2.Controls.Add(this.lbLivingPlace);
+            this.tab2.Controls.Add(this.pbAlarm);
+            this.tab2.Controls.Add(this.pbClock);
+            this.tab2.Controls.Add(this.pbHome);
             this.tab2.Controls.Add(this.navBox3);
             this.tab2.Location = new System.Drawing.Point(4, 22);
             this.tab2.Name = "tab2";
@@ -423,20 +389,6 @@
             this.btnAmPm.UseVisualStyleBackColor = true;
             this.btnAmPm.Click += new System.EventHandler(this.AmPmClick);
             // 
-            // pbAlarm
-            // 
-            this.pbAlarm.Image = global::SparkyTheSmartClock.Properties.Resources.alarmclock;
-            this.pbAlarm.Location = new System.Drawing.Point(30, 334);
-            this.pbAlarm.Name = "pbAlarm";
-            this.pbAlarm.Size = new System.Drawing.Size(150, 150);
-            this.pbAlarm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbAlarm.TabIndex = 12;
-            this.pbAlarm.TabStop = false;
-            this.pbAlarm.Paint += new System.Windows.Forms.PaintEventHandler(this.PaintClock);
-            this.pbAlarm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDownAlarm);
-            this.pbAlarm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseMoveAlarm);
-            this.pbAlarm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MouseUpAlarm);
-            // 
             // lbMinute
             // 
             this.lbMinute.AutoSize = true;
@@ -456,26 +408,6 @@
             this.lbHour.Size = new System.Drawing.Size(15, 16);
             this.lbHour.TabIndex = 10;
             this.lbHour.Text = "0";
-            // 
-            // pbClock
-            // 
-            this.pbClock.Image = global::SparkyTheSmartClock.Properties.Resources.clock;
-            this.pbClock.Location = new System.Drawing.Point(218, 171);
-            this.pbClock.Name = "pbClock";
-            this.pbClock.Size = new System.Drawing.Size(64, 60);
-            this.pbClock.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbClock.TabIndex = 9;
-            this.pbClock.TabStop = false;
-            // 
-            // pbHome
-            // 
-            this.pbHome.Image = global::SparkyTheSmartClock.Properties.Resources.home;
-            this.pbHome.Location = new System.Drawing.Point(70, 171);
-            this.pbHome.Name = "pbHome";
-            this.pbHome.Size = new System.Drawing.Size(61, 60);
-            this.pbHome.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbHome.TabIndex = 8;
-            this.pbHome.TabStop = false;
             // 
             // tbPlace
             // 
@@ -522,18 +454,6 @@
             this.lbLivingPlace.TabIndex = 2;
             this.lbLivingPlace.Text = "   Living place:";
             // 
-            // navBox3
-            // 
-            this.navBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("navBox3.BackgroundImage")));
-            this.navBox3.Location = new System.Drawing.Point(2, 0);
-            this.navBox3.Name = "navBox3";
-            this.navBox3.Size = new System.Drawing.Size(365, 80);
-            this.navBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.navBox3.TabIndex = 1;
-            this.navBox3.TabStop = false;
-            this.navBox3.Click += new System.EventHandler(this.NavClick);
-            this.navBox3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
-            // 
             // TimeAlliveTimer
             // 
             this.TimeAlliveTimer.Interval = 1000;
@@ -548,6 +468,86 @@
             // 
             this.TimeCountDown.Tick += new System.EventHandler(this.TimeCountDown_Tick);
             // 
+            // pbTrain
+            // 
+            this.pbTrain.Image = global::SparkyTheSmartClock.Properties.Resources.train;
+            this.pbTrain.Location = new System.Drawing.Point(53, 332);
+            this.pbTrain.Name = "pbTrain";
+            this.pbTrain.Size = new System.Drawing.Size(33, 35);
+            this.pbTrain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbTrain.TabIndex = 16;
+            this.pbTrain.TabStop = false;
+            // 
+            // navBox1
+            // 
+            this.navBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("navBox1.BackgroundImage")));
+            this.navBox1.Image = global::SparkyTheSmartClock.Properties.Resources.Navbar_main;
+            this.navBox1.Location = new System.Drawing.Point(2, 0);
+            this.navBox1.Name = "navBox1";
+            this.navBox1.Size = new System.Drawing.Size(365, 80);
+            this.navBox1.TabIndex = 0;
+            this.navBox1.TabStop = false;
+            this.navBox1.Click += new System.EventHandler(this.NavClick);
+            this.navBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
+            // 
+            // navBox2
+            // 
+            this.navBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("navBox2.BackgroundImage")));
+            this.navBox2.Image = global::SparkyTheSmartClock.Properties.Resources.Navbar_roster;
+            this.navBox2.Location = new System.Drawing.Point(2, 0);
+            this.navBox2.Name = "navBox2";
+            this.navBox2.Size = new System.Drawing.Size(365, 80);
+            this.navBox2.TabIndex = 1;
+            this.navBox2.TabStop = false;
+            this.navBox2.Click += new System.EventHandler(this.NavClick);
+            this.navBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
+            // 
+            // pbAlarm
+            // 
+            this.pbAlarm.Image = global::SparkyTheSmartClock.Properties.Resources.alarmclock;
+            this.pbAlarm.Location = new System.Drawing.Point(30, 334);
+            this.pbAlarm.Name = "pbAlarm";
+            this.pbAlarm.Size = new System.Drawing.Size(150, 150);
+            this.pbAlarm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbAlarm.TabIndex = 12;
+            this.pbAlarm.TabStop = false;
+            this.pbAlarm.Paint += new System.Windows.Forms.PaintEventHandler(this.PaintClock);
+            this.pbAlarm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDownAlarm);
+            this.pbAlarm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseMoveAlarm);
+            this.pbAlarm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MouseUpAlarm);
+            // 
+            // pbClock
+            // 
+            this.pbClock.Image = global::SparkyTheSmartClock.Properties.Resources.clock;
+            this.pbClock.Location = new System.Drawing.Point(218, 171);
+            this.pbClock.Name = "pbClock";
+            this.pbClock.Size = new System.Drawing.Size(64, 60);
+            this.pbClock.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbClock.TabIndex = 9;
+            this.pbClock.TabStop = false;
+            // 
+            // pbHome
+            // 
+            this.pbHome.Image = global::SparkyTheSmartClock.Properties.Resources.home;
+            this.pbHome.Location = new System.Drawing.Point(70, 171);
+            this.pbHome.Name = "pbHome";
+            this.pbHome.Size = new System.Drawing.Size(61, 60);
+            this.pbHome.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbHome.TabIndex = 8;
+            this.pbHome.TabStop = false;
+            // 
+            // navBox3
+            // 
+            this.navBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("navBox3.BackgroundImage")));
+            this.navBox3.Image = global::SparkyTheSmartClock.Properties.Resources.Navbar_settings;
+            this.navBox3.Location = new System.Drawing.Point(2, 0);
+            this.navBox3.Name = "navBox3";
+            this.navBox3.Size = new System.Drawing.Size(365, 80);
+            this.navBox3.TabIndex = 1;
+            this.navBox3.TabStop = false;
+            this.navBox3.Click += new System.EventHandler(this.NavClick);
+            this.navBox3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -560,17 +560,17 @@
             this.menuNav.ResumeLayout(false);
             this.tab0.ResumeLayout(false);
             this.tab0.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbTrain)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.navBox1)).EndInit();
             this.tab1.ResumeLayout(false);
             this.tab1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.navBox2)).EndInit();
             this.tab2.ResumeLayout(false);
             this.tab2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPrepTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTrain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.navBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.navBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAlarm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHome)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPrepTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBox3)).EndInit();
             this.ResumeLayout(false);
 
