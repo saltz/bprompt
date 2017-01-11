@@ -164,7 +164,7 @@ namespace SparkyTheSmartClock
                         lbArrivalTime.Text = "00:00 Station";
                     }
 
-                    departure = travelInfo.GetActualDepartureTime(); // Departure time for the count down timer 
+                    departure = travelInfo.GetActualDepartureTime(); // Departure time for the count down timer & School alarm
                     
                     // Count down timer for the train  
                     TimeCountDown.Enabled = true;
@@ -486,6 +486,61 @@ namespace SparkyTheSmartClock
             catch
             {
 
+            }
+        }
+
+        private void btnSetSchoolAlarm_Click(object sender, EventArgs e)
+        {
+            TimeSpan schoolAlarm;
+
+            // Make sure the departure time is correct
+            if (departure.Date == DateTime.Today.Date && lbCountdown.Text == "00:00:00" || departure.Day == 1 && departure.Month == 1 && departure.Year == 0001)
+            {
+                MessageBox.Show("Log in with your Fontys account and fill in a correct living place and show the travel info");
+            }
+            else // Departure time is correct
+            {
+                int prepTimeInt = Convert.ToInt32(nudPrepTime.Value);
+
+                if (prepTimeInt == 0) // If no prep time is filled in
+                {
+                    MessageBox.Show("Please fill in your estimated prep time");
+                }
+                else if (prepTimeInt != 0 && prepTimeInt < 60) // If prep time is within 1 hour
+                {
+                    string prepTimeString = "00:" + prepTimeInt.ToString() + ":00";
+                    DateTime prepTimeDateTime = Convert.ToDateTime(prepTimeString);
+                    schoolAlarm = departure.Subtract(prepTimeDateTime);
+
+                    MessageBox.Show("School alarm set on: " + schoolAlarm);
+                }
+                else if (prepTimeInt >= 60 && prepTimeInt < 120) // If prep time is between 1 and 2 hours
+                {
+                    prepTimeInt = prepTimeInt - 60;
+                    string prepTimeString = "01:" + prepTimeInt.ToString() + ":00";
+                    DateTime prepTimeDateTime = Convert.ToDateTime(prepTimeString);
+                    schoolAlarm = departure.Subtract(prepTimeDateTime);
+
+                    MessageBox.Show("School alarm set on: " + schoolAlarm);
+                }
+                else if (prepTimeInt >= 120 && prepTimeInt < 180) // If prep time is between 2 and 3 hours
+                {
+                    prepTimeInt = prepTimeInt - 120;
+                    string prepTimeString = "02:" + prepTimeInt.ToString() + ":00";
+                    DateTime prepTimeDateTime = Convert.ToDateTime(prepTimeString);
+                    schoolAlarm = departure.Subtract(prepTimeDateTime);
+
+                    MessageBox.Show("School alarm set on: " + schoolAlarm);
+                }
+                else if (prepTimeInt >= 180 && prepTimeInt < 240) // If prep time is between 3 and 4 hours
+                {
+                    prepTimeInt = prepTimeInt - 180;
+                    string prepTimeString = "03:" + prepTimeInt.ToString() + ":00";
+                    DateTime prepTimeDateTime = Convert.ToDateTime(prepTimeString);
+                    schoolAlarm = departure.Subtract(prepTimeDateTime);
+
+                    MessageBox.Show("School alarm set on: " + schoolAlarm);
+                }
             }
         }
     }

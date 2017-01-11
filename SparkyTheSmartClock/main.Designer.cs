@@ -54,6 +54,7 @@
             this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.navBox2 = new System.Windows.Forms.PictureBox();
             this.tab2 = new System.Windows.Forms.TabPage();
+            this.btnSetSchoolAlarm = new System.Windows.Forms.Button();
             this.btnCurrentAlarms = new System.Windows.Forms.Button();
             this.btnConfirmAlarm = new System.Windows.Forms.Button();
             this.btnSetAlarm = new System.Windows.Forms.Button();
@@ -271,11 +272,11 @@
             // btCalculateTravelTime
             // 
             this.btCalculateTravelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btCalculateTravelTime.Location = new System.Drawing.Point(116, 279);
+            this.btCalculateTravelTime.Location = new System.Drawing.Point(109, 273);
             this.btCalculateTravelTime.Name = "btCalculateTravelTime";
-            this.btCalculateTravelTime.Size = new System.Drawing.Size(131, 23);
+            this.btCalculateTravelTime.Size = new System.Drawing.Size(142, 31);
             this.btCalculateTravelTime.TabIndex = 9;
-            this.btCalculateTravelTime.Text = "Show travel info";
+            this.btCalculateTravelTime.Text = "Show Travel Info";
             this.btCalculateTravelTime.UseVisualStyleBackColor = true;
             this.btCalculateTravelTime.Click += new System.EventHandler(this.btCalculateTravelTime_Click);
             // 
@@ -351,6 +352,7 @@
             // 
             // tab2
             // 
+            this.tab2.Controls.Add(this.btnSetSchoolAlarm);
             this.tab2.Controls.Add(this.btnCurrentAlarms);
             this.tab2.Controls.Add(this.btnConfirmAlarm);
             this.tab2.Controls.Add(this.btnSetAlarm);
@@ -370,6 +372,16 @@
             this.tab2.Size = new System.Drawing.Size(368, 602);
             this.tab2.TabIndex = 2;
             this.tab2.UseVisualStyleBackColor = true;
+            // 
+            // btnSetSchoolAlarm
+            // 
+            this.btnSetSchoolAlarm.Location = new System.Drawing.Point(186, 272);
+            this.btnSetSchoolAlarm.Name = "btnSetSchoolAlarm";
+            this.btnSetSchoolAlarm.Size = new System.Drawing.Size(124, 31);
+            this.btnSetSchoolAlarm.TabIndex = 17;
+            this.btnSetSchoolAlarm.Text = "Set School Alarm";
+            this.btnSetSchoolAlarm.UseVisualStyleBackColor = true;
+            this.btnSetSchoolAlarm.Click += new System.EventHandler(this.btnSetSchoolAlarm_Click);
             // 
             // btnCurrentAlarms
             // 
@@ -483,7 +495,7 @@
             0});
             this.nudPrepTime.Location = new System.Drawing.Point(218, 244);
             this.nudPrepTime.Maximum = new decimal(new int[] {
-            1000,
+            230,
             0,
             0,
             0});
@@ -607,6 +619,7 @@
         private System.Windows.Forms.Timer TimeCheckAlarm;
         private System.Windows.Forms.Button btnCurrentAlarms;
         private System.Windows.Forms.Timer TimeCountDown;
+        private System.Windows.Forms.Button btnSetSchoolAlarm;
     }
 }
 
