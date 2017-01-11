@@ -244,6 +244,7 @@ namespace SparkyTheSmartClock
                     string json = reader.ReadToEnd();
                     schedule = new Schedule();
                     schedule.ReadingTheJson(json);
+                    connection.TimeAllive = 3600;
                     BuildingTheSchedule();
                     GetBeginTimeNextDay();
                 }
@@ -535,7 +536,7 @@ namespace SparkyTheSmartClock
                     else if (prepTimeInt >= 120 && prepTimeInt < 180) // If prep time is between 2 and 3 hours
                     {
                         prepTimeInt = prepTimeInt - 120;
-                        prepTimeString = "02:" + prepTimeInt.ToString() + ":00";                        
+                        prepTimeString = "02:" + prepTimeInt.ToString() + ":00";
                     }
                     else if (prepTimeInt >= 180 && prepTimeInt < 240) // If prep time is between 3 and 4 hours
                     {

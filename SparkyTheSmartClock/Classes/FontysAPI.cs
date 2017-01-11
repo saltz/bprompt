@@ -11,7 +11,7 @@ namespace SparkyTheSmartClock
         //fields
         string requestString = "https://identity.fhict.nl/connect/authorize?client_id=i363215-spary&scope=fhict%20fhict_personal&response_type=token&redirect_uri=https://i363215.iris.fhict.nl/";
         string accessToken;
-        int timeAllive = 3600;
+        int timeAllive = 0;
 
         //Properties
         public string RequestString { get { return requestString; } }
