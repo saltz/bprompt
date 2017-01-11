@@ -264,15 +264,27 @@ namespace SparkyTheSmartClock
         {
             int counter = 0;
             DateTime now = DateTime.Now;
+            string beginHourToday = "";
 
-            if (now.Hour > 9) // From 9AM you will see the train info for the next school day
+            foreach (Lesson l in schedule.Lessons) // Get start hour today
             {
-                now = DateTime.Today.AddDays(2);
+                if (l.start.Contains(now.ToString("yyyy-MM-dd")) && counter == 0)
+                {
+                    beginHourToday = l.start;
+                    int T = beginHourToday.IndexOf('T') +1;
+                    beginHourToday = beginHourToday.Substring(T, 2);
+                    counter++;
+                }
+            }
+
+            if (now.Hour > Convert.ToInt32(beginHourToday)) // After start time today you will see the train info for the next school day
+            {
+                now = DateTime.Today.AddDays(1);
             }
 
             foreach (Lesson l in schedule.Lessons)
             {
-                if (l.start.Contains(now.ToString("yyyy-MM-dd")) && counter == 0)
+                if (l.start.Contains(now.ToString("yyyy-MM-dd")) && counter == 1)
                 {
                     beginNextDay = l.start;
                     beginNextDay = beginNextDay.Substring(0, (beginNextDay.LastIndexOf(':')));
