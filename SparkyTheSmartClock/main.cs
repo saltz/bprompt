@@ -491,8 +491,6 @@ namespace SparkyTheSmartClock
 
         private void btnSetSchoolAlarm_Click(object sender, EventArgs e)
         {
-            TimeSpan schoolAlarm;
-
             // Make sure the departure time is correct
             if (departure.Date == DateTime.Today.Date && lbCountdown.Text == "00:00:00" || departure.Day == 1 && departure.Month == 1 && departure.Year == 0001)
             {
@@ -510,7 +508,7 @@ namespace SparkyTheSmartClock
                 {
                     string prepTimeString = "00:" + prepTimeInt.ToString() + ":00";
                     DateTime prepTimeDateTime = Convert.ToDateTime(prepTimeString);
-                    schoolAlarm = departure.Subtract(prepTimeDateTime);
+                    TimeSpan schoolAlarm = departure.Subtract(prepTimeDateTime);
 
                     MessageBox.Show("School alarm set on: " + schoolAlarm);
                 }
@@ -519,7 +517,7 @@ namespace SparkyTheSmartClock
                     prepTimeInt = prepTimeInt - 60;
                     string prepTimeString = "01:" + prepTimeInt.ToString() + ":00";
                     DateTime prepTimeDateTime = Convert.ToDateTime(prepTimeString);
-                    schoolAlarm = departure.Subtract(prepTimeDateTime);
+                    TimeSpan schoolAlarm = departure.Subtract(prepTimeDateTime);
 
                     MessageBox.Show("School alarm set on: " + schoolAlarm);
                 }
@@ -528,7 +526,7 @@ namespace SparkyTheSmartClock
                     prepTimeInt = prepTimeInt - 120;
                     string prepTimeString = "02:" + prepTimeInt.ToString() + ":00";
                     DateTime prepTimeDateTime = Convert.ToDateTime(prepTimeString);
-                    schoolAlarm = departure.Subtract(prepTimeDateTime);
+                    TimeSpan schoolAlarm = departure.Subtract(prepTimeDateTime);
 
                     MessageBox.Show("School alarm set on: " + schoolAlarm);
                 }
@@ -537,7 +535,7 @@ namespace SparkyTheSmartClock
                     prepTimeInt = prepTimeInt - 180;
                     string prepTimeString = "03:" + prepTimeInt.ToString() + ":00";
                     DateTime prepTimeDateTime = Convert.ToDateTime(prepTimeString);
-                    schoolAlarm = departure.Subtract(prepTimeDateTime);
+                    TimeSpan schoolAlarm = departure.Subtract(prepTimeDateTime);
 
                     MessageBox.Show("School alarm set on: " + schoolAlarm);
                 }
