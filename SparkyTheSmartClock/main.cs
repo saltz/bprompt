@@ -275,6 +275,11 @@ namespace SparkyTheSmartClock
                     beginHourToday = beginHourToday.Substring(T, 2);
                     counter++;
                 }
+                else if (counter == 0) // If today is no school
+                {
+                    beginHourToday = "1";
+                    counter++;
+                }
             }
 
             if (now.Hour >= Convert.ToInt32(beginHourToday)) // After start time today you will see the train info for the next school day
@@ -291,7 +296,6 @@ namespace SparkyTheSmartClock
                     counter++;
                 }
             }
-
         }
 
         //needs editing
