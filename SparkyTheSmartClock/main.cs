@@ -52,7 +52,9 @@ namespace SparkyTheSmartClock
         }
 
         private void MoveCapture(object sender, MouseEventArgs e)
-        { mousepositionX = e.X; mousepositionY = e.Y; }
+        {
+            mousepositionX = e.X; mousepositionY = e.Y;
+        }
 
         private void NavigationCalculation()
         {
@@ -285,7 +287,7 @@ namespace SparkyTheSmartClock
 
             if (now.Hour >= Convert.ToInt32(beginHourToday)) // After start time today you will see the train info for the next school day
             {
-                now = DateTime.Today.AddDays(1);
+                now = DateTime.Now.AddDays(1);
             }
 
             foreach (Lesson l in schedule.Lessons)
@@ -295,6 +297,25 @@ namespace SparkyTheSmartClock
                     beginNextDay = l.start;
                     beginNextDay = beginNextDay.Substring(0, (beginNextDay.LastIndexOf(':')));
                     counter++;
+                }
+            }
+
+            // If tomorrow is no school
+            while (counter == 1)
+            {
+                if (now.Hour >= Convert.ToInt32(beginHourToday)) // After start time today you will see the train info for the next school day
+                {
+                    now = now.AddDays(1);
+                }
+
+                foreach (Lesson l in schedule.Lessons)
+                {
+                    if (l.start.Contains(now.ToString("yyyy-MM-dd")) && counter == 1)
+                    {
+                        beginNextDay = l.start;
+                        beginNextDay = beginNextDay.Substring(0, (beginNextDay.LastIndexOf(':')));
+                        counter++;
+                    }
                 }
             }
         }
