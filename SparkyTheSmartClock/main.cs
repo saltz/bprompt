@@ -320,7 +320,6 @@ namespace SparkyTheSmartClock
             }
         }
 
-        //needs editing
         private void BuildingTheSchedule()
         {
             listBox1.Visible = true;
@@ -352,7 +351,7 @@ namespace SparkyTheSmartClock
 
         private void MouseMoveAlarm(object sender, MouseEventArgs e)
         {
-            if (mouseDrag && buttonClockCount)
+            if (mouseDrag && buttonClockCount) // When mouse is beeing dragged move hour hand
             {
                 double xclick = e.X;
                 double yclick = e.Y;
@@ -362,7 +361,7 @@ namespace SparkyTheSmartClock
 
                 xNewFirst = xclick / ((Math.Sqrt((xclick * xclick) + (yclick * yclick)) / 40));
                 yNewFirst = yclick / ((Math.Sqrt((xclick * xclick) + (yclick * yclick)) / 40));
-                try
+                try // Can't devide by 0
                 {
                     if (xNewFirst >= 0)
                     {
@@ -387,7 +386,7 @@ namespace SparkyTheSmartClock
                 pbAlarm.Invalidate();
             }
 
-            else if (mouseDrag && buttonClockCount == false)
+            else if (mouseDrag && buttonClockCount == false) // When mouse is beeing dragged move minute hand
             {
                 double xclick = e.X;
                 double yclick = e.Y;
@@ -397,7 +396,7 @@ namespace SparkyTheSmartClock
 
                 xNewSeccond = xclick / ((Math.Sqrt((xclick * xclick) + (yclick * yclick)) / 75));
                 yNewSeccond = yclick / ((Math.Sqrt((xclick * xclick) + (yclick * yclick)) / 75));
-                try
+                try // Can't devide by 0
                 {
                     if (xNewSeccond >= 0)
                     {
@@ -426,16 +425,17 @@ namespace SparkyTheSmartClock
 
         private void MouseDownAlarm(object sender, MouseEventArgs e)
         {
-            mouseDrag = true;
+            mouseDrag = true; // Mouse button is down
         }
 
         private void MouseUpAlarm(object sender, MouseEventArgs e)
         {
-            mouseDrag = false;
+            mouseDrag = false; // Mouse button is up
         }
 
         private void PaintClock(object sender, PaintEventArgs e)
         {
+            // Move clock hands
             Graphics g = e.Graphics;
             Point outerpointfirst = new Point(Convert.ToInt32(xNewFirst), Convert.ToInt32(yNewFirst));
             Point outerpointseccond = new Point(Convert.ToInt32(xNewSeccond), Convert.ToInt32(yNewSeccond));
@@ -446,14 +446,14 @@ namespace SparkyTheSmartClock
 
         private void btnSetAlarm_Click(object sender, EventArgs e)
         {
-            if (buttonClockCount)
+            if (buttonClockCount) // Confirm hours
             {
                 btnSetAlarm.Text = "Confirm minutes";
                 penFirst.Color = Color.Black;
                 penSeccond.Color = Color.Red;
                 buttonClockCount = false;
             }
-            else
+            else // Confirm minutes
             {
                 btnSetAlarm.Text = "Confirm Hour";
                 penFirst.Color = Color.Red;
@@ -465,12 +465,12 @@ namespace SparkyTheSmartClock
 
         private void AmPmClick(object sender, EventArgs e)
         {
-            if (ampm)
+            if (ampm) // Confirm PM
             {
                 btnAmPm.Text = "PM";
                 ampm = false;
             }
-            else
+            else // Confirm AM
             {
                 btnAmPm.Text = "AM";
                 ampm = true;
@@ -479,6 +479,7 @@ namespace SparkyTheSmartClock
 
         private void btnConfirmAlarm_Click(object sender, EventArgs e)
         {
+            // Confirm alarm
             string alarmSet = lbHour.Text + ":" + lbMinute.Text + ":00 " + btnAmPm.Text;
             DateTime currentAlarm = Convert.ToDateTime(alarmSet);
             CurrentAlarms.Add(currentAlarm);
@@ -491,11 +492,31 @@ namespace SparkyTheSmartClock
             lbMinute.Text = "0";
             MessageBox.Show("Alarm succefully added");
             pbAlarm.Invalidate();
+
+            // Write current alarms to a textfile
+            string path = @"C:\Sparky";
+            string fileName = "CurrentAlarms.txt";
+            List<string> text = new List<string>();
+
+            if (!Directory.Exists(path)) // If folder doesnt exists, create one
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            foreach (var alarm in CurrentAlarms)
+            {
+                text.Add(alarm.ToString());               
+                text.Add("\n");
+            }
+
+            path = Path.Combine(path, fileName);
+
+            File.WriteAllLines(path, text);
         }
 
         private void btnCurrentAlarms_Click(object sender, EventArgs e)
         {
-            foreach (DateTime alarm in CurrentAlarms)
+            foreach (DateTime alarm in CurrentAlarms) // Read all alarms
             {
                 int truefalse = DateTime.Now.CompareTo(alarm);
                 MessageBox.Show(Convert.ToString(truefalse) + " " + alarm.ToString());
@@ -507,6 +528,7 @@ namespace SparkyTheSmartClock
             int alarmindex = 0;
             try
             {
+                // Check alarm
                 foreach (DateTime alarm in CurrentAlarms)
                 {
                     int truefalse = DateTime.Now.CompareTo(alarm);

@@ -9,7 +9,6 @@ namespace SparkyTheSmartClock
 {
     class User
     {
-
         //fields
 
         //user info
