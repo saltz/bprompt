@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="Classes\FontysAPI.cs" />
     <Compile Include="Classes\Lesson.cs" />
+    <Compile Include="Classes\MessageBuilder.cs" />
     <Compile Include="main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +83,7 @@
     <Compile Include="Classes\Schedule.cs" />
     <Compile Include="Classes\TravelInfo.cs" />
     <Compile Include="Classes\User.cs" />
+    <Compile Include="Classes\SerialMessenger.cs" />
     <EmbeddedResource Include="main.resx">
       <DependentUpon>main.cs</DependentUpon>
     </EmbeddedResource>

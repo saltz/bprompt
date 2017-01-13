@@ -20,6 +20,9 @@ namespace SparkyTheSmartClock
         public main()
         {
             InitializeComponent();
+
+            MessageBuilder messageBuilder = new MessageBuilder('#', '%');
+            serialMessenger = new SerialMessenger("COM5", 115200, messageBuilder);
         }
 
         //global variables
@@ -41,6 +44,7 @@ namespace SparkyTheSmartClock
         Pen penFirst = new Pen(Color.Red, 5);
         Pen penSeccond = new Pen(Color.Black, 5);
         List<DateTime> CurrentAlarms = new List<DateTime>();
+        SerialMessenger serialMessenger;
 
         private void NavClick(object sender, EventArgs e)
         {
@@ -505,7 +509,7 @@ namespace SparkyTheSmartClock
 
             foreach (var alarm in CurrentAlarms)
             {
-                text.Add(alarm.ToString());               
+                text.Add(alarm.ToString());
                 text.Add("\n");
             }
 
@@ -591,12 +595,39 @@ namespace SparkyTheSmartClock
                     TimeSpan schoolAlarm = departure.Subtract(prepTimeDateTime);
 
                     string alarm = schoolAlarm.Hours.ToString("00") + ":" + schoolAlarm.Minutes.ToString("00") + ":" + schoolAlarm.Seconds.ToString("00");
+
+                    //alarm = "11:11:00"; // For testing the alarm
+
                     MessageBox.Show("School alarm set on: " + alarm);
+
+                    // Arduino code
+                    try // Connect
+                    {
+                        serialMessenger.Connect();
+                    }
+                    catch (Exception exception)
+                    {
+                        MessageBox.Show(exception.Message);
+                    }
+
+                    // Send message
+                    serialMessenger.SendMessage(alarm);
+
+                    // Disconnect
+                    try
+                    {
+                        serialMessenger.Disconnect();
+                    }
+                    catch (Exception exception)
+                    {
+                        MessageBox.Show(exception.Message);
+                    }
                 }
             }
-        }
+        }        
     }
 }
+
 
 /*comments for later purposes
 
