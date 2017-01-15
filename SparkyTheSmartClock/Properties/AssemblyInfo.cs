@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SparkyTheSmartClock")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("An Smart App for a Smart Clock")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Sven, Ruben, Kristian, Simon, Dane INC")]
 [assembly: AssemblyProduct("SparkyTheSmartClock")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
