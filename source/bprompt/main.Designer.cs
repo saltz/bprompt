@@ -72,6 +72,14 @@
             this.TimeAlliveTimer = new System.Windows.Forms.Timer(this.components);
             this.TimeCheckAlarm = new System.Windows.Forms.Timer(this.components);
             this.TimeCountDown = new System.Windows.Forms.Timer(this.components);
+            this.tab3 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.tbConfigAdres = new System.Windows.Forms.TextBox();
+            this.btnConfigSave = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tbConfigName = new System.Windows.Forms.TextBox();
             this.menuNav.SuspendLayout();
             this.tab0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTrain)).BeginInit();
@@ -84,6 +92,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbClock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBox3)).BeginInit();
+            this.tab3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuNav
@@ -91,6 +101,7 @@
             this.menuNav.Controls.Add(this.tab0);
             this.menuNav.Controls.Add(this.tab1);
             this.menuNav.Controls.Add(this.tab2);
+            this.menuNav.Controls.Add(this.tab3);
             this.menuNav.Location = new System.Drawing.Point(-6, -22);
             this.menuNav.Name = "menuNav";
             this.menuNav.SelectedIndex = 0;
@@ -548,6 +559,72 @@
             // 
             this.TimeCountDown.Tick += new System.EventHandler(this.TimeCountDown_Tick);
             // 
+            // tab3
+            // 
+            this.tab3.Controls.Add(this.tbConfigName);
+            this.tab3.Controls.Add(this.label3);
+            this.tab3.Controls.Add(this.btnConfigSave);
+            this.tab3.Controls.Add(this.tbConfigAdres);
+            this.tab3.Controls.Add(this.label2);
+            this.tab3.Controls.Add(this.label1);
+            this.tab3.Location = new System.Drawing.Point(4, 22);
+            this.tab3.Name = "tab3";
+            this.tab3.Size = new System.Drawing.Size(368, 602);
+            this.tab3.TabIndex = 3;
+            this.tab3.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(117, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(97, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "bprompt";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(62, 95);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(33, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "adres";
+            // 
+            // tbConfigAdres
+            // 
+            this.tbConfigAdres.Location = new System.Drawing.Point(114, 92);
+            this.tbConfigAdres.Name = "tbConfigAdres";
+            this.tbConfigAdres.Size = new System.Drawing.Size(100, 20);
+            this.tbConfigAdres.TabIndex = 2;
+            // 
+            // btnConfigSave
+            // 
+            this.btnConfigSave.Location = new System.Drawing.Point(122, 150);
+            this.btnConfigSave.Name = "btnConfigSave";
+            this.btnConfigSave.Size = new System.Drawing.Size(75, 23);
+            this.btnConfigSave.TabIndex = 3;
+            this.btnConfigSave.Text = "Save";
+            this.btnConfigSave.UseVisualStyleBackColor = true;
+            this.btnConfigSave.Click += new System.EventHandler(this.btnConfigSave_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(62, 64);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(33, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "naam";
+            // 
+            // tbConfigName
+            // 
+            this.tbConfigName.Location = new System.Drawing.Point(114, 61);
+            this.tbConfigName.Name = "tbConfigName";
+            this.tbConfigName.Size = new System.Drawing.Size(100, 20);
+            this.tbConfigName.TabIndex = 5;
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -572,6 +649,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbClock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHome)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBox3)).EndInit();
+            this.tab3.ResumeLayout(false);
+            this.tab3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -620,6 +700,14 @@
         private System.Windows.Forms.Button btnCurrentAlarms;
         private System.Windows.Forms.Timer TimeCountDown;
         private System.Windows.Forms.Button btnSetSchoolAlarm;
+        private System.Windows.Forms.TabPage tab3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.Button btnConfigSave;
+        private System.Windows.Forms.TextBox tbConfigAdres;
+        private System.Windows.Forms.TextBox tbConfigName;
+        private System.Windows.Forms.Label label3;
     }
 }
 

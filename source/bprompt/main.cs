@@ -12,7 +12,6 @@ using System.Net;
 using Newtonsoft;
 using Newtonsoft.Json;
 
-
 namespace bprompt
 {
     public partial class main : Form
@@ -20,9 +19,14 @@ namespace bprompt
         public main()
         {
             InitializeComponent();
-
             MessageBuilder messageBuilder = new MessageBuilder('#', '%');
             serialMessenger = new SerialMessenger("COM5", 115200, messageBuilder);
+            DataSet ds = db.GetData("SELECT * FROM user WHERE iduser = 1");
+            if (!ds.GetXml().Contains("iduser"))
+            {
+                menuNav.SelectedIndex = 3;
+
+            }
         }
 
         //global variables
@@ -45,6 +49,7 @@ namespace bprompt
         Pen penSeccond = new Pen(Color.Black, 5);
         List<DateTime> CurrentAlarms = new List<DateTime>();
         SerialMessenger serialMessenger;
+        DBConnection db = new DBConnection();
 
         private void NavClick(object sender, EventArgs e)
         {
@@ -52,6 +57,15 @@ namespace bprompt
             if (menuNav.SelectedIndex == 1)
             {
                 GetAccess();
+            }
+            if(menuNav.SelectedIndex == 2)
+            {
+                DataSet ds = db.GetData("SELECT adres FROM user WHERE iduser = 1");
+                tbPlace.Text = ds.Tables[0].Rows[0]["adres"].ToString();
+            }
+            if(menuNav.SelectedIndex != 2)
+            {
+                db.SetData("UPDATE user SET adres = '" + tbPlace.Text + "' WHERE iduser = 1");
             }
         }
 
@@ -252,7 +266,7 @@ namespace bprompt
                     schedule.ReadingTheJson(json);
                     connection.TimeAllive = 3600;
                     BuildingTheSchedule();
-                    GetBeginTimeNextDay();
+                    //GetBeginTimeNextDay(); // <--------- uncomment for next school day function
                 }
                 else //user denied access no school schedule for him
                 {
@@ -624,7 +638,16 @@ namespace bprompt
                     }
                 }
             }
-        }        
+        }
+
+        private void btnConfigSave_Click(object sender, EventArgs e)
+        {
+            if(tbConfigAdres.Text != "" && tbConfigName.Text != "")
+            {
+                db.SetData("INSERT INTO user (name, adres) VALUES ('" + tbConfigName.Text + "', '" + tbConfigAdres.Text + "')");
+                menuNav.SelectedIndex = 0;
+            }
+        }
     }
 }
 
