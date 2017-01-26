@@ -131,13 +131,13 @@
     <None Include="Resources\clock.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Navbar_main.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Navbar_roster.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Navbar_settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Navbar_main.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
