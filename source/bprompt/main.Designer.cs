@@ -69,17 +69,17 @@
             this.pbClock = new System.Windows.Forms.PictureBox();
             this.pbHome = new System.Windows.Forms.PictureBox();
             this.navBox3 = new System.Windows.Forms.PictureBox();
+            this.tab3 = new System.Windows.Forms.TabPage();
+            this.tbConfigName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnConfigSave = new System.Windows.Forms.Button();
+            this.tbConfigAdres = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.TimeAlliveTimer = new System.Windows.Forms.Timer(this.components);
             this.TimeCheckAlarm = new System.Windows.Forms.Timer(this.components);
             this.TimeCountDown = new System.Windows.Forms.Timer(this.components);
-            this.tab3 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.tbConfigAdres = new System.Windows.Forms.TextBox();
-            this.btnConfigSave = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbConfigName = new System.Windows.Forms.TextBox();
             this.menuNav.SuspendLayout();
             this.tab0.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTrain)).BeginInit();
@@ -263,9 +263,9 @@
             this.lbCountdown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(6)))), ((int)(((byte)(19)))));
             this.lbCountdown.Font = new System.Drawing.Font("Microsoft Sans Serif", 45F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCountdown.ForeColor = System.Drawing.Color.White;
-            this.lbCountdown.Location = new System.Drawing.Point(52, 130);
+            this.lbCountdown.Location = new System.Drawing.Point(32, 133);
             this.lbCountdown.Name = "lbCountdown";
-            this.lbCountdown.Size = new System.Drawing.Size(264, 77);
+            this.lbCountdown.Size = new System.Drawing.Size(300, 77);
             this.lbCountdown.TabIndex = 11;
             this.lbCountdown.Text = "00:00:00";
             this.lbCountdown.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -294,7 +294,7 @@
             // navBox1
             // 
             this.navBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("navBox1.BackgroundImage")));
-            this.navBox1.Image = ((System.Drawing.Image)(resources.GetObject("navBox1.Image")));
+            this.navBox1.Image = global::bprompt.Properties.Resources.Navbar_main;
             this.navBox1.Location = new System.Drawing.Point(2, 0);
             this.navBox1.Name = "navBox1";
             this.navBox1.Size = new System.Drawing.Size(365, 80);
@@ -352,7 +352,7 @@
             // navBox2
             // 
             this.navBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("navBox2.BackgroundImage")));
-            this.navBox2.Image = ((System.Drawing.Image)(resources.GetObject("navBox2.Image")));
+            this.navBox2.Image = global::bprompt.Properties.Resources.Navbar_roster;
             this.navBox2.Location = new System.Drawing.Point(2, 0);
             this.navBox2.Name = "navBox2";
             this.navBox2.Size = new System.Drawing.Size(365, 80);
@@ -536,7 +536,7 @@
             // navBox3
             // 
             this.navBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("navBox3.BackgroundImage")));
-            this.navBox3.Image = ((System.Drawing.Image)(resources.GetObject("navBox3.Image")));
+            this.navBox3.Image = global::bprompt.Properties.Resources.Navbar_settings;
             this.navBox3.Location = new System.Drawing.Point(2, 0);
             this.navBox3.Name = "navBox3";
             this.navBox3.Size = new System.Drawing.Size(365, 80);
@@ -544,20 +544,6 @@
             this.navBox3.TabStop = false;
             this.navBox3.Click += new System.EventHandler(this.NavClick);
             this.navBox3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
-            // 
-            // TimeAlliveTimer
-            // 
-            this.TimeAlliveTimer.Interval = 1000;
-            this.TimeAlliveTimer.Tick += new System.EventHandler(this.TickTock);
-            // 
-            // TimeCheckAlarm
-            // 
-            this.TimeCheckAlarm.Interval = 1000;
-            this.TimeCheckAlarm.Tick += new System.EventHandler(this.AlarmCheck);
-            // 
-            // TimeCountDown
-            // 
-            this.TimeCountDown.Tick += new System.EventHandler(this.TimeCountDown_Tick);
             // 
             // tab3
             // 
@@ -573,31 +559,21 @@
             this.tab3.TabIndex = 3;
             this.tab3.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // tbConfigName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(117, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "bprompt";
+            this.tbConfigName.Location = new System.Drawing.Point(114, 61);
+            this.tbConfigName.Name = "tbConfigName";
+            this.tbConfigName.Size = new System.Drawing.Size(100, 20);
+            this.tbConfigName.TabIndex = 5;
             // 
-            // label2
+            // label3
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(62, 95);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "adres";
-            // 
-            // tbConfigAdres
-            // 
-            this.tbConfigAdres.Location = new System.Drawing.Point(114, 92);
-            this.tbConfigAdres.Name = "tbConfigAdres";
-            this.tbConfigAdres.Size = new System.Drawing.Size(100, 20);
-            this.tbConfigAdres.TabIndex = 2;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(62, 64);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(33, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "naam";
             // 
             // btnConfigSave
             // 
@@ -609,21 +585,45 @@
             this.btnConfigSave.UseVisualStyleBackColor = true;
             this.btnConfigSave.Click += new System.EventHandler(this.btnConfigSave_Click);
             // 
-            // label3
+            // tbConfigAdres
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(62, 64);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "naam";
+            this.tbConfigAdres.Location = new System.Drawing.Point(114, 92);
+            this.tbConfigAdres.Name = "tbConfigAdres";
+            this.tbConfigAdres.Size = new System.Drawing.Size(100, 20);
+            this.tbConfigAdres.TabIndex = 2;
             // 
-            // tbConfigName
+            // label2
             // 
-            this.tbConfigName.Location = new System.Drawing.Point(114, 61);
-            this.tbConfigName.Name = "tbConfigName";
-            this.tbConfigName.Size = new System.Drawing.Size(100, 20);
-            this.tbConfigName.TabIndex = 5;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(62, 95);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(33, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "adres";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(117, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(97, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "bprompt";
+            // 
+            // TimeAlliveTimer
+            // 
+            this.TimeAlliveTimer.Interval = 1000;
+            this.TimeAlliveTimer.Tick += new System.EventHandler(this.TickTock);
+            // 
+            // TimeCheckAlarm
+            // 
+            this.TimeCheckAlarm.Interval = 1000;
+            this.TimeCheckAlarm.Tick += new System.EventHandler(this.AlarmCheck);
+            // 
+            // TimeCountDown
+            // 
+            this.TimeCountDown.Tick += new System.EventHandler(this.TimeCountDown_Tick);
             // 
             // main
             // 

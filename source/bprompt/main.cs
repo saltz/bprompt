@@ -266,7 +266,7 @@ namespace bprompt
                     schedule.ReadingTheJson(json);
                     connection.TimeAllive = 3600;
                     BuildingTheSchedule();
-                    //GetBeginTimeNextDay(); // <--------- uncomment for next school day function
+                    GetBeginTimeNextDay(); // <--------- uncomment for next school day function
                 }
                 else //user denied access no school schedule for him
                 {

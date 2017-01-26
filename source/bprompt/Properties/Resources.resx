@@ -127,25 +127,16 @@
   <data name="home" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\home.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="navbar_calander2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\navbar_calander2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Navbar_main" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\navbar_main.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Navbar_main2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\navbar_main2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Navbar_nav2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\navbar_nav2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Navbar_roster" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\navbar_roster.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Navbar_settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\navbar_settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="train" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\train.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Navbar_main" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Navbar_main.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Navbar_roster" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Navbar_roster.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Navbar_settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Navbar_settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

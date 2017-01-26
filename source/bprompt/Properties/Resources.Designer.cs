@@ -93,39 +93,9 @@ namespace bprompt.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap navbar_calander2 {
-            get {
-                object obj = ResourceManager.GetObject("navbar_calander2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         public static System.Drawing.Bitmap Navbar_main {
             get {
                 object obj = ResourceManager.GetObject("Navbar_main", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap Navbar_main2 {
-            get {
-                object obj = ResourceManager.GetObject("Navbar_main2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap Navbar_nav2 {
-            get {
-                object obj = ResourceManager.GetObject("Navbar_nav2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
