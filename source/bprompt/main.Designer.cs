@@ -41,18 +41,15 @@
             this.lbArrivalTime = new System.Windows.Forms.Label();
             this.lbDepartureTime = new System.Windows.Forms.Label();
             this.lbIntercitySprinter = new System.Windows.Forms.Label();
-            this.pbTrain = new System.Windows.Forms.PictureBox();
             this.lbTravelTime = new System.Windows.Forms.Label();
             this.lbTransfer = new System.Windows.Forms.Label();
             this.lbCountdown = new System.Windows.Forms.Label();
             this.lbTimeLeaves = new System.Windows.Forms.Label();
             this.btCalculateTravelTime = new System.Windows.Forms.Button();
-            this.navBox1 = new System.Windows.Forms.PictureBox();
             this.tab1 = new System.Windows.Forms.TabPage();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.lblError = new System.Windows.Forms.Label();
             this.webBrowser = new System.Windows.Forms.WebBrowser();
-            this.navBox2 = new System.Windows.Forms.PictureBox();
             this.tab2 = new System.Windows.Forms.TabPage();
             this.btnSetSchoolAlarm = new System.Windows.Forms.Button();
             this.btnCurrentAlarms = new System.Windows.Forms.Button();
@@ -65,35 +62,39 @@
             this.nudPrepTime = new System.Windows.Forms.NumericUpDown();
             this.lbTimeToGetOutOfBed = new System.Windows.Forms.Label();
             this.lbLivingPlace = new System.Windows.Forms.Label();
-            this.pbAlarm = new System.Windows.Forms.PictureBox();
-            this.pbClock = new System.Windows.Forms.PictureBox();
-            this.pbHome = new System.Windows.Forms.PictureBox();
-            this.navBox3 = new System.Windows.Forms.PictureBox();
             this.tab3 = new System.Windows.Forms.TabPage();
             this.tbConfigName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnConfigSave = new System.Windows.Forms.Button();
             this.tbConfigAdres = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.TimeAlliveTimer = new System.Windows.Forms.Timer(this.components);
             this.TimeCheckAlarm = new System.Windows.Forms.Timer(this.components);
             this.TimeCountDown = new System.Windows.Forms.Timer(this.components);
+            this.pbTrain = new System.Windows.Forms.PictureBox();
+            this.navBox1 = new System.Windows.Forms.PictureBox();
+            this.navBox2 = new System.Windows.Forms.PictureBox();
+            this.pbAlarm = new System.Windows.Forms.PictureBox();
+            this.pbClock = new System.Windows.Forms.PictureBox();
+            this.pbHome = new System.Windows.Forms.PictureBox();
+            this.navBox3 = new System.Windows.Forms.PictureBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuNav.SuspendLayout();
             this.tab0.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbTrain)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.navBox1)).BeginInit();
             this.tab1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.navBox2)).BeginInit();
             this.tab2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrepTime)).BeginInit();
+            this.tab3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTrain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.navBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.navBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAlarm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBox3)).BeginInit();
-            this.tab3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuNav
@@ -228,16 +229,6 @@
             this.lbIntercitySprinter.Size = new System.Drawing.Size(0, 16);
             this.lbIntercitySprinter.TabIndex = 17;
             // 
-            // pbTrain
-            // 
-            this.pbTrain.Image = ((System.Drawing.Image)(resources.GetObject("pbTrain.Image")));
-            this.pbTrain.Location = new System.Drawing.Point(53, 332);
-            this.pbTrain.Name = "pbTrain";
-            this.pbTrain.Size = new System.Drawing.Size(33, 35);
-            this.pbTrain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbTrain.TabIndex = 16;
-            this.pbTrain.TabStop = false;
-            // 
             // lbTravelTime
             // 
             this.lbTravelTime.AutoSize = true;
@@ -291,18 +282,6 @@
             this.btCalculateTravelTime.UseVisualStyleBackColor = true;
             this.btCalculateTravelTime.Click += new System.EventHandler(this.btCalculateTravelTime_Click);
             // 
-            // navBox1
-            // 
-            this.navBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("navBox1.BackgroundImage")));
-            this.navBox1.Image = global::bprompt.Properties.Resources.Navbar_main;
-            this.navBox1.Location = new System.Drawing.Point(2, 0);
-            this.navBox1.Name = "navBox1";
-            this.navBox1.Size = new System.Drawing.Size(365, 80);
-            this.navBox1.TabIndex = 0;
-            this.navBox1.TabStop = false;
-            this.navBox1.Click += new System.EventHandler(this.NavClick);
-            this.navBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
-            // 
             // tab1
             // 
             this.tab1.Controls.Add(this.listBox1);
@@ -348,18 +327,6 @@
             this.webBrowser.Url = new System.Uri("", System.UriKind.Relative);
             this.webBrowser.Visible = false;
             this.webBrowser.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.WebBrowserNavigated);
-            // 
-            // navBox2
-            // 
-            this.navBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("navBox2.BackgroundImage")));
-            this.navBox2.Image = global::bprompt.Properties.Resources.Navbar_roster;
-            this.navBox2.Location = new System.Drawing.Point(2, 0);
-            this.navBox2.Name = "navBox2";
-            this.navBox2.Size = new System.Drawing.Size(365, 80);
-            this.navBox2.TabIndex = 1;
-            this.navBox2.TabStop = false;
-            this.navBox2.Click += new System.EventHandler(this.NavClick);
-            this.navBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
             // 
             // tab2
             // 
@@ -499,6 +466,112 @@
             this.lbLivingPlace.TabIndex = 2;
             this.lbLivingPlace.Text = "   Living place:";
             // 
+            // tab3
+            // 
+            this.tab3.Controls.Add(this.pictureBox1);
+            this.tab3.Controls.Add(this.tbConfigName);
+            this.tab3.Controls.Add(this.label3);
+            this.tab3.Controls.Add(this.btnConfigSave);
+            this.tab3.Controls.Add(this.tbConfigAdres);
+            this.tab3.Controls.Add(this.label2);
+            this.tab3.Location = new System.Drawing.Point(4, 22);
+            this.tab3.Name = "tab3";
+            this.tab3.Size = new System.Drawing.Size(368, 602);
+            this.tab3.TabIndex = 3;
+            this.tab3.UseVisualStyleBackColor = true;
+            // 
+            // tbConfigName
+            // 
+            this.tbConfigName.Location = new System.Drawing.Point(180, 253);
+            this.tbConfigName.Name = "tbConfigName";
+            this.tbConfigName.Size = new System.Drawing.Size(100, 20);
+            this.tbConfigName.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("SansSerif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.label3.Location = new System.Drawing.Point(87, 256);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 15);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Name: ";
+            // 
+            // btnConfigSave
+            // 
+            this.btnConfigSave.Location = new System.Drawing.Point(141, 330);
+            this.btnConfigSave.Name = "btnConfigSave";
+            this.btnConfigSave.Size = new System.Drawing.Size(75, 23);
+            this.btnConfigSave.TabIndex = 3;
+            this.btnConfigSave.Text = "Save";
+            this.btnConfigSave.UseVisualStyleBackColor = true;
+            this.btnConfigSave.Click += new System.EventHandler(this.btnConfigSave_Click);
+            // 
+            // tbConfigAdres
+            // 
+            this.tbConfigAdres.Location = new System.Drawing.Point(180, 284);
+            this.tbConfigAdres.Name = "tbConfigAdres";
+            this.tbConfigAdres.Size = new System.Drawing.Size(100, 20);
+            this.tbConfigAdres.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("SansSerif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.label2.Location = new System.Drawing.Point(87, 287);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(80, 15);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Living place:";
+            // 
+            // TimeAlliveTimer
+            // 
+            this.TimeAlliveTimer.Interval = 1000;
+            this.TimeAlliveTimer.Tick += new System.EventHandler(this.TickTock);
+            // 
+            // TimeCheckAlarm
+            // 
+            this.TimeCheckAlarm.Interval = 1000;
+            this.TimeCheckAlarm.Tick += new System.EventHandler(this.AlarmCheck);
+            // 
+            // TimeCountDown
+            // 
+            this.TimeCountDown.Tick += new System.EventHandler(this.TimeCountDown_Tick);
+            // 
+            // pbTrain
+            // 
+            this.pbTrain.Image = ((System.Drawing.Image)(resources.GetObject("pbTrain.Image")));
+            this.pbTrain.Location = new System.Drawing.Point(53, 332);
+            this.pbTrain.Name = "pbTrain";
+            this.pbTrain.Size = new System.Drawing.Size(33, 35);
+            this.pbTrain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbTrain.TabIndex = 16;
+            this.pbTrain.TabStop = false;
+            // 
+            // navBox1
+            // 
+            this.navBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("navBox1.BackgroundImage")));
+            this.navBox1.Image = global::bprompt.Properties.Resources.Navbar_main;
+            this.navBox1.Location = new System.Drawing.Point(2, 0);
+            this.navBox1.Name = "navBox1";
+            this.navBox1.Size = new System.Drawing.Size(365, 80);
+            this.navBox1.TabIndex = 0;
+            this.navBox1.TabStop = false;
+            this.navBox1.Click += new System.EventHandler(this.NavClick);
+            this.navBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
+            // 
+            // navBox2
+            // 
+            this.navBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("navBox2.BackgroundImage")));
+            this.navBox2.Image = global::bprompt.Properties.Resources.Navbar_roster;
+            this.navBox2.Location = new System.Drawing.Point(2, 0);
+            this.navBox2.Name = "navBox2";
+            this.navBox2.Size = new System.Drawing.Size(365, 80);
+            this.navBox2.TabIndex = 1;
+            this.navBox2.TabStop = false;
+            this.navBox2.Click += new System.EventHandler(this.NavClick);
+            this.navBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
+            // 
             // pbAlarm
             // 
             this.pbAlarm.Image = ((System.Drawing.Image)(resources.GetObject("pbAlarm.Image")));
@@ -545,85 +618,15 @@
             this.navBox3.Click += new System.EventHandler(this.NavClick);
             this.navBox3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveCapture);
             // 
-            // tab3
+            // pictureBox1
             // 
-            this.tab3.Controls.Add(this.tbConfigName);
-            this.tab3.Controls.Add(this.label3);
-            this.tab3.Controls.Add(this.btnConfigSave);
-            this.tab3.Controls.Add(this.tbConfigAdres);
-            this.tab3.Controls.Add(this.label2);
-            this.tab3.Controls.Add(this.label1);
-            this.tab3.Location = new System.Drawing.Point(4, 22);
-            this.tab3.Name = "tab3";
-            this.tab3.Size = new System.Drawing.Size(368, 602);
-            this.tab3.TabIndex = 3;
-            this.tab3.UseVisualStyleBackColor = true;
-            // 
-            // tbConfigName
-            // 
-            this.tbConfigName.Location = new System.Drawing.Point(114, 61);
-            this.tbConfigName.Name = "tbConfigName";
-            this.tbConfigName.Size = new System.Drawing.Size(100, 20);
-            this.tbConfigName.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(62, 64);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "naam";
-            // 
-            // btnConfigSave
-            // 
-            this.btnConfigSave.Location = new System.Drawing.Point(122, 150);
-            this.btnConfigSave.Name = "btnConfigSave";
-            this.btnConfigSave.Size = new System.Drawing.Size(75, 23);
-            this.btnConfigSave.TabIndex = 3;
-            this.btnConfigSave.Text = "Save";
-            this.btnConfigSave.UseVisualStyleBackColor = true;
-            this.btnConfigSave.Click += new System.EventHandler(this.btnConfigSave_Click);
-            // 
-            // tbConfigAdres
-            // 
-            this.tbConfigAdres.Location = new System.Drawing.Point(114, 92);
-            this.tbConfigAdres.Name = "tbConfigAdres";
-            this.tbConfigAdres.Size = new System.Drawing.Size(100, 20);
-            this.tbConfigAdres.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(62, 95);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "adres";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(117, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "bprompt";
-            // 
-            // TimeAlliveTimer
-            // 
-            this.TimeAlliveTimer.Interval = 1000;
-            this.TimeAlliveTimer.Tick += new System.EventHandler(this.TickTock);
-            // 
-            // TimeCheckAlarm
-            // 
-            this.TimeCheckAlarm.Interval = 1000;
-            this.TimeCheckAlarm.Tick += new System.EventHandler(this.AlarmCheck);
-            // 
-            // TimeCountDown
-            // 
-            this.TimeCountDown.Tick += new System.EventHandler(this.TimeCountDown_Tick);
+            this.pictureBox1.Image = global::bprompt.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(90, 32);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(190, 190);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
             // main
             // 
@@ -637,21 +640,22 @@
             this.menuNav.ResumeLayout(false);
             this.tab0.ResumeLayout(false);
             this.tab0.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbTrain)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.navBox1)).EndInit();
             this.tab1.ResumeLayout(false);
             this.tab1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.navBox2)).EndInit();
             this.tab2.ResumeLayout(false);
             this.tab2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrepTime)).EndInit();
+            this.tab3.ResumeLayout(false);
+            this.tab3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTrain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.navBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.navBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAlarm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbHome)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBox3)).EndInit();
-            this.tab3.ResumeLayout(false);
-            this.tab3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -702,12 +706,12 @@
         private System.Windows.Forms.Button btnSetSchoolAlarm;
         private System.Windows.Forms.TabPage tab3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.Button btnConfigSave;
         private System.Windows.Forms.TextBox tbConfigAdres;
         private System.Windows.Forms.TextBox tbConfigName;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
