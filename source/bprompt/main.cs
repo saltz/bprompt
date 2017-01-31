@@ -512,7 +512,7 @@ namespace bprompt
             pbAlarm.Invalidate();
 
             // Write current alarms to a textfile
-            string path = @"C:\Sparky";
+            string path = @"C:\BPrompt";
             string fileName = "CurrentAlarms.txt";
             List<string> text = new List<string>();
 
